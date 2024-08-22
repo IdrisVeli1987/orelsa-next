@@ -1,14 +1,24 @@
+import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import LandingContainer from "./LandingContainer";
 import menu from "./menu";
+import { CiSearch } from "react-icons/ci";
 
-const Header = () => {
-  const navLinks = menu();
+// Define the type for menu items
+type NavLink = {
+  id: string;
+  link: string;
+  name: string;
+};
+
+const Header: FC = () => {
+  const navLinks: NavLink[] = menu(); // Ensure menu returns an array of NavLink
+
   return (
     <header className="py-6 px-16">
       <LandingContainer>
-        <nav className="flex justify-between items-center relative w-full bg-white">
+        <nav className="flex justify-between items-center relative w-full">
           <div className="flex justify-between" id="logo">
             <Link href="/" className="cursor-pointer flex items-center gap-2">
               <Image
@@ -21,13 +31,19 @@ const Header = () => {
             </Link>
           </div>
 
-          <menu>
-            {navLinks.map((link, id) => {
-              <li key={id} className="py-2 md:py-0 md:flex ">
-                <Link href={link.link}>{link.name}</Link>
-              </li>;
-            })}
-          </menu>
+          <ul className="flex lg:items-center !text-white lg:justify-between h-full w-[310px] m-auto space-x-4 ">
+            {navLinks.map((link) => (
+              <li key={link.id}>
+                <Link
+                  href={link.link}
+                  className=" text-black font-medium text-base leading-6"
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <CiSearch style={{ width: "23px", height: "23px" }} />
         </nav>
       </LandingContainer>
     </header>
