@@ -1,13 +1,13 @@
-import LandingFooter from "@/components/UI/Common/Footer/LandingFooter";
-import LandingHeader from "@/components/Views/Landing/LandingHeader";
-import Providers from "../../providers";
+import Footer from "@/components/Views/Landing/Footer";
+import Header from "@/components/Views/Landing/Header";
+import Providers from "../providers";
 
 const LandingLayout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <Providers>
-      <LandingHeader />
+      <Header />
       {children}
-      <LandingFooter />
+      <Footer />
     </Providers>
   );
 };

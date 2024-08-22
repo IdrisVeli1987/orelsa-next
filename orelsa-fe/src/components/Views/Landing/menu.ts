@@ -1,4 +1,4 @@
-const menu = () => {
+  const menu = () => {
   return [
     {
       name: "Home",
