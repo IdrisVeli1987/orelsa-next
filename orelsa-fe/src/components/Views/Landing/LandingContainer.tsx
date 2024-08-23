@@ -5,7 +5,7 @@ interface ILandingContainer {
 }
 
 const LandingContainer = ({ children }: ILandingContainer) => {
-  return <div className=' flex items-center max-w-[1440px] w-full'>{children}</div>;
+  return <div className=' flex items-center max-w-[1440px] height-screen mx-auto'>{children}</div>;
 };
 
 export default LandingContainer
