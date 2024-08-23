@@ -16,9 +16,9 @@ const Header: FC = () => {
   const navLinks: NavLink[] = menu(); // Ensure menu returns an array of NavLink
 
   return (
-    <header className="py-6 px-16">
+    <header className="py-6 px-6 ">
       <LandingContainer>
-        <nav className="flex justify-between items-center relative w-full">
+        <nav className="flex justify-between items-center relative w-[1280px] m-auto">
           <div className="flex justify-between" id="logo">
             <Link href="/" className="cursor-pointer flex items-center gap-2">
               <Image
@@ -43,8 +43,8 @@ const Header: FC = () => {
               </li>
             ))}
           </ul>
-          <CiSearch style={{ width: "23px", height: "23px" }} />
         </nav>
+        <CiSearch style={{ width: "23px", height: "23px" }} />
       </LandingContainer>
     </header>
   );
