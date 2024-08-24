@@ -1,3 +1,4 @@
+import OurProducts from "@/components/UI/OurProducts/OurProducts";
 import TheRange from "@/components/UI/TheRange/TheRange";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import Image from "next/image";
@@ -38,7 +39,8 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <TheRange/>
+      <TheRange />
+      <OurProducts />
       <LandingContainer />
     </main>
   );
