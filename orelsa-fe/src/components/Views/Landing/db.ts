@@ -41,6 +41,14 @@ export const TheOurProducts = [
     sales: "Rp 3.500.000",
   },
   {
+    id: 2,
+    src: "/OurProducts/1.svg",
+    subTitle: "Leviosa",
+    desc: "Stylish cafe chair",
+    price: "Rp 2.500.000",
+    sales: "",
+  },
+  {
     id: 3,
     src: "/OurProducts/3.svg",
     subTitle: "Lolito",
