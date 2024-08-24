@@ -7,9 +7,9 @@ const TheRange: React.FC = () => {
   return (
     <section>
       <LandingContainer>
-        <div className="flex flex-col justify-center items-center h-[810px]">
+        <div className="flex flex-col justify-center items-center w-full h-[810px]">
           <div className="flex justify-center items-center mx-auto w-[400px] mb-4">
-            <h1 className="text-4xl font-bold text-[#333333;]">
+            <h1 className="text-4xl font-bold text-[#3A3A3A;]">
               Browse The Range
             </h1>
           </div>
