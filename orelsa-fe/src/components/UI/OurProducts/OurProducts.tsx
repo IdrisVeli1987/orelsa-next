@@ -31,7 +31,7 @@ const OurProducts: React.FC = () => {
                     <h2 className="text-2xl font-semibold">{subTitle}</h2>
                     <p className="text-gray-600">{desc}</p>
                     {/* </div> */}
-                    <div className="flex items-center w-max gap-1 mt-2">
+                    <div className="flex justify-between items-center w-max gap-5 mt-2">
                       <p className="text-xl font-bold">${price}</p>
                       {sales && (
                         <p className="text-[#B0B0B0] text-base">
