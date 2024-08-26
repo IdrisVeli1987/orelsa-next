@@ -1,5 +1,6 @@
 import { IOurProducts, TheOurProducts } from "@/components/Views/Landing/db";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
+import { Button } from "@nextui-org/react";
 import Image from "next/image";
 
 const OurProducts: React.FC = () => {
@@ -16,21 +17,27 @@ const OurProducts: React.FC = () => {
               return (
                 <div
                   key={id}
-                  className="flex flex-col justify-center items-center border rounded-lg shadow-md w-full h-[446] mb-6 "
+                  className="relative flex flex-col justify-center items-center border rounded-lg shadow-md w-full h-auto mb-6 group"
                 >
-                  <Image
-                    src={src}
-                    alt={subTitle}
-                    className="w-full h-48 object-cover rounded"
-                    width={200}
-                    height={200}
-                    style={{ width: "100", height: "301px" }}
-                  />
-                  <div className="bg-[#F4F5F7] w-full h-full pb-4 pl-4">
-                    {/* <div className="flex flex-col gap-2"> */}
+                  <div className="absolute flex justify-center items-center opacity-0 inset-0 z-50 transition duration-300 ease-in-out group-hover:bg-black/70 group-hover:opacity-100">
+                    <button className="bg-white w-[60%] text-xl text-[#B88E2F] py-3 rounded duration-300 ease-in-out">
+                      Ətraflı bax
+                    </button>
+                  </div>
+
+                  <div className="relative w-full h-full overflow-hidden rounded ">
+                    <Image
+                      src={src}
+                      alt={subTitle}
+                      className="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-110"
+                      width={300}
+                      height={300}
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
+                  <div className="bg-[#F4F5F7] w-full h-max pb-4 pl-4">
                     <h2 className="text-2xl font-semibold">{subTitle}</h2>
                     <p className="text-gray-600">{desc}</p>
-                    {/* </div> */}
                     <div className="flex justify-between items-center w-max gap-5 mt-2">
                       <p className="text-xl font-bold">${price}</p>
                       {sales && (
@@ -44,9 +51,19 @@ const OurProducts: React.FC = () => {
               );
             })}
           </div>
+          <div className="w-full my-6 flex justify-center">
+            <Button
+              variant="solid"
+              color="primary"
+              className="border-2 border-[#B88E2F] text-center py-3 px-16 font-semibold text-base text-[#B88E2F]"
+            >
+              Show more
+            </Button>
+          </div>
         </div>
       </LandingContainer>
     </section>
   );
 };
+
 export default OurProducts;
