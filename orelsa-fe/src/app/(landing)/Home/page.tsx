@@ -1,4 +1,5 @@
 import OurProducts from "@/components/UI/OurProducts/OurProducts";
+import Rooms from "@/components/UI/Rooms/Rooms";
 import TheRange from "@/components/UI/TheRange/TheRange";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import Image from "next/image";
@@ -41,6 +42,7 @@ export default function HomePage() {
       </div>
       <TheRange />
       <OurProducts />
+      <Rooms />
       <LandingContainer />
     </main>
   );
