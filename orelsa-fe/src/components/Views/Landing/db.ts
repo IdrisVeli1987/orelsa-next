@@ -5,12 +5,17 @@ export interface IRange {
 }
 
 export interface IOurProducts {
-  id: 1;
+  id: string | number;
   src: string;
   subTitle: string;
   desc: string;
   price: string | number;
   sales: string | number;
+}
+
+export interface IRooms {
+  id: string | number;
+  src: string;
 }
 
 export const TheRangeData: any = [
@@ -31,7 +36,7 @@ export const TheRangeData: any = [
   },
 ];
 
-export const TheOurProducts = [
+export const TheOurProducts: IOurProducts[] = [
   {
     id: 1,
     src: "/OurProducts/1.svg",
@@ -95,5 +100,20 @@ export const TheOurProducts = [
     desc: "Minimalist flower pot",
     price: "Rp 500.000",
     sales: "",
+  },
+];
+
+export const Rooms: IRooms[] = [
+  {
+    id: 1,
+    src: "/rooms/R-1.svg",
+  },
+  {
+    id: 2,
+    src: "/rooms/R-2.svg",
+  },
+  {
+    id: 3,
+    src: "/rooms/R-3.svg",
   },
 ];
