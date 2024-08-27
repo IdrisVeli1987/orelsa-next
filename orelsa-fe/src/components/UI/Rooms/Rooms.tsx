@@ -1,14 +1,13 @@
 "use client";
 
-import { IRooms } from "@/components/Views/Landing/db";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import Image from "next/image";
-import { useState } from "react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "../../../../node_modules/swiper/swiper-bundle.min.css"; // Import Swiper styles if not already included
+import Slider from "../Slider/Slider";
 
 const Rooms: React.FC = () => {
-  const [roomsSlide, setRoomsSlide] = useState<IRooms[]>([]);
   return (
     <section className="bg-[#FCF8F3]">
       <LandingContainer>
@@ -23,31 +22,9 @@ const Rooms: React.FC = () => {
             </p>
           </div>
 
-          <Swiper
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-            }}
-            navigation={false}
-            spaceBetween={30}
-            style={{ overflow: "hidden", maxWidth: "100%" }}
-            modules={[Autoplay, Navigation]}
-            breakpoints={{
-              640: { slidesPerView: 1 },
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-            }}
-          >
-            {roomsSlide.map(({ id, src }) => {
-              return (
-                <SwiperSlide key={id}>
-                  <div>
-                    <Image src="src" alt="Images" width={100} height={100}/>
-                  </div>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+          <div className="flex justify-between items-center w-[50%]">
+            <Slider />
+          </div>
         </div>
       </LandingContainer>
     </section>

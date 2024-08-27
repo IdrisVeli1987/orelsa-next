@@ -15,7 +15,7 @@ export interface IOurProducts {
 
 export interface IRooms {
   id: string | number;
-  src: string;
+  imagesrc: string;
 }
 
 export const TheRangeData: any = [
@@ -106,14 +106,14 @@ export const TheOurProducts: IOurProducts[] = [
 export const Rooms: IRooms[] = [
   {
     id: 1,
-    src: "/rooms/R-1.svg",
+    imagesrc: "/rooms/R-1.svg",
   },
   {
     id: 2,
-    src: "/rooms/R-2.svg",
+    imagesrc: "/rooms/R-2.svg",
   },
   {
     id: 3,
-    src: "/rooms/R-3.svg",
+    imagesrc: "/rooms/R-3.svg",
   },
 ];
