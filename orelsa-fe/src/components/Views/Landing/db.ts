@@ -18,6 +18,14 @@ export interface IRooms {
   imagesrc: string;
 }
 
+export interface ShopRoom {
+  id: string | number;
+  src: string;
+  title: string;
+  subtitle: string;
+  desc: string | number;
+}
+
 export const TheRangeData: any = [
   {
     id: 1,
@@ -115,5 +123,120 @@ export const Rooms: IRooms[] = [
   {
     id: 3,
     imagesrc: "/rooms/R-3.svg",
+  },
+];
+
+export const Shoping: ShopRoom[] = [
+  {
+    id: 1,
+    src: "/ShopRooms/img-1.svg",
+    title: "Syltherine",
+    subtitle: "Stylish cafe chair",
+    desc: "Rp 2.500.000 Rp 3.500.000",
+  },
+  {
+    id: 2,
+    src: "/ShopRooms/img-2.svg",
+    title: "Leviosa",
+    subtitle: "Stylish cafe chair",
+    desc: "Rp 2.500.000",
+  },
+  {
+    id: 3,
+    src: "/ShopRooms/img-3.svg",
+    title: "Lolito",
+    subtitle: "Stylish cafe chair",
+    desc: "Rp 7.000.000 Rp 14.000.000",
+  },
+  {
+    id: 4,
+    src: "/ShopRooms/img-4.svg",
+    title: "Respira",
+    subtitle: "Stylish cafe chair",
+    desc: "Rp 500.000",
+  },
+  {
+    id: 5,
+    src: "/ShopRooms/img-5.svg",
+    title: "Syltherine",
+    subtitle: "Stylish cafe chair",
+    desc: "Rp 2.500.000 Rp 3.500.000",
+  },
+  {
+    id: 6,
+    src: "/ShopRooms/img-6.svg",
+    title: "Leviosa",
+    subtitle: "Stylish cafe chair",
+    desc: "Rp 2.500.000",
+  },
+  {
+    id: 7,
+    src: "/ShopRooms/img-7.svg",
+    title: "Lolito",
+    subtitle: "Stylish cafe chair",
+    desc: "Rp 7.000.000 Rp 14.000.000",
+  },
+  {
+    id: 8,
+    src: "/ShopRooms/img-8.svg",
+    title: "Respira",
+    subtitle: "Stylish cafe chair",
+    desc: "Rp 500.000",
+  },
+  {
+    id: 9,
+    src: "/ShopRooms/img-9.svg",
+    title: "Syltherine",
+    subtitle: "Stylish cafe chair",
+    desc: "Rp 2.500.000 Rp 3.500.000",
+  },
+  {
+    id: 10,
+    src: "/ShopRooms/img-10.svg",
+    title: "Leviosa",
+    subtitle: "Stylish cafe chair",
+    desc: "Rp 2.500.000",
+  },
+  {
+    id: 11,
+    src: "/ShopRooms/img-11.svg",
+    title: "Lolito",
+    subtitle: "Stylish cafe chair",
+    desc: "Rp 7.000.000 Rp 14.000.000",
+  },
+  {
+    id: 12,
+    src: "/ShopRooms/img-12.svg",
+    title: "Respira",
+    subtitle: "Stylish cafe chair",
+    desc: "Rp 500.000",
+  },
+  {
+    id: 13,
+    src: "/ShopRooms/img-13.svg",
+    title: "Syltherine",
+    subtitle: "Stylish cafe chair",
+    desc: "Rp 2.500.000 Rp 3.500.000",
+  },
+  {
+    id: 14,
+    src: "/ShopRooms/img-14.svg",
+    title: "Leviosa",
+    subtitle: "Stylish cafe chair",
+    desc: "Rp 2.500.000",
+  },
+  {
+    id: 15,
+    src: "/ShopRooms/img-15.svg",
+    title: "Lolito",
+    subtitle: "Stylish cafe chair",
+    desc: "Rp 7.000.000 Rp 14.000.000",
+  },
+  {
+    id: 16,
+    src: "/ShopRooms/img-16.svg",
+    title: "Respira",
+    subtitle: "Stylish cafe chair",
+    desc: "Rp 500.000",
   },
 ];
