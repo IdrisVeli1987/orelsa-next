@@ -18,7 +18,7 @@ const Header: FC = () => {
   return (
     <header className="py-6 px-6 ">
       <LandingContainer>
-        <nav className="flex justify-between items-center relative w-[1280px] m-auto">
+        <nav className="flex justify-between items-center relative w-[1280px] ">
           <div className="flex justify-between" id="logo">
             <Link href="/" className="cursor-pointer flex items-center gap-2">
               <Image
@@ -31,7 +31,7 @@ const Header: FC = () => {
             </Link>
           </div>
 
-          <ul className="flex lg:items-center !text-white lg:justify-between h-full w-[310px] m-auto space-x-4 ">
+          <ul className="flex justify-center items-center m-auto lg:items-center !text-white lg:justify-between h-full w-[310px] space-x-4 ">
             {navLinks.map((link) => (
               <li key={link.id}>
                 <Link
