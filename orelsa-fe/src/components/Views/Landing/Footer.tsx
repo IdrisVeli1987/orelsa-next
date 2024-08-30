@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="">
       <LandingContainer>
-        <div className="flex justify-around w-full py-12">
+        <div className="flex justify-between w-full py-12">
           <div className="flex flex-col md:mb-0">
             <h3 className="text-2xl font-bold pb-[30px]">Funiro.</h3>
             <p className="font-normal text-base">
