@@ -35,6 +35,7 @@ const OurProducts: React.FC = () => {
                       style={{ objectFit: "cover" }}
                     />
                   </div>
+                  
                   <div className="bg-[#F4F5F7] w-full h-max pb-4 pl-4">
                     <h2 className="text-2xl font-semibold">{subTitle}</h2>
                     <p className="text-gray-600">{desc}</p>
