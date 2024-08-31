@@ -1,3 +1,4 @@
+import ShopRooms from "@/components/UI/ShopRooms/ShopRooms";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import Image from "next/image";
 import Link from "next/link";
@@ -94,6 +95,9 @@ export default function ShopPage() {
           </div>
         </LandingContainer>
       </section>
+      <LandingContainer>
+        <ShopRooms />
+      </LandingContainer>
     </main>
   );
 }
