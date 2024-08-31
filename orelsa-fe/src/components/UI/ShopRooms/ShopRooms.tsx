@@ -7,6 +7,7 @@ import React from "react";
 import { Pagination } from "@nextui-org/react";
 
 const ShopRooms = () => {
+  const variants = ["flat", "bordered", "faded", "light"];
   return (
     <section>
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full mt-10 pb-3">
@@ -54,6 +55,14 @@ const ShopRooms = () => {
           }
         )}
       </div>
+
+      <Pagination
+        color="warning"
+        showControls
+        total={10}
+        initialPage={1}
+        className="flex justify-center items-center w-full"
+      />
     </section>
   );
 };
