@@ -10,7 +10,7 @@ const ShopRooms = () => {
   const variants = ["flat", "bordered", "faded", "light"];
   return (
     <section>
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full mt-10 pb-3">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full mt-10 pb-3">
         {Shoping.map(
           ({ id, src, title, subtitle, priceList, sale }: ShopRoom) => {
             return (
@@ -56,13 +56,17 @@ const ShopRooms = () => {
         )}
       </div>
 
-      <Pagination
-        color="warning"
-        showControls
-        total={10}
-        initialPage={1}
-        className="flex justify-center items-center w-full"
-      />
+      <div className="gap-10 w-full h-full flex justify-center items-center">
+        <Pagination
+          color="warning"
+          showControls
+          total={10}
+          initialPage={1}
+          loop
+          className="flex justify-center items-center w-full h-full py-10"
+          style={{ display: "flex", gap: "10px" }}
+        />
+      </div>
     </section>
   );
 };
