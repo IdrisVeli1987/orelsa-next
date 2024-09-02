@@ -1,6 +1,7 @@
 import React from "react";
 import LandingContainer from "./LandingContainer";
 import Link from "next/link";
+import Rights from "@/components/UI/AllRights/Rights";
 
 const Footer = () => {
   return (
@@ -48,6 +49,7 @@ const Footer = () => {
           </div>
         </div>
       </LandingContainer>
+      <Rights />
     </footer>
   );
 };
