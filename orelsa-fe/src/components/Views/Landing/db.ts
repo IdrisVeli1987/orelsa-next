@@ -26,6 +26,12 @@ export interface ShopRoom {
   priceList: number;
   sale: number;
 }
+export interface AboutQuality {
+  id: string | number;
+  src: string;
+  title: string;
+  desc: string;
+}
 
 export const TheRangeData: any = [
   {
@@ -255,5 +261,32 @@ export const Shoping: ShopRoom[] = [
     subtitle: "Stylish cafe chair",
     priceList: 5000,
     sale: 1200,
+  },
+];
+
+export const QualityData: AboutQuality[] = [
+  {
+    id: 1,
+    src: "/Quality/1st.svg",
+    title: "High Quality",
+    desc: "crafted from top materials",
+  },
+  {
+    id: 2,
+    src: "/Quality/2nd.svg",
+    title: "Warranty Protection",
+    desc: "Over 2 years",
+  },
+  {
+    id: 3,
+    src: "/Quality/3rd.svg",
+    title: "Free Shipping",
+    desc: "Order over 150 $",
+  },
+  {
+    id: 4,
+    src: "/Quality/4.svg",
+    title: "24 / 7 Support",
+    desc: "Dedicated support",
   },
 ];
