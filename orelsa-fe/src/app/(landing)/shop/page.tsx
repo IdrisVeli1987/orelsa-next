@@ -1,3 +1,4 @@
+import Quality from "@/components/UI/Quality/Quality";
 import ShopRooms from "@/components/UI/ShopRooms/ShopRooms";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import Image from "next/image";
@@ -98,6 +99,7 @@ export default function ShopPage() {
       <LandingContainer>
         <ShopRooms />
       </LandingContainer>
+        <Quality />
     </main>
   );
 }
