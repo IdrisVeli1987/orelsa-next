@@ -55,10 +55,10 @@ const OurProducts: React.FC = () => {
           <div className="w-full my-6 flex justify-center">
             <Button
               variant="solid"
-              color="primary"
-              className="border-2 border-[#B88E2F] text-center py-3 px-16 font-semibold text-base text-[#B88E2F]"
+              color="default"
+              className="border-2 border-[#B88E2F] bg-white text-center py-8 px-16 font-semibold text-base text-[#B88E2F]"
             >
-              Show more
+              Show More
             </Button>
           </div>
         </div>
