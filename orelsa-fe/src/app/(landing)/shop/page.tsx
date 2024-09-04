@@ -20,7 +20,7 @@ export default function ShopPage() {
 
             <span className="font-bold">&gt;</span>
 
-            <Link href="/" className="text-base font-medium">
+            <Link href="/shop" className="text-base font-medium">
               Shop
             </Link>
           </div>
