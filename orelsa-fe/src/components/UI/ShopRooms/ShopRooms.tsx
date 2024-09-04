@@ -31,7 +31,7 @@ const ShopRooms = () => {
                   <Image
                     src={src}
                     alt={subtitle}
-                    className="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-300 ease-in-out transform "
                     width={300}
                     height={300}
                     style={{ objectFit: "cover" }}
