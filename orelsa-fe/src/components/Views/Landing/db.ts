@@ -26,6 +26,7 @@ export interface ShopRoom {
   priceList: number;
   sale: number;
 }
+
 export interface AboutQuality {
   id: string | number;
   src: string;
