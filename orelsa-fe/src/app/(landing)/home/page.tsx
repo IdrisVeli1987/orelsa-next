@@ -2,9 +2,8 @@ import OurProducts from "@/components/UI/OurProducts/OurProducts";
 import Rooms from "@/components/UI/Rooms/Rooms";
 import TheRange from "@/components/UI/TheRange/TheRange";
 import Footer from "@/components/Views/Landing/Footer";
-import LandingContainer from "@/components/Views/Landing/LandingContainer";
+import { Button } from "@nextui-org/react";
 import Image from "next/image";
-import React from "react";
 
 export default function HomePage() {
   return (
@@ -39,9 +38,9 @@ export default function HomePage() {
                   </span>
                 </p>
                 <div className="ml-11 pb-10 pt-9">
-                  <button className="gap-3 bg-[#B88E2F] w-[222px] h-[75px] font-bold text-base text-white">
+                  <Button className="gap-3 bg-[#B88E2F] w-[222px] h-[75px] font-bold text-base text-white">
                     BUY NOW
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
