@@ -7,7 +7,6 @@ import React from "react";
 import { Pagination } from "@nextui-org/react";
 
 const ShopRooms = () => {
-  const variants = ["flat", "bordered", "faded", "light"];
   return (
     <section>
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full mt-10 pb-3">
