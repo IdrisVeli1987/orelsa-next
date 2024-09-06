@@ -64,7 +64,7 @@ const RelatedProducts = () => {
               className="border-2 border-[#B88E2F] bg-white text-center py-8 px-16 font-semibold text-base text-[#B88E2F]"
               onClick={() => setShowMore((pre) => !pre)}
             >
-              {showMore ? "Hide" : "Hamısına bax"}
+              {showMore ? "Gizlət" : "Hamısına bax"}
             </Button>
           </div>
         </div>
