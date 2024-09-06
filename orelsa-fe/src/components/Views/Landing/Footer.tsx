@@ -5,7 +5,7 @@ import Rights from "@/components/UI/AllRights/Rights";
 
 const Footer = () => {
   return (
-    <footer className="">
+    <footer className="border-y-2">
       <LandingContainer>
         <div className="flex justify-between w-full py-12">
           <div className="flex flex-col md:mb-0">
