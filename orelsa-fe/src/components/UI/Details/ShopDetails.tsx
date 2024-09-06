@@ -17,15 +17,15 @@ const ShopDetails = () => {
     <section>
       <LandingContainer>
         <div className="py-10 w-full flex justify-between items-center ">
-          <div className=" w-full h-full flex justify-between gap-20">
-            <div className="w-full flex justify-between">
-              <div className="mb-10 flex flex-col gap-8 justify-between items-center">
+          <div className=" flex justify-between gap-20">
+            <div className="w-full flex ">
+              <div className=" flex flex-col gap-3 mr-5 ">
                 <Image
                   src="/Details/94.svg"
                   alt="image"
                   width={76}
                   height={80}
-                  className="w-[76px] h-[80px]  cursor-pointer"
+                  className="bg-bg-cover bg-no-repeat cursor-pointer"
                   onClick={() => handleImageOnClick("/Details/94.svg")}
                 />
 
@@ -34,7 +34,7 @@ const ShopDetails = () => {
                   alt="image"
                   width={76}
                   height={80}
-                  className="w-[76px] h-[80px] cursor-pointer"
+                  className="bg-cover bg-no-repeat cursor-pointer"
                   onClick={() => handleImageOnClick("/Details/95.svg")}
                 />
 
@@ -43,7 +43,7 @@ const ShopDetails = () => {
                   alt="image"
                   width={76}
                   height={80}
-                  className="w-[76px] h-[80px] cursor-pointer"
+                  className="bg-cover bg-no-repeat cursor-pointer"
                   onClick={() => handleImageOnClick("/Details/96.svg")}
                 />
 
@@ -52,7 +52,7 @@ const ShopDetails = () => {
                   alt="image"
                   width={76}
                   height={80}
-                  className="w-[76px] h-[80px]  cursor-pointer"
+                  className="bg-cover bg-no-repeat cursor-pointer"
                   onClick={() => handleImageOnClick("/Details/97.svg")}
                 />
                 <Image
@@ -60,18 +60,18 @@ const ShopDetails = () => {
                   alt="image"
                   width={76}
                   height={80}
-                  className="w-[76px] h-[80px] cursor-pointer"
+                  className="bg-cover bg-no-repeat cursor-pointer"
                   onClick={() => handleImageOnClick("/Details/98.svg")}
                 />
               </div>
 
-              <div id="main-photo" className="">
+              <div id="main-photo" className="border-none">
                 <Image
                   src={selectedImage}
                   alt="main"
                   width={480}
                   height={500}
-                  className="w-[480px] h-[500px]"
+                  className="bg-cover bg-no-repeat border-none"
                 />
               </div>
             </div>
@@ -83,7 +83,7 @@ const ShopDetails = () => {
                   <p className="font-medium text-2xl text-[#9F9F9F] pb-5">
                     Price: 250,000.00
                   </p>
-                  <p className="font-normal text-sm">
+                  <p className="font-normal text-sm w-[50ch]">
                     Setting the bar as one of the loudest speakers in its class,
                     the Kilburn is a compact, stout-hearted hero with a
                     well-balanced audio which boasts a clear midrange and
