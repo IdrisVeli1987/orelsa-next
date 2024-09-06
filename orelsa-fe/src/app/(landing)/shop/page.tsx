@@ -99,7 +99,7 @@ export default function ShopPage() {
       <LandingContainer>
         <ShopRooms />
       </LandingContainer>
-        <Quality />
+      <Quality />
     </main>
   );
 }
