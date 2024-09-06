@@ -17,8 +17,8 @@ const ShopDetails = () => {
     <section>
       <LandingContainer>
         <div className="py-10 w-full flex justify-between items-center ">
-          <div className=" flex justify-between gap-20">
-            <div className="w-full flex ">
+          <div className=" flex  gap-36  w-full">
+            <div className=" flex ">
               <div className=" flex flex-col gap-3 mr-5 ">
                 <Image
                   src="/Details/94.svg"
