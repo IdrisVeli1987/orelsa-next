@@ -125,13 +125,13 @@ const ShopDetails = () => {
                 </h6>
                 <span className="font-normal text-base text-[#9F9F9F]">:</span>
                 <div className="flex justify-between items-center gap-4">
-                  <Link href="facebook.com">
+                  <Link href="https://facebook.com">
                     <FaFacebook />
                   </Link>
-                  <Link href="linkedin.com">
+                  <Link href="https://linkedin.com">
                     <FaLinkedinIn />
                   </Link>
-                  <Link href="x.com">
+                  <Link href="https://x.com">
                     <AiFillTwitterCircle />
                   </Link>
                 </div>
