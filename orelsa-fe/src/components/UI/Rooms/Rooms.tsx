@@ -11,8 +11,8 @@ const Rooms: React.FC = () => {
   return (
     <section className="bg-[#FCF8F3]">
       <LandingContainer>
-        <div className="w-full h-[641px] grid grid-rows-4 ">
-          <div className="w-2/4 pt-[130px]">
+        <div className="w-full lg:h-[641px] items-center grid grid-cols-4 ">
+          <div className="col-span-4 lg:col-span-1 ">
             <h3 className="w-[12ch] font-bold text-[40px] text-[#3A3A3A]">
               50+ Beautiful rooms inspiration
             </h3>
@@ -21,8 +21,7 @@ const Rooms: React.FC = () => {
               ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
           </div>
-
-          <div className="flex justify-between items-center w-[50%]">
+          <div className="col-span-4 lg:col-span-3 lg:max-h-[556px] h-full">
             <Slider />
           </div>
         </div>

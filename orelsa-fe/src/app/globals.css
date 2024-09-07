@@ -10,15 +10,44 @@
 
 @layer base {
   @font-face {
-    font-family: 'Montserrat';
+    font-family: "Montserrat";
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(/fonts/Roboto.woff2) format('woff2');
+    src: url(/fonts/Roboto.woff2) format("woff2");
   }
 }
-
-#ArruvalTitle {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.customSwiper .swiper-pagination-bullet {
+  background: #a0a0a0;
+  width: 11px;
+  height: 11px;
 }
-
+.customSwiper .swiper-pagination-bullets {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.customSwiper .swiper-pagination-bullet-active {
+  border: 1px solid #b88e2f;
+  box-sizing: border-box;
+  position: relative;
+  background-color: transparent;
+  width: 27px;
+  height: 27px;
+  padding: 5px !important;
+}
+.customSwiper .swiper-pagination-bullet-active:after {
+  content: "";
+  position: absolute;
+  background: #b88e2f;
+  top: 50%;
+  left: 50%;
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  width: 11px;
+  height: 11px;
+}
+#ArruvalTitle {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}

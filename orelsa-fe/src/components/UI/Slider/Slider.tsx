@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import React, { useRef, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -9,66 +8,136 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/scrollbar";
 import Image from "next/image";
-
+import { cn } from "@nextui-org/theme";
+import { Navigation, Pagination } from "swiper/modules";
+import { FaArrowRight, FaChevronRight } from "react-icons/fa";
+const Rooms = [
+  {
+    id: 1,
+    title: "Living Room",
+    img: "/rooms/R-1.svg",
+  },
+  {
+    id: 2,
+    title: "Bedroom",
+    img: "/rooms/R-2.svg",
+  },
+  {
+    id: 3,
+    title: "Kitchen",
+    img: "/rooms/R-3.svg",
+  },
+  {
+    id: 4,
+    title: "Living Room",
+    img: "/rooms/R-1.svg",
+  },
+  {
+    id: 5,
+    title: "Bedroom",
+    img: "/rooms/R-2.svg",
+  },
+  {
+    id: 6,
+    title: "Kitchen",
+    img: "/rooms/R-3.svg",
+  },
+];
 export default function Slider() {
+  const nextButtonRef = useRef<any>(null);
+  const paginationRef = useRef<any>(null);
+  const [init, setInit] = useState<boolean>(false);
+  const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <Swiper
-      // install Swiper modules
-      modules={[Navigation, Pagination, Scrollbar, A11y]}
-      spaceBetween={50}
-    >
-      {/* <SwiperSlide>
-        <div className="h-[300px] md:h-[350px] p-6 md:pt-10 md:pl-10 mb-10 flex flex-col justify-center items-center">
-          <Image
-            src="/rooms/R-1.svg" // Replace with your actual image path
-            alt="Room 1"
-            width={100}
-            height={100}
-            style={{
-              width: 500,
-              height: 500,
-              objectPosition: "center",
-            }}
-            className="mb-4 md:mb-8 rounded-full w-[330px] h-560px"
-          />
+    <div className="h-full w-full relative customSwiper">
+      <Swiper
+        spaceBetween={20}
+        slidesPerView={3}
+        className="h-full"
+        modules={[Navigation, Pagination]}
+        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+        onInit={(swiper) => {
+          setActiveIndex(swiper.realIndex);
+          setInit(true);
+        }}
+        navigation={{
+          nextEl: nextButtonRef.current,
+        }}
+        pagination={{
+          clickable: false,
+          el: paginationRef.current,
+        }}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            navigation: {
+              enabled: false,
+            },
+            pagination: {
+              enabled: true,
+            },
+          },
+          768: {
+            slidesPerView: 2,
+            navigation: {
+              enabled: false,
+            },
+            pagination: {
+              enabled: true,
+            },
+          },
+          1024: {
+            slidesPerView: 3,
+            navigation: {
+              enabled: true,
+            },
+            pagination: {
+              enabled: true,
+            },
+          },
+        }}
+      >
+        {Rooms.map((room, index) => (
+          <SwiperSlide
+            className={cn(
+              "w-full h-full transition-all duration-700",
+              index === activeIndex ? "lg:!h-full" : "lg:!h-[464px]"
+            )}
+            key={room.id}
+          >
+            <Image
+              width={305}
+              height={405}
+              src={room.img}
+              alt={room.title}
+              className="w-full h-full object-cover"
+            />
+          </SwiperSlide>
+        ))}
+        <div
+          ref={nextButtonRef}
+          className="h-8 w-8 cursor-pointer !hidden lg:!flex items-center justify-center absolute z-50 top-1/2 right-1/3 shadow-2xl rounded-full text-[#B88E2F]  bg-white"
+        >
+          <FaChevronRight size={16} />
         </div>
-      </SwiperSlide>
-
-      <SwiperSlide>
-        <div className="h-[300px] md:h-[350px] p-6 md:pt-10 md:pl-10 mb-10 flex flex-col justify-center items-center">
-          <Image
-            src="/rooms/R-2.svg" // Replace with your actual image path
-            alt="Room 2"
-            width={100}
-            height={100}
-            style={{
-              width: 100,
-              height: 100,
-              objectPosition: "center",
-            }}
-            className="mb-4 md:mb-8 rounded-full"
-          />
+        <div
+          ref={paginationRef}
+          className="absolute !hidden lg:!flex items-center gap-2 bottom-0 left-1/2 w-full"
+        >
+          <div className="swiper-pagination">
+            {Rooms.map((room, index) => (
+              <span
+                key={room.id}
+                className={cn(
+                  "swiper-pagination-bullet",
+                  index === activeIndex && "swiper-pagination-bullet-active"
+                )}
+              ></span>
+            ))}
+          </div>
         </div>
-      </SwiperSlide>
-
-      <SwiperSlide>
-        <div className="h-[300px] md:h-[350px] p-6 md:pt-10 md:pl-10 mb-10 flex flex-col justify-center items-center">
-          <Image
-            src="/rooms/R-3.svg" // Replace with your actual image path
-            alt="Room 3"
-            width={100}
-            height={100}
-            style={{
-              width: 100,
-              height: 100,
-              objectPosition: "center",
-            }}
-            className="mb-4 md:mb-8 rounded-full"
-          />
-        </div>
-      </SwiperSlide> */}
-    </Swiper>
+      </Swiper>
+    </div>
   );
 }

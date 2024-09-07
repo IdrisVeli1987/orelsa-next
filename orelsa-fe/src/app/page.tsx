@@ -10,7 +10,7 @@ export default function LandingPage() {
       <Header />
       <HomePage />
       {/* <ShopPage/> */}
-      <Slider />
+      {/* <Slider /> */}
     </>
   );
 }
