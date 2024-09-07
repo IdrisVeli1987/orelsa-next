@@ -12,6 +12,7 @@ const config: Config = {
     extend: {
       backgroundImage: {
         hero: "url('/Shop/pageImage.svg')",
+        contact: "url('/Contact/Rectangle.svg')",
       },
     },
     backgroundImage: {
