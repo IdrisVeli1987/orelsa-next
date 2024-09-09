@@ -10,7 +10,7 @@ export const Form = () => {
   return (
     <LandingContainer>
       <form action="" className="w-full">
-        <div className="w-full flex justify-center items-center md:items-start mt-20 gap-12 flex-col md:flex-row ">
+        <div className="w-full flex justify-center items-center md:items-start mt-20 gap-12 flex-col md:flex-row bg-red-600">
           <div className="w-[80%] md:w-[25%] m-auto md:m-0">
             <div className="flex gap-3 mb-8">
               <IoLocationSharp className="text-lg" />
@@ -40,9 +40,9 @@ export const Form = () => {
               </div>
             </div>
           </div>
-          <div className="w-[80%] md:w-[50%]">
-            <div className="mb-8">
-              <p className="mb-2 font-bold">Your Email</p>
+          <div className="w-[50%] md:w-[50%] ">
+            <div className="mb-8 w-[430px]">
+              <p className="mb-2 font-bold">Your Name</p>
               <Input
                 type="email"
                 // label="Email"
@@ -53,8 +53,8 @@ export const Form = () => {
                 size="lg"
               />
             </div>
-            <div className="mb-8">
-              <p className="mb-2 font-bold">Your Email</p>
+            <div className="mb-8 w-[430px]">
+              <p className="mb-2 font-bold">Email address</p>
               <Input
                 type="email"
                 // label="Email"
@@ -65,8 +65,8 @@ export const Form = () => {
                 size="lg"
               />
             </div>
-            <div className="mb-8">
-              <p className="mb-2 font-bold">Your Email</p>
+            <div className="mb-8 w-[430px]">
+              <p className="mb-2 font-bold">Subject</p>
               <Input
                 type="email"
                 // label="Email"
