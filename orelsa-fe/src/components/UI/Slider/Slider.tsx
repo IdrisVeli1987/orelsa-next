@@ -43,6 +43,36 @@ const Rooms = [
     title: "Kitchen",
     img: "/rooms/R-3.svg",
   },
+  {
+    id: 7,
+    title: "Living Room",
+    img: "/rooms/R-1.svg",
+  },
+  {
+    id: 8,
+    title: "Bedroom",
+    img: "/rooms/R-2.svg",
+  },
+  {
+    id: 9,
+    title: "Kitchen",
+    img: "/rooms/R-3.svg",
+  },
+  {
+    id: 10,
+    title: "Living Room",
+    img: "/rooms/R-1.svg",
+  },
+  {
+    id: 11,
+    title: "Bedroom",
+    img: "/rooms/R-2.svg",
+  },
+  {
+    id: 12,
+    title: "Kitchen",
+    img: "/rooms/R-3.svg",
+  },
 ];
 export default function Slider() {
   const nextButtonRef = useRef<any>(null);
