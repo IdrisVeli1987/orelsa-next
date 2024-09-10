@@ -24,7 +24,7 @@ export const Form = () => {
               </div>
             </div>
             <div className="flex gap-3 mb-8">
-              <FaPhoneAlt  className="text-lg" />
+              <FaPhoneAlt className="text-lg" />
               <div className="pt-2 w-[200px] ">
                 <h4 className="font-bold text-base">Phone</h4>
                 <p className="text-base font-normal">
@@ -46,7 +46,7 @@ export const Form = () => {
             <div className="mb-8 w-[430px]">
               <p className="mb-2 font-bold">Your Name</p>
               <Input
-                type="email"
+                type="text"
                 // label="Email"
                 isRequired
                 placeholder="Enter your name"
@@ -72,7 +72,7 @@ export const Form = () => {
             <div className="mb-8 w-[430px]">
               <p className="mb-2 font-bold">Mövzu</p>
               <Input
-                type="email"
+                type="text"
                 // label="Email"
                 placeholder="This is an optional"
                 value={value}
