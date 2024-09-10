@@ -2,7 +2,7 @@
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import { Input } from "@nextui-org/input";
 import { useState } from "react";
-import { FaPhone } from "react-icons/fa";
+import { FaPhone, FaPhoneAlt } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 import { Textarea } from "@nextui-org/input";
 
@@ -24,7 +24,7 @@ export const Form = () => {
               </div>
             </div>
             <div className="flex gap-3 mb-8">
-              <FaPhone className="text-lg" />
+              <FaPhoneAlt  className="text-lg" />
               <div className="pt-2 w-[200px] ">
                 <h4 className="font-bold text-base">Phone</h4>
                 <p className="text-base font-normal">
