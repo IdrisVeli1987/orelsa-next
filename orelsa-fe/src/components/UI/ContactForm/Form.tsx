@@ -12,7 +12,7 @@ export const Form = () => {
   return (
     <LandingContainer>
       <form action="" className="w-full">
-        <div className="w-full flex justify-center items-center md:items-start mt-20 gap-12 flex-col md:flex-row bg-red-600">
+        <div className="w-full flex justify-center items-center md:items-start mt-20 gap-12 flex-col md:flex-row ">
           <div className="w-[80%] md:w-[25%] m-auto md:m-0">
             <div className="flex gap-3 mb-8">
               <IoLocationSharp className="text-lg" />
