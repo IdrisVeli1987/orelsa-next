@@ -73,7 +73,6 @@ export const Form = () => {
               <p className="mb-2 font-bold">Mövzu</p>
               <Input
                 type="email"
-                isRequired
                 // label="Email"
                 placeholder="This is an optional"
                 value={value}
