@@ -5,6 +5,7 @@ import { useState } from "react";
 import { FaPhone, FaPhoneAlt } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 import { Textarea } from "@nextui-org/input";
+import { Button } from "@nextui-org/react";
 
 export const Form = () => {
   const [value, setValue] = useState("");
@@ -89,6 +90,11 @@ export const Form = () => {
                 placeholder="Mesajınızı bura daxil edin."
                 className="max-w-md mb-2 font-bold"
               />
+            </div>
+            <div className=" pb-10 pt-9">
+              <Button className="gap-3 bg-[#B88E2F] w-[222px] h-[75px] font-bold text-base text-white">
+                Submit
+              </Button>
             </div>
           </div>
         </div>
