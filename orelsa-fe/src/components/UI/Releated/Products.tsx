@@ -1,5 +1,5 @@
 "use client";
-import { TheOurProducts } from "@/components/Views/Landing/db";
+import { TheOurProducts } from "../../../../Utils/db";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
