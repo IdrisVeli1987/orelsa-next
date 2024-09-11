@@ -1,4 +1,4 @@
-import { IRange, TheRangeData } from "@/components/Views/Landing/db";
+import { IRange, TheRangeData } from "../../../../Utils/db";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import Image from "next/image";
 import React from "react";
