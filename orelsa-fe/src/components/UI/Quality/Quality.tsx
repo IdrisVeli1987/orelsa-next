@@ -1,4 +1,4 @@
-import { AboutQuality, QualityData } from "@/components/Views/Landing/db";
+import { AboutQuality, QualityData } from "../../../../Utils/db";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import Image from "next/image";
 import React from "react";
