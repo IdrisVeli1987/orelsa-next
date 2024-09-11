@@ -1,6 +1,6 @@
 "use client";
 
-import { Shoping, ShopRoom } from "@/components/Views/Landing/db";
+import { Shoping, ShopRoom } from "../../../../Utils/db";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
