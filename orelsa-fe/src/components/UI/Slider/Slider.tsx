@@ -95,7 +95,7 @@ export default function Slider() {
           nextEl: nextButtonRef.current,
         }}
         pagination={{
-          clickable: false,
+          clickable: true,
           el: paginationRef.current,
         }}
         breakpoints={{
