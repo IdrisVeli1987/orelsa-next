@@ -6,9 +6,18 @@ import { Button } from "@nextui-org/react";
 import Link from "next/link";
 import { FaFacebook, FaLinkedinIn } from "react-icons/fa";
 import { AiFillTwitterCircle } from "react-icons/ai";
+import { IProductById } from "@/interface/ui";
 
-const ShopDetails = () => {
-  const [selectedImage, setSelectedImage] = useState("/Details/94.svg");
+const ProductsDetails = ({
+  _id,
+  name,
+  description,
+  price,
+  discount,
+  discount_price,
+  photos,
+}: IProductById) => {
+  const [selectedImage, setSelectedImage] = useState(photos[0]);
 
   const handleImageOnClick = (imageSrc: string) => {
     setSelectedImage(imageSrc);
@@ -19,50 +28,20 @@ const ShopDetails = () => {
         <div className="py-10 w-full flex justify-between items-center ">
           <div className=" flex  gap-36  w-full">
             <div className=" flex ">
-              <div className=" flex flex-col gap-3 mr-5 ">
-                <Image
-                  src="/Details/94.svg"
-                  alt="image"
-                  width={76}
-                  height={80}
-                  className="bg-bg-cover bg-no-repeat cursor-pointer"
-                  onClick={() => handleImageOnClick("/Details/94.svg")}
-                />
-
-                <Image
-                  src="/Details/95.svg"
-                  alt="image"
-                  width={76}
-                  height={80}
-                  className="bg-cover bg-no-repeat cursor-pointer"
-                  onClick={() => handleImageOnClick("/Details/95.svg")}
-                />
-
-                <Image
-                  src="/Details/96.svg"
-                  alt="image"
-                  width={76}
-                  height={80}
-                  className="bg-cover bg-no-repeat cursor-pointer"
-                  onClick={() => handleImageOnClick("/Details/96.svg")}
-                />
-
-                <Image
-                  src="/Details/97.svg"
-                  alt="image"
-                  width={76}
-                  height={80}
-                  className="bg-cover bg-no-repeat cursor-pointer"
-                  onClick={() => handleImageOnClick("/Details/97.svg")}
-                />
-                <Image
-                  src="/Details/98.svg"
-                  alt="image"
-                  width={76}
-                  height={80}
-                  className="bg-cover bg-no-repeat cursor-pointer"
-                  onClick={() => handleImageOnClick("/Details/98.svg")}
-                />
+              <div className=" flex flex-col gap-3 mr-5 " key={_id}>
+                {photos?.map((src: string, index: number) => {
+                  return (
+                    <Image
+                      key={index}
+                      src={src}
+                      alt="image"
+                      width={76}
+                      height={80}
+                      className="bg-cover bg-no-repeat cursor-pointer"
+                      onClick={() => handleImageOnClick(src)}
+                    />
+                  );
+                })}
               </div>
 
               <div id="main-photo" className="border-none">
@@ -79,16 +58,11 @@ const ShopDetails = () => {
             <div id="second-part" className="">
               <div className="flex flex-col flex-wrap justify-between items-center ">
                 <div className="py-4  ">
-                  <h2 className="font-normal text-4xl py-2">Asgaard sofa</h2>
+                  <h2 className="font-normal text-4xl py-2">{name}</h2>
                   <p className="font-medium text-2xl text-[#9F9F9F] pb-5">
-                    Price: 250,000.00
+                    {price}
                   </p>
-                  <p className="font-normal text-sm w-[50ch]">
-                    Setting the bar as one of the loudest speakers in its class,
-                    the Kilburn is a compact, stout-hearted hero with a
-                    well-balanced audio which boasts a clear midrange and
-                    extended highs for a sound.
-                  </p>
+                  <p className="font-normal text-sm w-[50ch]">{description}</p>
                 </div>
               </div>
               <div className=" flex pt-20 pb-40">
@@ -143,4 +117,4 @@ const ShopDetails = () => {
     </section>
   );
 };
-export default ShopDetails;
+export default ProductsDetails;
