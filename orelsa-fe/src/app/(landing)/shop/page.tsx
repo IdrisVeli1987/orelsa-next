@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function ShopPage() {
+  // getAdminHomeNewCollection();
   return (
     <main className="w-full h-full overflow-hidden">
       <section className="bg-hero flex items-center justify-center min-h-[300px] w-full relative bg-no-repeat bg-center bg-cover">
