@@ -1,4 +1,4 @@
-import ShopDetails from "@/components/UI/Details/ShopDetails";
+// import ShopDetails from "@/components/UI/Details/ShopDetails";
 import RelatedProducts from "@/components/UI/Releated/Products";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import Image from "next/image";
@@ -9,7 +9,8 @@ interface IProps {
     id: string;
   };
 }
-export default function ShopDetaiils({ params }: IProps) {
+
+export default function ShopDetails({ params }: IProps) {
   return (
     <main>
       <section className="bg-[#F9F1E7]">
@@ -32,7 +33,7 @@ export default function ShopDetaiils({ params }: IProps) {
                   alt="mixer imag"
                   width={100}
                   height={100}
-                  className="w-auto h-auto relative "
+                  className="w-auto h-auto relative"
                 />
                 <p>Asgaard sofa</p>
               </div>
@@ -40,7 +41,7 @@ export default function ShopDetaiils({ params }: IProps) {
           </div>
         </LandingContainer>
       </section>
-      <ShopDetails />
+      {/* <ShopDetails /> */}
       <RelatedProducts />
     </main>
   );
