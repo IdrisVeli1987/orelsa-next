@@ -1,6 +1,5 @@
 import { getDetailsById } from "@/api/ui/requests";
-import ShopDetails from "@/components/UI/Details/ShopDetails";
-import RelatedProducts from "@/components/UI/Releated/Products";
+import ProductsDetails from "@/components/UI/Details/ProductsDetails";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import Image from "next/image";
 import Link from "next/link";
@@ -45,7 +44,7 @@ export default async function ShopDetaiils({ params }: IProps) {
           </div>
         </LandingContainer>
       </section>
-      <ShopDetails {...data}/>
+      <ProductsDetails {...data} />
       {/* <RelatedProducts /> */}
     </main>
   );
