@@ -63,15 +63,11 @@ export const postAdminDashboardHomeBrowseRange = async (
 
 export const getAllProductsAdmin = async () => {
   const url = "http://localhost:9089/admin/dashboard/product";
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im9yZWxzYSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyNjM2NDc1MywiZXhwIjoxNzI2MzY4MzUzfQ.o7aHmEQxbDVzL5SB0P9n8M3H7Kio50-kTHXN8OvUWDQ";
 
   const { data } = await axios.get(url, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   });
   return data;
 };
-
-
