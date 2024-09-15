@@ -2,6 +2,7 @@
 import React, { useState, FormEvent } from "react";
 import { Input, Button, Checkbox } from "@nextui-org/react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const MAX_FILE_SIZE_MB = 2;
 const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
@@ -46,21 +47,22 @@ const AdminNewProduct: React.FC = () => {
       formData.append("discount", discount);
       formData.append("model_no", model_no);
       formData.append("category", category);
-      formData.append("isNew", String(isNew));
+      formData.append("new", String(isNew));
       if (photos) formData.append("photos", photos);
       formData.append("active", String(active));
 
       try {
         await axios.post(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/admin/dashboard/product`,
+          "http://localhost:9089/admin/dashboard/product",
           formData,
           {
             headers: {
               "Content-Type": "multipart/form-data",
-              Authorization: "Bear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im9yZWxzYSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyNjM2NDc1MywiZXhwIjoxNzI2MzY4MzUzfQ.o7aHmEQxbDVzL5SB0P9n8M3H7Kio50-kTHXN8OvUWDQ'"
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           }
         );
+        toast.success("yaradildi!");
         // Clear form or show success message
       } catch (error) {
         console.error("Error submitting form:", error);
@@ -105,25 +107,15 @@ const AdminNewProduct: React.FC = () => {
           required
           className="w-full bg-[#FAFAFA]"
         />
-
         <Input
-          //   label="Discount Percentage"
-          placeholder="Endirim faizi %"
+          //   label="Product Price"
+          placeholder="Endirim faizi"
           value={discount}
           onChange={(e) => setDiscount(e.target.value)}
+          type="number"
           required
           className="w-full bg-[#FAFAFA]"
         />
-
-        <Input
-          //   label="Discount Amount"
-          placeholder="Endirim qiyməti"
-          value={model_no}
-          onChange={(e) => setModel_no(e.target.value)}
-          required
-          className="w-full bg-[#FAFAFA]"
-        />
-
         <Input
           //   label="Model Number"
           placeholder="Model"
@@ -143,11 +135,21 @@ const AdminNewProduct: React.FC = () => {
         />
 
         <div className="flex flex-col gap-4">
-          <Checkbox defaultSelected color="warning">
+          <Checkbox
+            isSelected={isNew}
+            onChange={(e) => setIsNew(e.target.checked)}
+            color="warning"
+            style={{ marginBottom: "20px" }}
+          >
             Yeni
           </Checkbox>
 
-          <Checkbox defaultSelected color="warning">
+          <Checkbox
+            isSelected={active}
+            onChange={(e) => setActive(e.target.checked)}
+            color="warning"
+            style={{ marginBottom: "20px" }}
+          >
             Aktiv
           </Checkbox>
         </div>
