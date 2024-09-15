@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 interface IProps {
   title: string;
@@ -19,14 +20,14 @@ const AdminHeader = ({ title, button }: IProps) => {
           fontWeight: 600,
         }}
       >
-        <a
+        <Link
           style={{
             color: "#34C759",
           }}
-          href=""
+          href="/"
         >
           Orelsa.az
-        </a>{" "}
+        </Link>{" "}
         / {title}
       </span>
       {button()}
