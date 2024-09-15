@@ -1,9 +1,6 @@
 "use client";
 
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
-import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "../../../../node_modules/swiper/swiper-bundle.min.css"; // Import Swiper styles if not already included
 import Slider from "../Slider/Slider";
 

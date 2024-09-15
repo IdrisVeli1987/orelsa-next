@@ -19,3 +19,11 @@ export interface IProductById {
   discount_price: number;
   photos: string[];
 }
+
+export interface IHomeNewCoolection {
+  id: string;
+  title: string;
+  description: string;
+  newproductPhoto: string;
+  active: boolean;
+}

@@ -20,7 +20,7 @@ const Header: FC = () => {
       <LandingContainer>
         <nav className="flex justify-between items-center relative w-[1280px] ">
           <div className="flex justify-between" id="logo">
-            <Link href="/" className="cursor-pointer flex items-center gap-2">
+            <Link href="/" className="cursor-pointer flex items-center gap-2 ">
               <Image
                 src="/NavbarLogo/LogoIcon.svg"
                 alt="icon"

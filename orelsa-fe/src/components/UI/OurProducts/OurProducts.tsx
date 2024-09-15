@@ -62,8 +62,8 @@ const OurProducts: React.FC = async () => {
                           <p className="text-xl font-semibold text-#B0B0B0">
                             AZN {price}
                           </p>
-                          <p className="text-xl font-bold text-[#B0B0B0]">
-                            AZN {discount}
+                          <p className="text-xl font-bold text-[#B0B0B0] line-through mb-2">
+                            AZN {discount_price}
                           </p>
                           {/* <p className="text-xl font-bold text-#B0B0B0">
                             ${discount_price}
@@ -73,8 +73,8 @@ const OurProducts: React.FC = async () => {
                             {true && <p>New</p>}
                           </div>
 
-                          <div className="flex justify-center items-center w-[50px] h-[50px] rounded-full bg-[#E97171] text-white absolute top-[24px] right-6">
-                            {discount_price && `${discount_price}%`}
+                          <div className="flex justify-center items-center w-[50px] h-[50px] rounded-full bg-[#E97171] text-white absolute top-[24px] right-6 ">
+                            {discount && `${discount}%`}
                           </div>
                         </div>
                       </div>
