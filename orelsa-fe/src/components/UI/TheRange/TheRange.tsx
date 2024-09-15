@@ -1,9 +1,13 @@
 import { IRange, TheRangeData } from "../../../../Utils/db";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
+import axios from "axios";
 import Image from "next/image";
 import React from "react";
 
-const TheRange: React.FC = () => {
+const TheRange: React.FC = async () => {
+  const { data } = await axios.get(
+    "http://localhost:9089/guest/homeBrowseRange"
+  );
   return (
     <section>
       <LandingContainer>
@@ -20,14 +24,19 @@ const TheRange: React.FC = () => {
           </div>
 
           <div className="flex pt-9 gap-6">
-            {TheRangeData.map(({ id, src, desc }: IRange) => {
+            {data.map(({ _id, browseRangePhoto, description }: IRange) => {
               return (
                 <div
-                  key={id}
+                  key={_id}
                   className="flex flex-col justify-center items-center"
                 >
-                  <Image src={src} alt="image" width={380} height={480} />
-                  <p className="mt-6 font-semibold text-2xl">{desc}</p>
+                  <Image
+                    src={browseRangePhoto}
+                    alt="image"
+                    width={380}
+                    height={480}
+                  />
+                  <p className="mt-6 font-semibold text-2xl">{description}</p>
                 </div>
               );
             })}
