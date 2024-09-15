@@ -11,3 +11,8 @@ export const getDetailsById = async (id:string) => {
   const { data } = await axios.get(BASE_URL + `/product/${id}`);
   return data;
 };
+
+export const getHomeNewCollection = async (id: string) => {
+  const { data } = await axios.get(BASE_URL + `/homeNewCollection`);
+  return data;
+};
