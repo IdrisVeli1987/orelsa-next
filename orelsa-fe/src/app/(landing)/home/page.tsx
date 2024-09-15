@@ -29,21 +29,17 @@ export default async function HomePage() {
         <div
           style={{ backgroundColor: "rgba(256,256,256,0.4)", borderRadius: 16 }}
         >
-          <h5
+          {/* <h5
             id="ArruvalTitle"
             className="text-[#333333] font-semibold text-base ml-11 mt-16"
           >
             Yeni gələn
-          </h5>
+          </h5> */}
           <h2 className="ml-11 mt-4 font-bold text-[52px] text-[#B88E2F] w-[12ch]">
             {data[0].title}
           </h2>
-          <p className="ml-11 mt-9 text-lg font-medium">
+          <p className="ml-11 mt-9 text-lg font-medium text-wrap max-w-lg ">
             {data[0].description}
-
-            {/* <span className="text-[#B88E2F] bg-transparent font-black  text-2xl ">
-                    mattis
-                  </span> */}
           </p>
           <div className="ml-11 pb-10 pt-9">
             <Button className="gap-3 bg-[#B88E2F] w-[222px] h-[75px] font-bold text-base text-white">
