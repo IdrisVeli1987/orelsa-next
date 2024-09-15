@@ -1,7 +1,7 @@
 export interface IRange {
-  id: string | number;
-  src: string;
-  desc: string;
+  _id: string | number;
+  browseRangePhoto: string;
+  description: string;
 }
 
 export interface IOurProducts {
@@ -311,5 +311,3 @@ export const Prices: Price[] = [
     value: "201-1000",
   },
 ];
-
-
