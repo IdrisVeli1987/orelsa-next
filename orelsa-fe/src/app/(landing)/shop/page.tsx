@@ -1,11 +1,31 @@
+"use client";
 import Quality from "@/components/UI/Quality/Quality";
 import ShopRooms from "@/components/UI/ShopRooms/ShopRooms";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
+import React from "react";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  Button,
+} from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function ShopPage() {
-  // getAdminHomeNewCollection();
+  const [selectedNumberOfProducts, setSelectedNumberOfProducts] =
+    React.useState("16");
+  const [selectedSortOption, setSelectedSortOption] = React.useState("Default");
+
+  const handleNumberOfProductsChange = (numberOfProducts: string) => {
+    setSelectedNumberOfProducts(numberOfProducts);
+  };
+
+  const handleSortOptionChange = (sortBy: string) => {
+    setSelectedSortOption(sortBy);
+  };
+
   return (
     <main className="w-full h-full overflow-hidden">
       <section className="bg-hero flex items-center justify-center min-h-[300px] w-full relative bg-no-repeat bg-center bg-cover">
@@ -47,7 +67,7 @@ export default function ShopPage() {
               <Link href="">
                 <Image
                   src="/Shop/dot.svg"
-                  alt="mixer imag"
+                  alt="dot image"
                   width={100}
                   height={100}
                   className="w-auto h-auto relative "
@@ -57,7 +77,7 @@ export default function ShopPage() {
               <Link href="">
                 <Image
                   src="/Shop/icon-3.svg"
-                  alt="mixer imag"
+                  alt="icon 3"
                   width={100}
                   height={100}
                   className="w-auto h-auto relative "
@@ -67,7 +87,7 @@ export default function ShopPage() {
               <div className="flex justify-center items-center gap-8">
                 <Image
                   src="/Shop/Line.svg"
-                  alt="mixer imag"
+                  alt="line separator"
                   width={100}
                   height={100}
                   className="w-auto h-auto relative "
@@ -76,22 +96,49 @@ export default function ShopPage() {
               </div>
             </div>
 
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center gap-4">
               <div className="flex justify-center items-center gap-4">
                 <p className="">Show</p>
-                <div className="relative inline-block bg-white ">
-                  <button className="min-w-[55px] h-[55px] "></button>
-                  <div className="hidden absolute z-[1] shadow-xl hover:block">
-                    <Link
-                      href="#"
-                      className="text-black py-3 px-4 block hover:bg-[#f1f1f1]"
-                    >
-                      16
-                    </Link>
-                    <Link href="#">32</Link>
-                    <Link href="#">48</Link>
-                  </div>
-                </div>
+                <Dropdown className="w-[4rem] bg-slate-50">
+                  <DropdownTrigger>
+                    <Button variant="bordered" className="capitalize">
+                      {selectedNumberOfProducts}
+                    </Button>
+                  </DropdownTrigger>
+                  <DropdownMenu
+                    aria-label="Number of products to show"
+                    variant="flat"
+                    selectionMode="single"
+                    selectedKeys={new Set([selectedNumberOfProducts])}
+                    onSelectionChange={handleNumberOfProductsChange}
+                  >
+                    <DropdownItem key="16">16</DropdownItem>
+                    <DropdownItem key="32">32</DropdownItem>
+                    <DropdownItem key="48">48</DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
+              </div>
+
+              <div className="flex justify-center items-center gap-4">
+                <p className="">Sort by</p>
+                <Dropdown>
+                  <DropdownTrigger>
+                    <Button variant="bordered" className="capitalize">
+                      {selectedSortOption}
+                    </Button>
+                  </DropdownTrigger>
+                  <DropdownMenu
+                    aria-label="Sort options"
+                    variant="flat"
+                    selectionMode="single"
+                    selectedKeys={new Set([selectedSortOption])}
+                    onSelectionChange={handleSortOptionChange}
+                  >
+                    <DropdownItem key="Default">Default</DropdownItem>
+                    <DropdownItem key="Date">Date</DropdownItem>
+                    <DropdownItem key="Category">Category</DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
               </div>
             </div>
           </div>
