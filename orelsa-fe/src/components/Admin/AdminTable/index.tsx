@@ -15,8 +15,9 @@ import { EditIcon } from "./EditIcon";
 import { DeleteIcon } from "./DeleteIcon";
 import { EyeIcon } from "./EyeIcon";
 import { columns, users } from "./data";
-import { getAllProductsAdmin } from "@/api/admin";
+import { deleteProduct, getAllProductsAdmin } from "@/api/admin";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 const statusColorMap: any = {
   active: "success",
@@ -24,7 +25,53 @@ const statusColorMap: any = {
   vacation: "warning",
 };
 
+interface IProduct {
+  _id: string;
+  name: "Fulica";
+  description: "Saç qidalandırıcı və saç hüceyrələrinin inkişafı üçün şampun";
+  price: 15;
+  discount: 20;
+  discount_price: 12;
+  model_no: "F0001";
+  category: "Şampun";
+  new: false;
+  photos: string[];
+  active: true;
+  createdAt: "2024-08-28T12:29:11.287Z";
+  updatedAt: "2024-08-28T12:29:11.287Z";
+}
+
 const AdminTable = () => {
+  const [products, setProducts] = useState<IProduct[]>([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getAllProductsAdmin();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  const handleDelete = async (productId: string) => {
+    alert(productId);
+    if (confirm("Are you sure you want to delete this product?")) {
+      try {
+        await deleteProduct(productId);
+        setProducts((prevProducts) =>
+          prevProducts.filter((product) => product._id !== productId)
+        );
+        toast.success("Product deleted successfully!");
+      } catch (error) {
+        console.error("Error deleting product:", error);
+        toast.error("Failed to delete product.");
+      }
+    }
+  };
+
   const renderCell = React.useCallback((user: any, columnKey: any) => {
     const cellValue = user[columnKey];
     switch (columnKey) {
@@ -72,9 +119,13 @@ const AdminTable = () => {
                 <EditIcon />
               </span>
             </Tooltip>
-            <Tooltip color="danger" content="Delete user">
+            <Tooltip
+              color="danger"
+              content="Delete user"
+              // aria-describedby={null}
+            >
               <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                <DeleteIcon />
+                <DeleteIcon aria-describedby={null} />
               </span>
             </Tooltip>
           </div>
@@ -83,7 +134,7 @@ const AdminTable = () => {
         return cellValue;
     }
   }, []);
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
 
   useEffect(() => {
     getAllProductsAdmin().then((data) => {
@@ -140,7 +191,10 @@ const AdminTable = () => {
                       </span>
                     </Tooltip>
                     <Tooltip color="danger" content="Delete user">
-                      <span className="text-lg text-danger cursor-pointer active:opacity-50">
+                      <span
+                        className="text-lg text-danger cursor-pointer active:opacity-50 "
+                        onClick={() => handleDelete(_id)}
+                      >
                         <DeleteIcon />
                       </span>
                     </Tooltip>
