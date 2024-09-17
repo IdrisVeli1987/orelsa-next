@@ -71,3 +71,21 @@ export const getAllProductsAdmin = async () => {
   });
   return data;
 };
+
+export const deleteProduct = async (productId: string) => {
+  const token = localStorage.getItem("token");
+  const url = "http://localhost:9089/admin/dashboard/product";
+  console.log(token);
+
+  try {
+    const response = await axios.delete(`${url}/${productId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("API error:", error);
+    throw error; // Make sure to throw the error so it can be caught by the calling function
+  }
+};
