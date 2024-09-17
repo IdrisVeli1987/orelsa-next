@@ -16,7 +16,6 @@ export default async function ShopDetaiils({ params }: IProps) {
   return (
     <main>
       <section className="bg-[#F9F1E7] ">
-        {}
         <LandingContainer>
           <div className="flex justify-between items-center gap-6 w-full relative">
             <div className="flex justify-between items-center gap-6 fixed ">
