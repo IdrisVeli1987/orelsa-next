@@ -1,4 +1,5 @@
 "use client";
+import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import { Button, Input } from "@nextui-org/react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -17,46 +18,59 @@ const AdminLogin: React.FC = () => {
     try {
       const {
         data: { token, message },
-      }: any = await axios.post("http://localhost:9089/auth/sign-in", {
+      } = await axios.post("http://localhost:9089/auth/sign-in", {
         username,
         password,
       });
       localStorage.setItem("token", token);
-      toast.success("daxil oldunuz!");
+      toast.success("Daxil oldunuz!");
       router.push("/admin/products"); // Redirect to the admin products page
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error submitting form:", error);
-      setError("An error occurred while submitting the form.");
+      setError(
+        error.response?.data?.message ||
+          "An error occurred while submitting the form."
+      );
     }
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6">
-      <form onSubmit={handleSubmit}>
-        <Input
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-          className="w-full bg-[#FAFAFA]"
-        />
-
-        <Input
-          placeholder="Parol"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          className="w-full bg-[#FAFAFA]"
-        />
-        <div className="w-full flex justify-center items-center">
-          <Button
-            type="submit"
-            className=" flex justify-center items-center bg-[#34C759] rounded-md py-3 px-4 text-white"
+    <div className="flex justify-center items-center min-h-screen w-full bg-[#A1C287BD]">
+      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-lg">
+        <LandingContainer>
+          <form
+            onSubmit={handleSubmit}
+            className="w-full flex flex-col justify-center items-center gap-4"
           >
-            Daxil ol
-          </Button>
-        </div>
-      </form>
+            <Input
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              variant="underlined"
+              required
+              aria-label="Username"
+              className="flex justify-center items-center w-full"
+            />
+            <Input
+              placeholder="Parol"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              variant="underlined"
+              required
+              aria-label="Password"
+              className="flex justify-center items-center w-full"
+            />
+            {error && <div className="text-red-500 mb-4">{error}</div>}
+            <Button
+              type="submit"
+              className="bg-[#34C759] text-white rounded-md py-3"
+            >
+              Daxil ol
+            </Button>
+          </form>
+        </LandingContainer>
+      </div>
     </div>
   );
 };
