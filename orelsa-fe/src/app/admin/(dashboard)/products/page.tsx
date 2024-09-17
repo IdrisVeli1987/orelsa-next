@@ -29,7 +29,7 @@ const AdminProducts = ({ searchParams: { add = "0" } }: any) => {
                 color: "white",
               }}
             >
-              Yeni Mehsul
+              Yeni Məhsul
             </a>
           </>
         )}
