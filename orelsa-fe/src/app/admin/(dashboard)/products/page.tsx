@@ -8,6 +8,13 @@ import { useState } from "react";
 
 const AdminProducts = () => {
   const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleProductAdded = () => {
+    setModalOpen(false);
+    // Məhsul əlavə olunduqdan sonra səhifəni yeniləyin
+    window.location.reload();
+  };
+
   return (
     <div>
       <AdminHeader
@@ -47,7 +54,10 @@ const AdminProducts = () => {
             overflowX: "hidden",
           }}
         >
-          <AdminNewProduct setModalOpen={setModalOpen} />
+          <AdminNewProduct
+            onProductAdded={handleProductAdded}
+            setModalOpen={setModalOpen}
+          />
         </ModalContent>
       </Modal>
     </div>
