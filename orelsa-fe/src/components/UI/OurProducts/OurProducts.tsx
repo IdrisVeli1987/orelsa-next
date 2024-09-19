@@ -59,22 +59,29 @@ const OurProducts: React.FC = async () => {
                         <h2 className="text-2xl font-semibold">{name}</h2>
                         <p className="text-[#B0B0B0]">{description}</p>
                         <div className="flex justify-between items-center w-max gap-40 mt-2">
-                          <p className="text-xl font-semibold text-#B0B0B0">
+                          <p className="text-xl font-semibold text-[#B0B0B0]">
                             AZN {price}
                           </p>
-                          <p className="text-xl font-bold text-[#B0B0B0] line-through mb-2">
-                            AZN {discount_price}
-                          </p>
-                          {/* <p className="text-xl font-bold text-#B0B0B0">
-                            ${discount_price}
-                          </p> */}
+
+                          {discount !== 0 && (
+                            <p className="text-xl font-bold text-[#B0B0B0] line-through mb-2">
+                              AZN {discount_price}
+                            </p>
+                          )}
 
                           <div className="flex justify-center items-center w-[50px] h-[50px] rounded-full bg-[#2EC1AC] text-white absolute top-[24px] right-6">
-                            {true && <p>New</p>}
+                            {true && <p>New</p>}{" "}
+                            {/* Adjust this condition if needed */}
                           </div>
 
-                          <div className="flex justify-center items-center w-[50px] h-[50px] rounded-full bg-[#E97171] text-white absolute top-[24px] right-6 ">
-                            {discount && `${discount}%`}
+                          <div className="flex justify-center items-center w-[50px] h-[50px] rounded-full bg-[#E97171] text-white absolute top-[24px] right-6">
+                            {discount > 0 ? (
+                              <p>{discount}%</p>
+                            ) : (
+                              <div className="flex justify-center items-center w-full h-full bg-[#2EC1AC] rounded-full">
+                                <p>New</p>
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
