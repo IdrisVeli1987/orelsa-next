@@ -4,10 +4,7 @@ import { Input, Button, Checkbox } from "@nextui-org/react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const MAX_FILE_SIZE_MB = 2;
-const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
-
-const AdminNewProduct: React.FC = () => {
+const AdminNewProduct: React.FC = ({ setModalOpen }: any) => {
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -15,25 +12,27 @@ const AdminNewProduct: React.FC = () => {
   const [model_no, setModel_no] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [isNew, setIsNew] = useState<boolean>(false);
-  const [photos, setPhotos] = useState<File | null>(null);
+  const [photos, setPhotos] = useState<File[]>([]);
   const [active, setActive] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files && event.target.files[0]) {
-      const file = event.target.files[0];
-      if (SUPPORTED_FORMATS.includes(file.type)) {
-        if (file.size <= MAX_FILE_SIZE_MB * 1024 * 1024) {
-          setPhotos(file);
-          setError(null);
-        } else {
-          setError(`File size exceeds ${MAX_FILE_SIZE_MB} MB`);
-          setPhotos(null);
-        }
+    const files = event.target.files;
+
+    if (files && files.length > 0) {
+      const fileArray: File[] = Array.from(files);
+      const validFiles = fileArray.filter((file) =>
+        file.type.startsWith("image/")
+      );
+
+      if (validFiles.length > 0) {
+        setPhotos(validFiles);
+        setError(null);
       } else {
-        setError("Invalid file type. Please select a JPEG or PNG image.");
-        setPhotos(null);
+        setError("Please upload valid image files.");
       }
+    } else {
+      setError("No files selected.");
     }
   };
 
@@ -48,7 +47,12 @@ const AdminNewProduct: React.FC = () => {
       formData.append("model_no", model_no);
       formData.append("category", category);
       formData.append("new", String(isNew));
-      if (photos) formData.append("photos", photos);
+
+      // Append each photo individually to FormData
+      photos.forEach((photo) => {
+        formData.append("photos", photo);
+      });
+
       formData.append("active", String(active));
 
       try {
@@ -62,13 +66,16 @@ const AdminNewProduct: React.FC = () => {
             },
           }
         );
-        toast.success("yaradildi!");
-        // Clear form or show success message
+        toast.success("Product added successfully!");
+        // Clear form or show success message here
       } catch (error) {
         console.error("Error submitting form:", error);
         setError("An error occurred while submitting the form.");
       }
+    } else {
+      setError("Category is required.");
     }
+    setModalOpen(false);
   };
 
   return (
@@ -81,7 +88,6 @@ const AdminNewProduct: React.FC = () => {
         className="bg-[#4A954912] p-6 rounded-md flex flex-col gap-6"
       >
         <Input
-          //   label="Product Name"
           placeholder="Ad"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -90,7 +96,6 @@ const AdminNewProduct: React.FC = () => {
         />
 
         <Input
-          //   label="Product Description"
           placeholder="Haqqında"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -99,7 +104,6 @@ const AdminNewProduct: React.FC = () => {
         />
 
         <Input
-          //   label="Product Price"
           placeholder="Qiymət"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
@@ -107,8 +111,8 @@ const AdminNewProduct: React.FC = () => {
           required
           className="w-full bg-[#FAFAFA]"
         />
+
         <Input
-          //   label="Product Price"
           placeholder="Endirim faizi"
           value={discount}
           onChange={(e) => setDiscount(e.target.value)}
@@ -116,8 +120,8 @@ const AdminNewProduct: React.FC = () => {
           required
           className="w-full bg-[#FAFAFA]"
         />
+
         <Input
-          //   label="Model Number"
           placeholder="Model"
           value={model_no}
           onChange={(e) => setModel_no(e.target.value)}
@@ -126,7 +130,6 @@ const AdminNewProduct: React.FC = () => {
         />
 
         <Input
-          //   label="Category"
           placeholder="Kateqoriya"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
@@ -154,32 +157,27 @@ const AdminNewProduct: React.FC = () => {
           </Checkbox>
         </div>
 
-        <div className="bg-white w-[455px] h-[195px] flex justify-end items-end  border-dashed  border-2 border-sky-500 rounded-md">
+        <div className="bg-white w-full h-[195px] flex justify-end items-end border-dashed border-2 border-sky-500 rounded-md">
           <input
             type="file"
-            placeholder="Kateqoriya"
             accept="image/jpeg, image/png"
             onChange={handleImageChange}
-            className="w-full mb-4 "
+            className="w-full mb-4"
+            multiple
           />
         </div>
-
-        {/* {error && (
-          <Text color="error" className="mb-4">
-            {error}
-          </Text>
-        )}
-        {photos && <Text>Selected Image: {photos.name}</Text>} */}
 
         <div className="w-full flex justify-center items-center">
           <Button
             type="submit"
-            disabled={!photos}
-            className=" flex justify-center items-center bg-[#34C759] rounded-md py-3 px-4 text-white"
+            disabled={photos.length === 0}
+            className="flex justify-center items-center bg-[#34C759] rounded-md py-3 px-4 text-white"
           >
             Əlavə et
           </Button>
         </div>
+
+        {error && <p className="text-red-500">{error}</p>}
       </form>
     </div>
   );
