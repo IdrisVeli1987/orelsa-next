@@ -176,6 +176,7 @@ const AdminTable = () => {
           </TableColumn>
         )}
       </TableHeader>
+
       <TableBody items={users}>
         {products?.map(
           (
@@ -285,17 +286,6 @@ const AdminTable = () => {
                       </span>
                     </Tooltip>
                   </div>
-                  {/* <div className="gap-10 w-full h-full flex justify-center items-center">
-                    <Pagination
-                      color="warning"
-                      showControls
-                      total={10}
-                      initialPage={1}
-                      loop
-                      className="flex justify-center items-center w-full h-full py-10"
-                      style={{ display: "flex", gap: "10px" }}
-                    />
-                  </div> */}
                 </TableCell>
               </TableRow>
             );
