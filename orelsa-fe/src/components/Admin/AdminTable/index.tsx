@@ -15,9 +15,13 @@ import { EditIcon } from "./EditIcon";
 import { DeleteIcon } from "./DeleteIcon";
 import { EyeIcon } from "./EyeIcon";
 import { columns, users } from "./data";
-import { deleteProduct, getAllProductsAdmin } from "@/api/admin";
+import { deleteProduct, getAllProductsAdmin, updateProduct } from "@/api/admin";
 import Image from "next/image";
 import toast from "react-hot-toast";
+import { IoIosSave } from "react-icons/io";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Pagination } from "swiper/modules";
 
 const statusColorMap: any = {
   active: "success",
@@ -27,22 +31,35 @@ const statusColorMap: any = {
 
 interface IProduct {
   _id: string;
-  name: "Fulica";
-  description: "Saç qidalandırıcı və saç hüceyrələrinin inkişafı üçün şampun";
-  price: 15;
-  discount: 20;
-  discount_price: 12;
-  model_no: "F0001";
-  category: "Şampun";
+  name: string;
+  description: string;
+  price: number;
+  discount: number;
+  discount_price: number;
+  model_no: string;
+  category: string;
   new: false;
   photos: string[];
   active: true;
-  createdAt: "2024-08-28T12:29:11.287Z";
-  updatedAt: "2024-08-28T12:29:11.287Z";
+  createdAt: string;
+  updatedAt: string;
 }
 
 const AdminTable = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [editingId, setEditingId] = useState<string>("");
+
+  const router = useRouter();
+
+  const handleChange = (id: any, key: any, value: any) => {
+    const _newProducts = products.map((product: any) => {
+      if (product._id === id) {
+        product[key] = value;
+      }
+      return product;
+    });
+    setProducts(_newProducts);
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -57,7 +74,6 @@ const AdminTable = () => {
   }, []);
 
   const handleDelete = async (productId: string) => {
-    alert(productId);
     if (confirm("Are you sure you want to delete this product?")) {
       try {
         await deleteProduct(productId);
@@ -142,6 +158,12 @@ const AdminTable = () => {
     });
   }, []);
 
+  const onSubmit = async (index: number) => {
+    await updateProduct(products[index]).then((data) => {
+      toast.success("successfully");
+    });
+  };
+
   return (
     <Table aria-label="Example table with custom cells">
       <TableHeader columns={columns}>
@@ -156,38 +178,102 @@ const AdminTable = () => {
       </TableHeader>
       <TableBody items={users}>
         {products?.map(
-          ({
-            _id,
-            photos,
-            name,
-            description,
-            price,
-            discount,
-            discount_price,
-            model_no,
-            category,
-          }) => {
+          (
+            {
+              _id,
+              photos,
+              name,
+              description,
+              price,
+              discount,
+              discount_price,
+              model_no,
+              category,
+            },
+            index: number
+          ) => {
             return (
               <TableRow key={_id}>
                 <TableCell>
                   <Image src={photos[0]} alt={name} width={100} height={100} />
                 </TableCell>
-                <TableCell>{name}</TableCell>
-                <TableCell>{description}</TableCell>
-                <TableCell>{price}</TableCell>
-                <TableCell>{discount_price}</TableCell>
-                <TableCell>{model_no}</TableCell>
-                <TableCell>{category}</TableCell>
+                <TableCell>
+                  <input
+                    disabled={editingId !== _id}
+                    value={name}
+                    onChange={(e) => {
+                      handleChange(_id, "name", e.target.value);
+                    }}
+                  />
+                </TableCell>
+                <TableCell>
+                  <input
+                    disabled={editingId !== _id}
+                    value={description}
+                    onChange={(e) => {
+                      handleChange(_id, "description", e.target.value);
+                    }}
+                  />
+                </TableCell>
+                <TableCell>
+                  <input
+                    disabled={editingId !== _id}
+                    value={price}
+                    onChange={(e) => {
+                      handleChange(_id, "price", e.target.value);
+                    }}
+                  />
+                </TableCell>
+                <TableCell>
+                  <input
+                    disabled={editingId !== _id}
+                    value={discount_price}
+                    onChange={(e) => {
+                      handleChange(_id, "discount_pr", e.target.value);
+                    }}
+                  />
+                </TableCell>
+                <TableCell>
+                  <input
+                    disabled={editingId !== _id}
+                    value={model_no}
+                    onChange={(e) => {
+                      handleChange(_id, "model_no", e.target.value);
+                    }}
+                  />
+                </TableCell>
+                <TableCell>
+                  <input
+                    disabled={editingId !== _id}
+                    value={category}
+                    onChange={(e) => {
+                      handleChange(_id, "category", e.target.value);
+                    }}
+                  />
+                </TableCell>
                 <TableCell>
                   <div className="relative flex items-center gap-2">
                     <Tooltip content="Details">
                       <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                        <EyeIcon />
+                        <EyeIcon
+                          onClick={() => {
+                            router.push("/products/" + _id);
+                          }}
+                        />
                       </span>
                     </Tooltip>
                     <Tooltip content="Edit user">
                       <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                        <EditIcon />
+                        {editingId ? (
+                          <IoIosSave
+                            onClick={() => {
+                              setEditingId("");
+                              onSubmit(index);
+                            }}
+                          />
+                        ) : (
+                          <EditIcon onClick={() => setEditingId(_id)} />
+                        )}
                       </span>
                     </Tooltip>
                     <Tooltip color="danger" content="Delete user">
@@ -199,6 +285,17 @@ const AdminTable = () => {
                       </span>
                     </Tooltip>
                   </div>
+                  {/* <div className="gap-10 w-full h-full flex justify-center items-center">
+                    <Pagination
+                      color="warning"
+                      showControls
+                      total={10}
+                      initialPage={1}
+                      loop
+                      className="flex justify-center items-center w-full h-full py-10"
+                      style={{ display: "flex", gap: "10px" }}
+                    />
+                  </div> */}
                 </TableCell>
               </TableRow>
             );
