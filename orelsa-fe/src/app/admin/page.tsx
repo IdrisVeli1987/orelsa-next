@@ -1,13 +1,8 @@
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import { Input } from "@nextui-org/react";
 
-// Define the type for input variants
-// type InputVariant = "flat" | "bordered" | "underlined" | "faded";
-
 const AdminDashboard = () => {
-  // List of input variants with explicit type
-  // const variants: InputVariant[] = ["flat", "bordered", "underlined", "faded"];
-
+  
   return (
     <section className="">
       <LandingContainer>
@@ -38,24 +33,4 @@ const AdminDashboard = () => {
 
 export default AdminDashboard;
 
-// {
-//   variants.map((variant) => (
-//     <div
-//       key={variant}
-//       className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4"
-//     >
-//       <Input
-//         type="email"
-//         variant={variant as InputVariant} // Type assertion to match the expected type
-//         label="username" // Note: Consider updating the label as needed
-//       />
-//       {/* Uncomment and modify this placeholder as needed */}
-//       <Input
-//         type="email"
-//         variant={variant as InputVariant}
-//         label="Email"
-//         placeholder="Enter your email"
-//       />
-//     </div>
-//   ));
-// }
+
