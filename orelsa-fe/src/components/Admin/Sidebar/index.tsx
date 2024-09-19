@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const links = [
@@ -38,6 +39,7 @@ const AdminSideBar = () => {
         flexDirection: "column",
         minHeight: "100vh",
         gap: "10px",
+        width: "max-content",
       }}
     >
       <h2 className="font-black text-3xl text-white py-14 px-7">Admin Panel</h2>
@@ -64,7 +66,7 @@ const AdminSideBar = () => {
         </div>
       ))}
       <div className="flex justify-center font-black text-3xl text-white pb-4 items-end h-full">
-        <h3>ORELSA.AZ</h3>
+        <Link href="/admin/dashboard">ORELSA.AZ</Link>
       </div>
     </div>
   );
