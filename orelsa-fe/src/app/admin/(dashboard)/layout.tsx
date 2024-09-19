@@ -10,11 +10,12 @@ const AdminLayout = ({ children }: IProps) => {
     <div
       style={{
         display: "grid",
-        gridTemplateColumns: "1fr 5fr",
+        gridTemplateColumns: "1fr 4fr",
       }}
     >
       <AdminSideBar />
-      <div style={{ padding: 20 }}>{children}</div>
+
+      <div className="p-5 ">{children}</div>
     </div>
   );
 };
