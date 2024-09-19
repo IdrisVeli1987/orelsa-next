@@ -1,41 +1,55 @@
+"use client";
+
 import AdminNewProduct from "@/components/Admin/AdminNewProduct";
 import AdminTable from "@/components/Admin/AdminTable";
 import AdminHeader from "@/components/Admin/Header";
+import { Modal, ModalContent } from "@nextui-org/react";
+import { useState } from "react";
 
-const AdminProducts = ({ searchParams: { add = "0" } }: any) => {
+const AdminProducts = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
   return (
     <div>
       <AdminHeader
-        title="Məhsul  paneli"
+        title="Məhsul paneli"
         button={() => (
           <>
-            <a
-              href="./products"
+            <button
+              onClick={() => setModalOpen(true)}
               style={{
                 padding: 4,
                 borderRadius: 8,
                 backgroundColor: "#34C759",
                 color: "white",
-              }}
-            >
-              Məhsullara qayıt
-            </a>
-            <a
-              href="?add=1"
-              style={{
-                padding: 4,
-                borderRadius: 8,
-                backgroundColor: "#34C759",
-                color: "white",
+                border: "none",
+                cursor: "pointer",
               }}
             >
               Yeni Məhsul
-            </a>
+            </button>
           </>
         )}
       />
       <AdminTable />
-      {add === "1" && <AdminNewProduct />}
+
+      <Modal
+        style={{ padding: 40 }}
+        isOpen={isModalOpen}
+        onClose={() => {
+          setModalOpen(false);
+        }}
+      >
+        <ModalContent
+          style={{
+            margin: 20,
+            overflow: "scroll",
+            height: "90vh",
+            overflowX: "hidden",
+          }}
+        >
+          <AdminNewProduct setModalOpen={setModalOpen} />
+        </ModalContent>
+      </Modal>
     </div>
   );
 };
