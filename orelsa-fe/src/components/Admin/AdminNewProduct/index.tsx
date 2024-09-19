@@ -4,7 +4,10 @@ import { Input, Button, Checkbox } from "@nextui-org/react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const AdminNewProduct: React.FC = ({ setModalOpen }: any) => {
+const AdminNewProduct: React.FC<{
+  onProductAdded: () => void;
+  setModalOpen: (open: boolean) => void;
+}> = ({ onProductAdded, setModalOpen }) => {
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -67,7 +70,7 @@ const AdminNewProduct: React.FC = ({ setModalOpen }: any) => {
           }
         );
         toast.success("Product added successfully!");
-        // Clear form or show success message here
+        onProductAdded(); // Məhsul əlavə olunduqdan sonra callback funksiyasını çağır
       } catch (error) {
         console.error("Error submitting form:", error);
         setError("An error occurred while submitting the form.");
@@ -75,7 +78,6 @@ const AdminNewProduct: React.FC = ({ setModalOpen }: any) => {
     } else {
       setError("Category is required.");
     }
-    setModalOpen(false);
   };
 
   return (
@@ -94,7 +96,6 @@ const AdminNewProduct: React.FC = ({ setModalOpen }: any) => {
           required
           className="w-full bg-[#FAFAFA]"
         />
-
         <Input
           placeholder="Haqqında"
           value={description}
@@ -102,7 +103,6 @@ const AdminNewProduct: React.FC = ({ setModalOpen }: any) => {
           required
           className="w-full bg-[#FAFAFA]"
         />
-
         <Input
           placeholder="Qiymət"
           value={price}
@@ -111,7 +111,6 @@ const AdminNewProduct: React.FC = ({ setModalOpen }: any) => {
           required
           className="w-full bg-[#FAFAFA]"
         />
-
         <Input
           placeholder="Endirim faizi"
           value={discount}
@@ -120,7 +119,6 @@ const AdminNewProduct: React.FC = ({ setModalOpen }: any) => {
           required
           className="w-full bg-[#FAFAFA]"
         />
-
         <Input
           placeholder="Model"
           value={model_no}
@@ -128,7 +126,6 @@ const AdminNewProduct: React.FC = ({ setModalOpen }: any) => {
           required
           className="w-full bg-[#FAFAFA]"
         />
-
         <Input
           placeholder="Kateqoriya"
           value={category}
@@ -136,7 +133,6 @@ const AdminNewProduct: React.FC = ({ setModalOpen }: any) => {
           required
           className="w-full bg-[#FAFAFA]"
         />
-
         <div className="flex flex-col gap-4">
           <Checkbox
             isSelected={isNew}
@@ -146,7 +142,6 @@ const AdminNewProduct: React.FC = ({ setModalOpen }: any) => {
           >
             Yeni
           </Checkbox>
-
           <Checkbox
             isSelected={active}
             onChange={(e) => setActive(e.target.checked)}
@@ -156,7 +151,6 @@ const AdminNewProduct: React.FC = ({ setModalOpen }: any) => {
             Aktiv
           </Checkbox>
         </div>
-
         <div className="bg-white w-full h-[195px] flex justify-end items-end border-dashed border-2 border-sky-500 rounded-md">
           <input
             type="file"
@@ -166,7 +160,6 @@ const AdminNewProduct: React.FC = ({ setModalOpen }: any) => {
             multiple
           />
         </div>
-
         <div className="w-full flex justify-center items-center">
           <Button
             type="submit"
@@ -176,7 +169,6 @@ const AdminNewProduct: React.FC = ({ setModalOpen }: any) => {
             Əlavə et
           </Button>
         </div>
-
         {error && <p className="text-red-500">{error}</p>}
       </form>
     </div>
