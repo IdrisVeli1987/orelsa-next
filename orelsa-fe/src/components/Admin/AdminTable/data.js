@@ -13,7 +13,6 @@ const columns = [
 const users = [
   {
     id: 1,
-    // name: "Tony Reichert",
     role: "CEO",
     team: "Management",
     status: "active",
@@ -23,7 +22,6 @@ const users = [
   },
   {
     id: 2,
-    // name: "Zoey Lang",
     role: "Technical Lead",
     team: "Development",
     status: "paused",
@@ -33,7 +31,6 @@ const users = [
   },
   {
     id: 3,
-    // name: "Jane Fisher",
     role: "Senior Developer",
     team: "Development",
     status: "active",
@@ -43,7 +40,6 @@ const users = [
   },
   {
     id: 4,
-    // name: "William Howard",
     role: "Community Manager",
     team: "Marketing",
     status: "vacation",
@@ -53,7 +49,6 @@ const users = [
   },
   {
     id: 5,
-    // name: "Kristen Copper",
     role: "Sales Manager",
     team: "Sales",
     status: "active",
