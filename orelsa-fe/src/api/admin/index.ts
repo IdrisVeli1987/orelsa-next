@@ -1,3 +1,4 @@
+import { IProduct } from "@/interface/ui";
 import axios from "axios";
 import { getServerSession } from "next-auth";
 import toast from "react-hot-toast";
@@ -6,12 +7,24 @@ const BASE_URL =
   process.env.NEXT_PUBLIC_BACKEND_URL + "/admin/dashboard/homeNewCollection";
 const BASE_URL_SUPPORT =
   process.env.NEXT_PUBLIC_BACKEND_URL + "/admin/dashboard/";
-
+const ADMIN_BE_URL = "http://localhost:9089/admin";
 // API
 
 export const postAdminDashboardHomeNewCollection = async () => {
   console.log(BASE_URL);
   const { data } = await axios.post(BASE_URL + "homeNewCollection/");
+  return data;
+};
+export const updateProduct = async (editingProduct: any) => {
+  let _link = ADMIN_BE_URL + "/dashboard/product/" + editingProduct._id;
+  console.log("_link", _link);
+  const token = localStorage.getItem("token");
+  console.log("---", editingProduct);
+  const { data } = await axios.patch(_link, editingProduct, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   return data;
 };
 
