@@ -24,7 +24,7 @@ const AdminLogin: React.FC = () => {
       });
       localStorage.setItem("token", token);
       toast.success("Daxil oldunuz!");
-      router.push("/admin/products"); // Redirect to the admin products page
+      router.push("/admin/products"); 
     } catch (error: any) {
       console.error("Error submitting form:", error);
       setError(
