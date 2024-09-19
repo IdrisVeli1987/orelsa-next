@@ -6,7 +6,6 @@ import TheRange from "@/components/UI/TheRange/TheRange";
 import Footer from "@/components/Views/Landing/Footer";
 import { Button } from "@nextui-org/react";
 import axios from "axios";
-import Image from "next/image";
 
 export default async function HomePage() {
   const { data } = await axios.get(
