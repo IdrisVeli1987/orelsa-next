@@ -1,12 +1,15 @@
 import Link from "next/link";
 import React from "react";
+
 interface IProps {
   title: string;
   button: () => React.ReactElement;
 }
+
 const AdminHeader = ({ title, button }: IProps) => {
   return (
     <div
+      className="w-full px-4"
       style={{
         height: 70,
         display: "flex",

@@ -102,3 +102,14 @@ export const deleteProduct = async (productId: string) => {
     throw error; // Make sure to throw the error so it can be caught by the calling function
   }
 };
+
+export const getHomeNewCollection = async () => {
+  const url = "http://localhost:9089/guest/homeNewCollection";
+
+  const { data } = await axios.get(url, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return data;
+};

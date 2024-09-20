@@ -1,27 +1,25 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-  User,
-  Chip,
-  Tooltip,
-} from "@nextui-org/react";
-import { EditIcon } from "./EditIcon";
-import { DeleteIcon } from "./DeleteIcon";
-import { EyeIcon } from "./EyeIcon";
-import { columns, users } from "./data";
 import { deleteProduct, getAllProductsAdmin, updateProduct } from "@/api/admin";
+import {
+  Chip,
+  Table,
+  TableBody,
+  TableCell,
+  TableColumn,
+  TableHeader,
+  TableRow,
+  Tooltip,
+  User,
+} from "@nextui-org/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { IoIosSave } from "react-icons/io";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { Pagination } from "swiper/modules";
+import { DeleteIcon } from "./DeleteIcon";
+import { EditIcon } from "./EditIcon";
+import { EyeIcon } from "./EyeIcon";
+import { columns, users } from "./data";
 
 const statusColorMap: any = {
   active: "success",
@@ -150,7 +148,6 @@ const AdminTable = () => {
         return cellValue;
     }
   }, []);
-  // const [products, setProducts] = useState([]);
 
   useEffect(() => {
     getAllProductsAdmin().then((data) => {
