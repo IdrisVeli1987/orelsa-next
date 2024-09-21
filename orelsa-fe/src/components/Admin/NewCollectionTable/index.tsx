@@ -56,13 +56,6 @@ const NewCollectionTable = () => {
 
       <TableBody>
         {newCol.map(({ _id, active, description, newproductPhoto, title }) => {
-          console.log("sasa", {
-            _id,
-            active,
-            description,
-            newproductPhoto,
-            title,
-          });
           return (
             <TableRow key={_id}>
               <TableCell>
@@ -71,15 +64,14 @@ const NewCollectionTable = () => {
                   width={100}
                   height={100}
                   alt={"photo"}
+                  className="shadow-xl"
                 ></Image>
               </TableCell>
               <TableCell>
                 <h1>{title}</h1>
               </TableCell>
               <TableCell>
-                <p className="w-16 text-wrap">
-                  Yeni gələn məhsulumuzdur. Saçlarınız yenidən canlansın.
-                </p>
+                <p className="w-16 text-wrap">{description}</p>
               </TableCell>
               <TableCell>
                 <input type="checkbox" checked={active}></input>

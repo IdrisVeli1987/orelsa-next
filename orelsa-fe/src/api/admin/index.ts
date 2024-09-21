@@ -104,7 +104,7 @@ export const deleteProduct = async (productId: string) => {
 };
 
 export const getHomeNewCollection = async () => {
-  const url = "http://localhost:9089/guest/homeNewCollection";
+  const url = "http://localhost:9089/admin/dashboard/homeNewCollection";
 
   const { data } = await axios.get(url, {
     headers: {
