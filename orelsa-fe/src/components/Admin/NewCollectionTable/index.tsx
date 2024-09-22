@@ -27,13 +27,13 @@ interface INewCollection {
 }
 
 const NewCollectionTable = () => {
-  const [newCol, setNewCol] = useState<INewCollection[]>([]);
+  const [newCollection, setNewCollection] = useState<INewCollection[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const data = await getHomeNewCollection();
-        setNewCol(data);
+        setNewCollection(data);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -55,30 +55,32 @@ const NewCollectionTable = () => {
       </TableHeader>
 
       <TableBody>
-        {newCol.map(({ _id, active, description, newproductPhoto, title }) => {
-          return (
-            <TableRow key={_id}>
-              <TableCell>
-                <Image
-                  src={newproductPhoto}
-                  width={100}
-                  height={100}
-                  alt={"photo"}
-                  className="shadow-xl"
-                ></Image>
-              </TableCell>
-              <TableCell>
-                <h1>{title}</h1>
-              </TableCell>
-              <TableCell>
-                <p className="w-16 text-wrap">{description}</p>
-              </TableCell>
-              <TableCell>
-                <input type="checkbox" checked={active}></input>
-              </TableCell>
-            </TableRow>
-          );
-        })}
+        {newCollection.map(
+          ({ _id, active, description, newproductPhoto, title }) => {
+            return (
+              <TableRow key={_id}>
+                <TableCell>
+                  <Image
+                    src={newproductPhoto}
+                    width={100}
+                    height={100}
+                    alt={"photo"}
+                    className="shadow-xl"
+                  ></Image>
+                </TableCell>
+                <TableCell>
+                  <h1>{title}</h1>
+                </TableCell>
+                <TableCell>
+                  <p className="w-16 text-wrap">{description}</p>
+                </TableCell>
+                <TableCell>
+                  <input type="checkbox" defaultChecked={active}></input>
+                </TableCell>
+              </TableRow>
+            );
+          }
+        )}
       </TableBody>
     </Table>
   );

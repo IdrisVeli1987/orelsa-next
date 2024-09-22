@@ -1,12 +1,20 @@
 "use client";
 
+import AdminAddNewCollection from "@/components/Admin/AdminNewCollection";
 import AdminHeader from "@/components/Admin/Header";
 import NewCollectionTable from "@/components/Admin/NewCollectionTable";
 import AdminSideBar from "@/components/Admin/Sidebar";
+import { Modal, ModalContent } from "@nextui-org/react";
 import { useState } from "react";
 
 const AdminNewCollection = () => {
   const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleProductAdded = () => {
+    setModalOpen(false);
+    // Məhsul əlavə olunduqdan sonra səhifəni yeniləyin
+    window.location.reload();
+  };
   return (
     <div
       style={{
@@ -38,6 +46,19 @@ const AdminNewCollection = () => {
           <NewCollectionTable />
         </div>
       </div>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setModalOpen(false);
+        }}
+      >
+        <ModalContent>
+          <AdminAddNewCollection
+            onProductAdded={handleProductAdded}
+            setModalOpen={setModalOpen}
+          />
+        </ModalContent>
+      </Modal>
     </div>
   );
 };
