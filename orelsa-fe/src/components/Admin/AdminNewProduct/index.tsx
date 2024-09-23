@@ -162,9 +162,9 @@ const AdminNewProduct: React.FC<{
             JPEG, PNG formatlarında şəkillər seçim edin. Həcmi 2 mb dan yüksək
             olmasın.
           </p>
-          <button className=" w-[214px] h-[30px] border-solid border-2 border-[#383F4F] bg-[#3F64E5] rounded-[16px] text-white">
+          <div className=" w-[214px] h-[30px] border-solid border-2 border-[#383F4F] bg-[#3F64E5] rounded-[16px] text-white text-center">
             Şəkil yüklə
-          </button>
+          </div>
           {fileNames.length > 0 && (
             <ul className="mt-2 list-disc pl-5">
               {fileNames.map((name, index) => (

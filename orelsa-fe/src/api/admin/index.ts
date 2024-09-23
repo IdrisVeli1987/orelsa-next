@@ -113,3 +113,68 @@ export const getHomeNewCollection = async () => {
   });
   return data;
 };
+
+export const updateNewCollection = async (editingNewCollection: any) => {
+  let _link =
+    ADMIN_BE_URL + "/dashboard/homeNewCollection/" + editingNewCollection._id;
+  console.log("_link", _link);
+  const token = localStorage.getItem("token");
+  console.log("---", editingNewCollection);
+  const { data } = await axios.patch(_link, editingNewCollection, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+};
+
+export const deleteNewCollection = async (productId: string) => {
+  const token = localStorage.getItem("token");
+  const url = "http://localhost:9089/admin/dashboard/homeNewCollection";
+  console.log(token);
+
+  try {
+    const response = await axios.delete(`${url}/${productId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("API error:", error);
+    throw error;
+  }
+};
+
+export const getContactList = async () => {
+  const url = "http://localhost:9089/admin/dashboard/contact";
+
+  const { data } = await axios.get(url, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return data;
+};
+
+export const getSubscribersList = async () => {
+  const url = "http://localhost:9089/admin/dashboard/subscribe";
+
+  const { data } = await axios.get(url, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return data;
+};
+
+export const getBrowseRangeList = async () => {
+  const url = "http://localhost:9089/admin/dashboard/homeBrowseRange";
+
+  const { data } = await axios.get(url, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return data;
+};

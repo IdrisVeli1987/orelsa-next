@@ -3,6 +3,8 @@ const columns = [
   { name: "Başlıq", uid: "Header" },
   { name: "Haqqında", uid: "about" },
   { name: "Aktiv", uid: "active" },
+
+  { name: "Əməliyyatlar", uid: "actions" },
 ];
 
 export { columns };

@@ -1,5 +1,4 @@
-"use client"
-
+import HomePageImg from "@/../public/HomePage/HomePageImg.svg";
 import OurProducts from "@/components/UI/OurProducts/OurProducts";
 import Rooms from "@/components/UI/Rooms/Rooms";
 import TheRange from "@/components/UI/TheRange/TheRange";
@@ -11,12 +10,15 @@ export default async function HomePage() {
   const { data } = await axios.get(
     "http://localhost:9089/guest/homeNewCollection"
   );
-  console.log(data[0]);
+
+  const backgroundImage = data[0]?.newproductPhoto
+    ? `url(${data[0].newproductPhoto})`
+    : `url(${HomePageImg.src})`;
   return (
     <>
       <main
         style={{
-          background: `url("${data[0].newproductPhoto}") no-repeat`,
+          background: `${backgroundImage} no-repeat`,
           backgroundSize: "cover",
           display: "flex",
           height: "100vh",
@@ -28,17 +30,11 @@ export default async function HomePage() {
         <div
           style={{ backgroundColor: "rgba(256,256,256,0.4)", borderRadius: 16 }}
         >
-          {/* <h5
-            id="ArruvalTitle"
-            className="text-[#333333] font-semibold text-base ml-11 mt-16"
-          >
-            Yeni gələn
-          </h5> */}
           <h2 className="ml-11 mt-4 font-bold text-[52px] text-[#B88E2F] w-[12ch]">
-            {data[0].title}
+            {data[0]?.title ?? "Yeni kolleksiya"}
           </h2>
           <p className="ml-11 mt-9 text-lg font-medium text-wrap max-w-lg ">
-            {data[0].description}
+            {data[0]?.description ?? "Saç gücləndirici"}
           </p>
           <div className="ml-11 pb-10 pt-9">
             <Button className="gap-3 bg-[#B88E2F] w-[222px] h-[75px] font-bold text-base text-white">

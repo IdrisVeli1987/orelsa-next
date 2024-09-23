@@ -5,11 +5,10 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useDropzone } from "react-dropzone";
 
-const AdminAddNewCollection: React.FC<{
+const AdminAddNewFavorites: React.FC<{
   onProductAdded: () => void;
-  setModalOpen: (open: boolean) => void;
-}> = ({ onProductAdded, setModalOpen }) => {
-  const [title, setTitle] = useState<string>("");
+  setModalOpen?: (open: boolean) => void;
+}> = ({ onProductAdded }) => {
   const [description, setDescription] = useState<string>("");
   const [photos, setPhotos] = useState<File[]>([]);
   const [fileNames, setFileNames] = useState<string[]>([]);
@@ -32,9 +31,8 @@ const AdminAddNewCollection: React.FC<{
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (title || description) {
+    if (description) {
       const formData = new FormData();
-      formData.append("title", title);
       formData.append("description", description);
       photos.forEach((photo) => {
         formData.append("photo", photo);
@@ -42,7 +40,7 @@ const AdminAddNewCollection: React.FC<{
 
       try {
         await axios.post(
-          "http://localhost:9089/admin/dashboard/homeNewCollection",
+          "http://localhost:9089/admin/dashboard/homeBrowseRange",
           formData,
           {
             headers: {
@@ -76,13 +74,6 @@ const AdminAddNewCollection: React.FC<{
         onSubmit={handleSubmit}
         className="bg-[#4A954912] p-6 rounded-md flex flex-col gap-6"
       >
-        <Input
-          placeholder="Ad"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-          className="w-full bg-[#FAFAFA]"
-        />
         <Input
           placeholder="Haqqında"
           value={description}
@@ -139,4 +130,4 @@ const AdminAddNewCollection: React.FC<{
   );
 };
 
-export default AdminAddNewCollection;
+export default AdminAddNewFavorites;

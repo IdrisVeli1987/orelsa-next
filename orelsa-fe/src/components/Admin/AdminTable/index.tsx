@@ -122,7 +122,7 @@ const AdminTable = () => {
         );
       case "actions":
         return (
-          <div className="relative flex items-center gap-2">
+          <div className="relative flex items-center gap-2 justify-center">
             <Tooltip content="Details">
               <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                 <EyeIcon />
@@ -197,6 +197,7 @@ const AdminTable = () => {
                 </TableCell>
                 <TableCell>
                   <input
+                    className="bg-white"
                     disabled={editingId !== _id}
                     value={name}
                     onChange={(e) => {
@@ -206,6 +207,7 @@ const AdminTable = () => {
                 </TableCell>
                 <TableCell>
                   <input
+                    className="bg-white"
                     disabled={editingId !== _id}
                     value={description}
                     onChange={(e) => {
@@ -215,6 +217,7 @@ const AdminTable = () => {
                 </TableCell>
                 <TableCell>
                   <input
+                    className="bg-white"
                     disabled={editingId !== _id}
                     value={price}
                     onChange={(e) => {
@@ -224,6 +227,7 @@ const AdminTable = () => {
                 </TableCell>
                 <TableCell>
                   <input
+                    className="bg-white"
                     disabled={editingId !== _id}
                     value={discount_price}
                     onChange={(e) => {
@@ -233,6 +237,7 @@ const AdminTable = () => {
                 </TableCell>
                 <TableCell>
                   <input
+                    className="bg-white"
                     disabled={editingId !== _id}
                     value={model_no}
                     onChange={(e) => {
@@ -242,6 +247,7 @@ const AdminTable = () => {
                 </TableCell>
                 <TableCell>
                   <input
+                    className="bg-white"
                     disabled={editingId !== _id}
                     value={category}
                     onChange={(e) => {
@@ -250,7 +256,7 @@ const AdminTable = () => {
                   />
                 </TableCell>
                 <TableCell>
-                  <div className="relative flex items-center gap-2">
+                  <div className="relative flex items-center gap-2 justify-center">
                     <Tooltip content="Details">
                       <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                         <EyeIcon

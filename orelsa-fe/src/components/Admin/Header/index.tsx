@@ -3,7 +3,7 @@ import React from "react";
 
 interface IProps {
   title: string;
-  button: () => React.ReactElement;
+  button?: () => React.ReactElement;
 }
 
 const AdminHeader = ({ title, button }: IProps) => {
@@ -30,10 +30,10 @@ const AdminHeader = ({ title, button }: IProps) => {
           href="/"
         >
           Orelsa.az
-        </Link>{" "}
+        </Link>
         / {title}
       </span>
-      {button()}
+      {button ? button() : null}
     </div>
   );
 };
