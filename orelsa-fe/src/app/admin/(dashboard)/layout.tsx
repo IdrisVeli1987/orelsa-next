@@ -8,17 +8,13 @@ interface IProps {
 const AdminLayout = ({ children }: IProps) => {
   return (
     <div
-      // style={{
-      //   display: "grid",
-      //   gridTemplateColumns: "1fr 3fr",
-      // }}
-      className="flex"
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+      }}
     >
-      <div className="w-1/5">
-        <AdminSideBar />
-      </div>
-
-      <div className="p-5 w-4/5">{children}</div>
+      <AdminSideBar />
+      <div className="p-5 w-[calc(100%-400px)]">{children}</div>
     </div>
   );
 };

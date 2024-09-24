@@ -9,7 +9,9 @@ import { Button } from "@nextui-org/react";
 import Quality from "../Quality/Quality";
 
 export const Form = () => {
-  const [value, setValue] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   return (
     <section>
@@ -53,8 +55,8 @@ export const Form = () => {
                   // label="Email"
                   isRequired
                   placeholder="Enter your name"
-                  value={value}
-                  onValueChange={setValue}
+                  value={name}
+                  onValueChange={setName}
                   variant="bordered"
                   size="lg"
                 />
@@ -66,8 +68,8 @@ export const Form = () => {
                   isRequired
                   // label="Email"
                   placeholder="Enter your Email "
-                  value={value}
-                  onValueChange={setValue}
+                  value={email}
+                  onValueChange={setEmail}
                   variant="bordered"
                   size="lg"
                 />
@@ -78,8 +80,8 @@ export const Form = () => {
                   type="text"
                   // label="Email"
                   placeholder="This is an optional"
-                  value={value}
-                  onValueChange={setValue}
+                  value={message}
+                  onValueChange={setMessage}
                   variant="bordered"
                   size="lg"
                 />

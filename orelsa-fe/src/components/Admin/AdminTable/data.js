@@ -7,7 +7,6 @@ const columns = [
   { name: "Endirim faizi", uid: "Endirim faizi" }, 
   { name: "Model", uid: "model" },
   { name: "Kategoriya", uid: "category" },
-
   { name: "Əməliyyatlar", uid: "actions" },
 ];
 

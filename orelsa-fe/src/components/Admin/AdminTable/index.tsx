@@ -162,7 +162,7 @@ const AdminTable = () => {
   };
 
   return (
-    <Table>
+    <Table className="w-full">
       <TableHeader columns={columns}>
         {(column) => (
           <TableColumn
@@ -242,6 +242,17 @@ const AdminTable = () => {
                     value={model_no}
                     onChange={(e) => {
                       handleChange(_id, "model_no", e.target.value);
+                    }}
+                  />
+                </TableCell>
+
+                <TableCell>
+                  <input
+                    className="bg-white"
+                    disabled={editingId !== _id}
+                    value={model_no}
+                    onChange={(e) => {
+                      handleChange(_id, "discount_pr", e.target.value);
                     }}
                   />
                 </TableCell>

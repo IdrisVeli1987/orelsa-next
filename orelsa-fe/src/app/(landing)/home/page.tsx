@@ -10,6 +10,7 @@ export default async function HomePage() {
   const { data } = await axios.get(
     "http://localhost:9089/guest/homeNewCollection"
   );
+  console.log("🚀 ~ HomePage ~ data:", data);
 
   const backgroundImage = data[0]?.newproductPhoto
     ? `url(${data[0].newproductPhoto})`
@@ -32,6 +33,7 @@ export default async function HomePage() {
             backgroundColor: "rgba(256,256,256,0.4)",
             borderRadius: 16,
           }}
+          className="shadow-2xl"
         >
           <h2 className="ml-11 mt-4 font-bold text-[52px] text-[#B88E2F] w-[12ch]">
             {data[0]?.title ?? "Yeni kolleksiya"}
