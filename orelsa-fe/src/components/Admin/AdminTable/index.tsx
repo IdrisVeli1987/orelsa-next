@@ -162,7 +162,7 @@ const AdminTable = () => {
   };
 
   return (
-    <Table aria-label="Example table with custom cells">
+    <Table>
       <TableHeader columns={columns}>
         {(column) => (
           <TableColumn
