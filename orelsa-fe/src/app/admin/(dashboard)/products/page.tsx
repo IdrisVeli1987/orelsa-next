@@ -16,7 +16,7 @@ const AdminProducts = () => {
   };
 
   return (
-    <div>
+    <>
       <AdminHeader
         title="Məhsul paneli"
         button={() => (
@@ -60,7 +60,7 @@ const AdminProducts = () => {
           />
         </ModalContent>
       </Modal>
-    </div>
+    </>
   );
 };
 
