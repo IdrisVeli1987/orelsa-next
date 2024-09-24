@@ -38,11 +38,14 @@ const AdminSideBar = () => {
         display: "flex",
         flexDirection: "column",
         minHeight: "100vh",
+        height: "100%",
         gap: "10px",
-        width: "max-content",
+        // maxWidth: "fit-content",
       }}
     >
-      <h2 className="font-black text-3xl text-white py-14 px-7">Admin Panel</h2>
+      <h2 className="font-black text-3xl text-white py-14 px-7 text-center">
+        Admin Panel
+      </h2>
       {links.map(({ href, title, src }, i) => (
         <div key={i} className="flex items-center pl-7 min-h-fit">
           <Image
