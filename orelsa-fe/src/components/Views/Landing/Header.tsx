@@ -4,6 +4,7 @@ import Link from "next/link";
 import LandingContainer from "./LandingContainer";
 import menu from "./menu";
 import { CiSearch } from "react-icons/ci";
+import SearchBar from "@/components/Search/SearchBar";
 
 // Define the type for menu items
 type NavLink = {
@@ -44,7 +45,8 @@ const Header: FC = () => {
             ))}
           </ul>
         </nav>
-        <CiSearch style={{ width: "23px", height: "23px" }} />
+        
+        <SearchBar />
       </LandingContainer>
     </header>
   );
