@@ -10,7 +10,6 @@ export default async function HomePage() {
   const { data } = await axios.get(
     "http://localhost:9089/guest/homeNewCollection"
   );
-  console.log("🚀 ~ HomePage ~ data:", data);
 
   const backgroundImage = data[0]?.newproductPhoto
     ? `url(${data[0].newproductPhoto})`

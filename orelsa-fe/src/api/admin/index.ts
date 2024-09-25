@@ -8,13 +8,71 @@ const BASE_URL =
 const BASE_URL_SUPPORT =
   process.env.NEXT_PUBLIC_BACKEND_URL + "/admin/dashboard/";
 const ADMIN_BE_URL = "http://localhost:9089/admin";
+const GUEST_BE_URL = "http://localhost:9089/guest";
 // API
+
+type ContactDetails = {
+  name: string;
+  email: string;
+  message: string;
+  subject: string;
+};
+
+type Subscribe = {
+  email: string;
+};
 
 export const postAdminDashboardHomeNewCollection = async () => {
   console.log(BASE_URL);
   const { data } = await axios.post(BASE_URL + "homeNewCollection/");
   return data;
 };
+
+export const postContactUsGuest = async (contactDetails: ContactDetails) => {
+  try {
+    const response = await axios.post(GUEST_BE_URL + "/contact-us", {
+      name: contactDetails.name,
+      email: contactDetails.email,
+      subject: contactDetails.subject,
+      message: contactDetails.message,
+    });
+
+    if (response.status === 200 || response.status === 201) {
+      toast.success("Your message has been sent successfully!");
+      return true;
+    }
+
+    return false;
+  } catch (err: any) {
+    console.error(err);
+    toast.error(
+      err.response?.data?.message ||
+        "An error occurred while sending your message."
+    );
+    return false;
+  }
+};
+
+export const postSubscribeGuest = async (email: Subscribe) => {
+  try {
+    const response = await axios.post(GUEST_BE_URL + "/subscribe", email);
+
+    if (response.status === 200 || response.status === 201) {
+      toast.success("Your message has been sent successfully!");
+      return true;
+    }
+
+    return false;
+  } catch (err: any) {
+    console.error(err);
+    toast.error(
+      err.response?.data?.message ||
+        "An error occurred while sending your message."
+    );
+    return false;
+  }
+};
+
 export const updateProduct = async (editingProduct: any) => {
   let _link = ADMIN_BE_URL + "/dashboard/product/" + editingProduct._id;
   console.log("_link", _link);

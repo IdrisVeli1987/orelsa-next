@@ -45,7 +45,6 @@ const Header: FC = () => {
             ))}
           </ul>
         </nav>
-        
         <SearchBar />
       </LandingContainer>
     </header>

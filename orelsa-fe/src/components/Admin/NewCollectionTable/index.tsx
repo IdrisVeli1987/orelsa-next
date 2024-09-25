@@ -27,13 +27,14 @@ interface INewCollection {
   _id: string;
   description: string;
   newproductPhoto: string;
-  active: true;
+  active: boolean;
   title: string;
 }
 
 const NewCollectionTable = () => {
   const [newCollection, setNewCollection] = useState<INewCollection[]>([]);
   const [editingId, setEditingId] = useState<string>("");
+  const [activeId, setActiveId] = useState<string | null>(null); // State to manage active checkbox
 
   const router = useRouter();
 
@@ -49,20 +50,31 @@ const NewCollectionTable = () => {
     fetchProducts();
   }, []);
 
-  const handleChange = (id: any, key: any, value: any) => {
-    const _newProducts = newCollection.map((product: any) => {
+  const handleChange = (id: string, key: keyof INewCollection, value: any) => {
+    const updatedProducts = newCollection.map((product) => {
       if (product._id === id) {
         product[key] = value;
       }
       return product;
     });
-    setNewCollection(_newProducts);
+    setNewCollection(updatedProducts);
   };
 
   const onSubmit = async (index: number) => {
-    await updateNewCollection(newCollection[index]).then((data) => {
-      toast.success("successfully");
-    });
+    const productToUpdate = {
+      id: newCollection[index]._id,
+      title: newCollection[index].title,
+      description: newCollection[index].description,
+      newproductPhoto: newCollection[index].newproductPhoto,
+    };
+    await updateNewCollection(productToUpdate)
+      .then(() => {
+        toast.success("Successfully updated!");
+      })
+      .catch((error) => {
+        toast.error("Failed to update product.");
+        console.error("Error updating product:", error);
+      });
   };
 
   const handleDelete = async (productId: string) => {
@@ -78,6 +90,15 @@ const NewCollectionTable = () => {
         toast.error("Failed to delete product.");
       }
     }
+  };
+
+  const handleCheckboxChange = (id: string) => {
+    const updatedProducts = newCollection.map((product) => {
+      product.active = product._id === id;
+      return product;
+    });
+    setNewCollection(updatedProducts);
+    setActiveId(id);
   };
 
   return (
@@ -98,79 +119,82 @@ const NewCollectionTable = () => {
           (
             { _id, active, description, newproductPhoto, title },
             index: number
-          ) => {
-            return (
-              <TableRow key={_id}>
-                <TableCell>
-                  <Image
-                    src={newproductPhoto}
-                    width={100}
-                    height={100}
-                    alt={"photo"}
-                    className="shadow-xl"
-                  ></Image>
-                </TableCell>
-                <TableCell>
-                  <input
-                    disabled={editingId !== _id}
-                    className="bg-white"
-                    value={title}
-                    onChange={(e) => {
-                      handleChange(_id, "title", e.target.value);
-                    }}
-                  />
-                </TableCell>
-                <TableCell>
-                  <input
-                    disabled={editingId !== _id}
-                    className="bg-white"
-                    value={description}
-                    onChange={(e) => {
-                      handleChange(_id, "description", e.target.value);
-                    }}
-                  />
-                </TableCell>
-                <TableCell>
-                  <input type="checkbox" defaultChecked={active}></input>
-                </TableCell>
-                <TableCell>
-                  <div className="relative flex items-start gap-2 justify-center">
-                    <Tooltip content="Details">
-                      <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                        <EyeIcon
+          ) => (
+            <TableRow key={_id}>
+              <TableCell>
+                <Image
+                  src={newproductPhoto}
+                  width={100}
+                  height={100}
+                  alt={"photo"}
+                  className="shadow-xl"
+                />
+              </TableCell>
+              <TableCell>
+                <input
+                  disabled={editingId !== _id}
+                  className="bg-white"
+                  value={title}
+                  onChange={(e) => {
+                    handleChange(_id, "title", e.target.value);
+                  }}
+                />
+              </TableCell>
+              <TableCell>
+                <input
+                  disabled={editingId !== _id}
+                  className="bg-white"
+                  value={description}
+                  onChange={(e) => {
+                    handleChange(_id, "description", e.target.value);
+                  }}
+                />
+              </TableCell>
+              <TableCell>
+                <input
+                  type="checkbox"
+                  checked={activeId === _id}
+                  onChange={() => handleCheckboxChange(_id)}
+                />
+              </TableCell>
+              <TableCell>
+                <div className="relative flex items-start gap-2 justify-center">
+                  <Tooltip content="Details">
+                    <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                      <EyeIcon
+                        onClick={() => {
+                          router.push("/products/" + _id);
+                        }}
+                      />
+                    </span>
+                  </Tooltip>
+                  <Tooltip content="Edit user">
+                    <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                      {editingId ? (
+                        <IoIosSave
                           onClick={() => {
-                            router.push("/products/" + _id);
+                            setEditingId("");
+                            onSubmit(index);
                           }}
+                          style={{ border: "1px solid blue" }}
                         />
-                      </span>
-                    </Tooltip>
-                    <Tooltip content="Edit user">
-                      <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                        {editingId ? (
-                          <IoIosSave
-                            onClick={() => {
-                              setEditingId("");
-                              onSubmit(index);
-                            }}
-                          />
-                        ) : (
-                          <EditIcon onClick={() => setEditingId(_id)} />
-                        )}
-                      </span>
-                    </Tooltip>
-                    <Tooltip color="danger" content="Delete user">
-                      <span
-                        className="text-lg text-danger cursor-pointer active:opacity-50 "
-                        onClick={() => handleDelete(_id)}
-                      >
-                        <DeleteIcon />
-                      </span>
-                    </Tooltip>
-                  </div>
-                </TableCell>
-              </TableRow>
-            );
-          }
+                      ) : (
+                        <EditIcon onClick={() => setEditingId(_id)} />
+                      )}
+                    </span>
+                  </Tooltip>
+                  <Tooltip color="danger" content="Delete user">
+                    <span
+                      className="text-lg text-danger cursor-pointer active:opacity-50"
+                      onClick={() => handleDelete(_id)}
+                    >
+                      <DeleteIcon />
+                    </span>
+                  </Tooltip>
+                </div>
+              </TableCell>
+            </TableRow>
+          )
         )}
       </TableBody>
     </Table>

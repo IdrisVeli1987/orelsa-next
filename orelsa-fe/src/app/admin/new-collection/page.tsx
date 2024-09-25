@@ -12,7 +12,6 @@ const AdminNewCollection = () => {
 
   const handleProductAdded = () => {
     setModalOpen(false);
-    // Məhsul əlavə olunduqdan sonra səhifəni yeniləyin
     window.location.reload();
   };
   return (

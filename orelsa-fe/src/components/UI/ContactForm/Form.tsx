@@ -7,11 +7,43 @@ import { IoLocationSharp } from "react-icons/io5";
 import { Textarea } from "@nextui-org/input";
 import { Button } from "@nextui-org/react";
 import Quality from "../Quality/Quality";
+import { postContactUsGuest } from "@/api/admin";
+import { toast } from "react-toastify";
 
 export const Form = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [subject, setSubject] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    if (!validateEmail(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+
+    setLoading(true);
+    const response = await postContactUsGuest({
+      name,
+      email,
+      message,
+      subject,
+    });
+    if (response) {
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
+    }
+    setLoading(false);
+  };
+
+  const validateEmail = (email: any) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
 
   return (
     <section>
@@ -52,7 +84,6 @@ export const Form = () => {
                 <p className="mb-2 font-bold">Your Name</p>
                 <Input
                   type="text"
-                  // label="Email"
                   isRequired
                   placeholder="Enter your name"
                   value={name}
@@ -66,7 +97,6 @@ export const Form = () => {
                 <Input
                   type="email"
                   isRequired
-                  // label="Email"
                   placeholder="Enter your Email "
                   value={email}
                   onValueChange={setEmail}
@@ -78,7 +108,6 @@ export const Form = () => {
                 <p className="mb-2 font-bold">Mövzu</p>
                 <Input
                   type="text"
-                  // label="Email"
                   placeholder="This is an optional"
                   value={message}
                   onValueChange={setMessage}
@@ -93,11 +122,16 @@ export const Form = () => {
                   labelPlacement="outside"
                   placeholder="Mesajınızı bura daxil edin."
                   className="max-w-md mb-2 font-bold"
+                  value={subject}
+                  onValueChange={setSubject}
                 />
               </div>
               <div className=" pb-10 pt-9">
-                <Button className="gap-3 bg-[#B88E2F] w-[222px] h-[75px] font-bold text-base text-white">
-                  Submit
+                <Button
+                  className="gap-3 bg-[#B88E2F] w-[222px] h-[75px] font-bold text-base text-white"
+                  onClick={handleSubmit}
+                >
+                  {loading ? "Submitting" : "Submit"}
                 </Button>
               </div>
             </div>

@@ -1,9 +1,35 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import LandingContainer from "./LandingContainer";
 import Link from "next/link";
 import Rights from "@/components/UI/AllRights/Rights";
+import { postSubscribeGuest } from "@/api/admin";
+import { toast } from "react-toastify";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    if (!validateEmail(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+
+    setLoading(true);
+    const success = await postSubscribeGuest({ email });
+    if (success) {
+      setEmail("");
+    }
+    setLoading(false);
+  };
+
+  const validateEmail = (email: any) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
   return (
     <footer className="border-y-2">
       <LandingContainer>
@@ -21,7 +47,7 @@ const Footer = () => {
             <Link href="/" className="text-base font-medium text-[#000]">
               Home
             </Link>
-            <Link href="/shop" className="text-base font-medium  text-[#000]">
+            <Link href="/shop" className="text-base font-medium text-[#000]">
               Shop
             </Link>
             <Link href="/contact" className="text-base font-medium text-[#000]">
@@ -32,17 +58,22 @@ const Footer = () => {
           <div className="flex flex-col gap-4 md:gap-6 md:items-start">
             <p>Newsletter</p>
 
-            <div className="">
-              <form className="flex gap-2">
+            <div>
+              <form className="flex gap-2" onSubmit={handleSubmit}>
                 <input
                   type="email"
                   placeholder="Enter Your Email Address"
-                  className="w-full border-solid border-b-[1px] border-black text-sm font-normal"
-                  style={{ width: "" }}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full border-solid border-b-[1px] border-black text-sm font-normal focus:border-0 focus:outline-none"
                 />
 
-                <button className=" border-solid border-b-[1px] border-black font-medium text-sm">
-                  SUBSCRIBE
+                <button
+                  type="submit"
+                  className="border-solid border-b-[1px] border-black font-medium text-sm"
+                  disabled={loading}
+                >
+                  {loading ? "SUBSCRIBING..." : "SUBSCRIBE"}
                 </button>
               </form>
             </div>

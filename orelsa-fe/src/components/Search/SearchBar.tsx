@@ -1,8 +1,7 @@
 "use client";
 import { cn } from "@nextui-org/theme";
-import React, { useState } from "react";
+import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
-import { words } from "@/components/Search/db";
 import { IoMdClose } from "react-icons/io";
 
 const SearchBar = () => {
@@ -19,7 +18,7 @@ const SearchBar = () => {
   return (
     <form
       className={cn(
-        "relative h-[50px] transition-all duration-1000 ease-in-out",
+        "absolute h-[50px] transition-all duration-1000 ease-in-out right-[250px]",
         isSearching ? "w-[300px]" : "w-[50px]"
       )}
     >
@@ -33,7 +32,11 @@ const SearchBar = () => {
           onClick={handleSearch}
           className="absolute right-0 w-[50px] h-[50px] top-1/2 -translate-y-1/2 p-4 rounded-full bg-slate-300"
         >
-          {isSearching ? <IoMdClose /> : <CiSearch />}
+          {isSearching ? (
+            <IoMdClose onClick={() => setIsSearching(false)} />
+          ) : (
+            <CiSearch />
+          )}
         </button>
       </div>
 
