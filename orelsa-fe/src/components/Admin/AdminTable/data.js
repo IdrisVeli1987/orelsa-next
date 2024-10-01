@@ -4,9 +4,10 @@ const columns = [
   { name: "Haqqında", uid: "about" },
   { name: "Qiymət", uid: "price" },
   { name: "Endirim qiyməti", uid: "discount_price" },
-  { name: "Endirim faizi", uid: "Endirim faizi" }, 
+  { name: "Endirim faizi", uid: "Endirim faizi" },
   { name: "Model", uid: "model" },
   { name: "Kategoriya", uid: "category" },
+  { name: "Aktiv", uid: "active" },
   { name: "Əməliyyatlar", uid: "actions" },
 ];
 

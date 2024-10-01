@@ -1,4 +1,3 @@
-import { IProduct } from "@/interface/ui";
 import axios from "axios";
 import { getServerSession } from "next-auth";
 import toast from "react-hot-toast";
@@ -97,40 +96,40 @@ export const getAdminDashboardHomeNewCollection = async (id: string) => {
   return data;
 };
 
-export const patchAdminDashboardHomeNewCollectionById = async (
-  id: string,
-  title: string,
-  photo: string
-) => {
-  await axios
-    .patch(BASE_URL + "homeNewCollection/" + id, title, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        Authorization: "Bearer " + photo,
-      },
-    })
-    .then((res) => {
-      if (res.status === 200 || res.status === 201) {
-        toast.success("ss"); //??????????????????????????
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-      toast.error(err.response?.data?.message || "error");
-    });
-};
+// export const patchAdminDashboardHomeNewCollectionById = async (
+//   id: string,
+//   title: string,
+//   photo: string
+// ) => {
+//   await axios
+//     .patch(BASE_URL + "homeNewCollection/" + id, title, {
+//       headers: {
+//         "Content-Type": "multipart/form-data",
+//         Authorization: "Bearer " + photo,
+//       },
+//     })
+//     .then((res) => {
+//       if (res.status === 200 || res.status === 201) {
+//         toast.success("ss"); //??????????????????????????
+//       }
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       toast.error(err.response?.data?.message || "error");
+//     });
+// };
 
 export const getAdminDashboardHomeNewCollectionById = async (id: string) => {
   const { data } = await axios.get(BASE_URL + "homeNewCollection/" + id);
   return data;
 };
 
-export const postAdminDashboardHomeBrowseRange = async (
-  description: string,
-  photo: string
-) => {
-  // if(){}
-};
+// export const postAdminDashboardHomeBrowseRange = async (
+//   description: string,
+//   photo: string
+// ) => {
+//   // if(){}
+// };
 
 export const getAllProductsAdmin = async () => {
   const url = "http://localhost:9089/admin/dashboard/product";
@@ -157,7 +156,7 @@ export const deleteProduct = async (productId: string) => {
     return response.data;
   } catch (error) {
     console.error("API error:", error);
-    throw error; // Make sure to throw the error so it can be caught by the calling function
+    throw error;
   }
 };
 
@@ -174,9 +173,10 @@ export const getHomeNewCollection = async () => {
 
 export const updateNewCollection = async (editingNewCollection: any) => {
   let _link =
-    ADMIN_BE_URL + "/dashboard/homeNewCollection/" + editingNewCollection._id;
+    ADMIN_BE_URL + "/dashboard/homeNewCollection/" + editingNewCollection.id;
   console.log("_link", _link);
   const token = localStorage.getItem("token");
+  delete editingNewCollection.id;
   console.log("---", editingNewCollection);
   const { data } = await axios.patch(_link, editingNewCollection, {
     headers: {

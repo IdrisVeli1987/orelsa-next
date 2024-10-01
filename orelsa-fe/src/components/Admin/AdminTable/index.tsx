@@ -1,4 +1,5 @@
 "use client";
+
 import { deleteProduct, getAllProductsAdmin, updateProduct } from "@/api/admin";
 import {
   Chip,
@@ -187,6 +188,7 @@ const AdminTable = () => {
               discount_price,
               model_no,
               category,
+              active,
             },
             index: number
           ) => {
@@ -231,7 +233,7 @@ const AdminTable = () => {
                     disabled={editingId !== _id}
                     value={discount_price}
                     onChange={(e) => {
-                      handleChange(_id, "discount_pr", e.target.value);
+                      handleChange(_id, "discount_price", e.target.value);
                     }}
                   />
                 </TableCell>
@@ -239,9 +241,9 @@ const AdminTable = () => {
                   <input
                     className="bg-white"
                     disabled={editingId !== _id}
-                    value={model_no}
+                    value={discount}
                     onChange={(e) => {
-                      handleChange(_id, "model_no", e.target.value);
+                      handleChange(_id, "discount", e.target.value);
                     }}
                   />
                 </TableCell>
@@ -252,7 +254,7 @@ const AdminTable = () => {
                     disabled={editingId !== _id}
                     value={model_no}
                     onChange={(e) => {
-                      handleChange(_id, "discount_pr", e.target.value);
+                      handleChange(_id, "model_no", e.target.value);
                     }}
                   />
                 </TableCell>
@@ -263,6 +265,17 @@ const AdminTable = () => {
                     value={category}
                     onChange={(e) => {
                       handleChange(_id, "category", e.target.value);
+                    }}
+                  />
+                </TableCell>
+                <TableCell>
+                  <input
+                    type="checkbox"
+                    className="bg-white"
+                    disabled={editingId !== _id}
+                    defaultChecked={active}
+                    onChange={(e: any) => {
+                      handleChange(_id, "active", e.target.checked);
                     }}
                   />
                 </TableCell>

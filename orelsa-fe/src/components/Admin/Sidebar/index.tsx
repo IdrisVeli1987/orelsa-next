@@ -1,6 +1,11 @@
+"use client";
+
+import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation"; // Correct import
 import React from "react";
+import toast from "react-hot-toast";
 
 const links = [
   {
@@ -31,6 +36,14 @@ const links = [
 ];
 
 const AdminSideBar = () => {
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    toast.success("Siz uğurla çıxış etdiniz!");
+    router.push("/admin/login");
+  };
+
   return (
     <div
       style={{
@@ -71,6 +84,12 @@ const AdminSideBar = () => {
           </div>
         ))}
       </div>
+      <Button
+        onClick={handleLogout}
+        className="bg-redz-500 text-white rounded-md py-3"
+      >
+        Çıxış et
+      </Button>
       <div className="flex justify-center font-black text-3xl text-white pb-4 items-end h-full">
         <Link href="/admin/dashboard">ORELSA.AZ</Link>
       </div>

@@ -1,8 +1,5 @@
 import Header from "@/components/Views/Landing/Header";
-import React from "react";
-import Slider from "@/components/UI/Slider/Slider";
 import HomePage from "./(landing)/home/page";
-import ShopPage from "./(landing)/shop/page";
 
 export default function LandingPage() {
   return (

@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import Image from "next/image";
-import { Button } from "@nextui-org/react";
 import Link from "next/link";
+import { Button } from "@nextui-org/react";
 import { FaFacebook, FaLinkedinIn } from "react-icons/fa";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { IProductById } from "@/interface/ui";
@@ -17,7 +17,7 @@ const ProductsDetails = ({
   discount_price,
   photos,
 }: IProductById) => {
-  const [selectedImage, setSelectedImage] = useState(photos[0]);
+  const [selectedImage, setSelectedImage] = useState(photos?.[0] ?? "");
 
   const handleImageOnClick = (imageSrc: string) => {
     setSelectedImage(imageSrc);

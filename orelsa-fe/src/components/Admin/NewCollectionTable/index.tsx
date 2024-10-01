@@ -1,4 +1,5 @@
 "use client";
+
 import {
   deleteNewCollection,
   getHomeNewCollection,
@@ -34,7 +35,7 @@ interface INewCollection {
 const NewCollectionTable = () => {
   const [newCollection, setNewCollection] = useState<INewCollection[]>([]);
   const [editingId, setEditingId] = useState<string>("");
-  const [activeId, setActiveId] = useState<string | null>(null); // State to manage active checkbox
+  const [activeId, setActiveId] = useState<string | null>(null);
 
   const router = useRouter();
 
@@ -65,7 +66,8 @@ const NewCollectionTable = () => {
       id: newCollection[index]._id,
       title: newCollection[index].title,
       description: newCollection[index].description,
-      newproductPhoto: newCollection[index].newproductPhoto,
+      photo: newCollection[index].newproductPhoto,
+      active: newCollection[index].active,
     };
     await updateNewCollection(productToUpdate)
       .then(() => {
@@ -153,7 +155,8 @@ const NewCollectionTable = () => {
               <TableCell>
                 <input
                   type="checkbox"
-                  checked={activeId === _id}
+                  disabled={editingId !== _id}
+                  checked={active || activeId === _id}
                   onChange={() => handleCheckboxChange(_id)}
                 />
               </TableCell>
@@ -176,7 +179,6 @@ const NewCollectionTable = () => {
                             setEditingId("");
                             onSubmit(index);
                           }}
-                          style={{ border: "1px solid blue" }}
                         />
                       ) : (
                         <EditIcon onClick={() => setEditingId(_id)} />

@@ -1,4 +1,5 @@
 "use client";
+
 import { getContactList } from "@/api/admin";
 import {
   Table,
@@ -9,9 +10,8 @@ import {
   TableRow,
 } from "@nextui-org/react";
 import { useEffect, useState } from "react";
+import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { columns } from "./data";
-import { GrFormNext } from "react-icons/gr";
-import { GrFormPrevious } from "react-icons/gr";
 
 interface IContact {
   _id: string;
