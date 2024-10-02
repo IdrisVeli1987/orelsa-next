@@ -91,7 +91,7 @@ const AdminSideBar = () => {
         Çıxış et
       </Button>
       <div className="flex justify-center font-black text-3xl text-white pb-4 items-end h-full">
-        <Link href="/admin/dashboard">ORELSA.AZ</Link>
+        <Link href="/admin/products">ORELSA.AZ</Link>
       </div>
     </div>
   );
