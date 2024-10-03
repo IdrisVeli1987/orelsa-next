@@ -34,7 +34,7 @@ interface INewCollection {
 
 const NewCollectionTable = () => {
   const [newCollection, setNewCollection] = useState<INewCollection[]>([]);
-  const [editingId, setEditingId] = useState<string>("");
+  const [editingId, setEditingId] = useState<string | null>(null);
   const [activeId, setActiveId] = useState<string | null>(null);
 
   const router = useRouter();
@@ -145,7 +145,7 @@ const NewCollectionTable = () => {
               <TableCell>
                 <input
                   disabled={editingId !== _id}
-                  className="bg-white"
+                  className="bg-white w-full"
                   value={description}
                   onChange={(e) => {
                     handleChange(_id, "description", e.target.value);
@@ -162,37 +162,35 @@ const NewCollectionTable = () => {
               </TableCell>
               <TableCell>
                 <div className="relative flex items-start gap-2 justify-center">
-                  <Tooltip content="Details">
-                    <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                      <EyeIcon
+                  <span className="text-lg cursor-pointer active:opacity-50 text-[#34C759]">
+                    {editingId === _id ? (
+                      <IoIosSave
                         onClick={() => {
-                          router.push("/products/" + _id);
+                          onSubmit(index);
+                          setEditingId(null);
                         }}
                       />
-                    </span>
-                  </Tooltip>
-                  <Tooltip content="Edit user">
-                    <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                      {editingId ? (
-                        <IoIosSave
-                          onClick={() => {
-                            setEditingId("");
-                            onSubmit(index);
-                          }}
-                        />
-                      ) : (
-                        <EditIcon onClick={() => setEditingId(_id)} />
-                      )}
-                    </span>
-                  </Tooltip>
-                  <Tooltip color="danger" content="Delete user">
-                    <span
-                      className="text-lg text-danger cursor-pointer active:opacity-50"
-                      onClick={() => handleDelete(_id)}
-                    >
-                      <DeleteIcon />
-                    </span>
-                  </Tooltip>
+                    ) : (
+                      <EditIcon
+                        onClick={() => {
+                          setEditingId(_id);
+                        }}
+                      />
+                    )}
+                  </span>
+                  <span
+                    className="text-lg text-danger cursor-pointer active:opacity-50"
+                    onClick={() => handleDelete(_id)}
+                  >
+                    <DeleteIcon />
+                  </span>
+                  <span className="text-lg text-[#327ceb] cursor-pointer active:opacity-50">
+                    <EyeIcon
+                      onClick={() => {
+                        router.push("/products/" + _id);
+                      }}
+                    />
+                  </span>
                 </div>
               </TableCell>
             </TableRow>

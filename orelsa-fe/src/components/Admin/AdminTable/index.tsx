@@ -46,7 +46,7 @@ interface IProduct {
 
 const AdminTable = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
-  const [editingId, setEditingId] = useState<string>("");
+  const [editingId, setEditingId] = useState<string | null>(null);
 
   const router = useRouter();
 
@@ -87,68 +87,63 @@ const AdminTable = () => {
     }
   };
 
-  const renderCell = React.useCallback((user: any, columnKey: any) => {
-    const cellValue = user[columnKey];
-    switch (columnKey) {
-      case "name":
-        return (
-          <User
-            avatarProps={{ radius: "lg", src: user.avatar }}
-            // description={user.email}
-            name={cellValue}
-            className=""
-          >
-            {user.email}
-          </User>
-        );
-      case "role":
-        return (
-          <div className="flex flex-col ">
-            <p className="text-bold text-sm capitalize">{cellValue}</p>
-            <p className="text-bold text-sm capitalize text-default-400">
-              {user.team}
-            </p>
-          </div>
-        );
-      case "status":
-        return (
-          <Chip
-            className="capitalize"
-            color={statusColorMap[user.status]}
-            size="sm"
-            variant="flat"
-          >
-            {cellValue}
-          </Chip>
-        );
-      case "actions":
-        return (
-          <div className="relative flex items-center gap-2 justify-center">
-            <Tooltip content="Details">
-              <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                <EyeIcon />
-              </span>
-            </Tooltip>
-            <Tooltip content="Edit user">
-              <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                <EditIcon />
-              </span>
-            </Tooltip>
-            <Tooltip
-              color="danger"
-              content="Delete user"
-              // aria-describedby={null}
-            >
-              <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                <DeleteIcon aria-describedby={null} />
-              </span>
-            </Tooltip>
-          </div>
-        );
-      default:
-        return cellValue;
-    }
-  }, []);
+  // const renderCell = React.useCallback((user: any, columnKey: any) => {
+  //   const cellValue = user[columnKey];
+  //   switch (columnKey) {
+  //     case "name":
+  //       return (
+  //         <User
+  //           avatarProps={{ radius: "lg", src: user.avatar }}
+  //           name={cellValue}
+  //           className=""
+  //         >
+  //           {user.email}
+  //         </User>
+  //       );
+  //     case "role":
+  //       return (
+  //         <div className="flex flex-col ">
+  //           <p className="text-bold text-sm capitalize">{cellValue}</p>
+  //           <p className="text-bold text-sm capitalize text-default-400">
+  //             {user.team}
+  //           </p>
+  //         </div>
+  //       );
+  //     case "status":
+  //       return (
+  //         <Chip
+  //           className="capitalize"
+  //           color={statusColorMap[user.status]}
+  //           size="sm"
+  //           variant="flat"
+  //         >
+  //           {cellValue}
+  //         </Chip>
+  //       );
+  //     case "actions":
+  //       return (
+  //         <div className="relative flex items-center gap-2 justify-center">
+  //           <Tooltip content="Details">
+  //             <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+  //               <EyeIcon />
+  //             </span>
+  //           </Tooltip>
+  //           <Tooltip content="Edit user">
+  //             <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+  //               <EditIcon />
+  //             </span>
+  //           </Tooltip>
+  //           <Tooltip color="danger" content="Delete user">
+  //             <span className="text-lg text-danger cursor-pointer active:opacity-50">
+  //               <DeleteIcon aria-describedby={null} />
+  //             </span>
+  //           </Tooltip>
+  //         </div>
+  //       );
+  //     default:
+  //       return cellValue;
+  //   }
+  // }, []);
 
   useEffect(() => {
     getAllProductsAdmin().then((data) => {
@@ -260,7 +255,7 @@ const AdminTable = () => {
                 </TableCell>
                 <TableCell>
                   <input
-                    className="bg-white"
+                    className="bg-white text-[#34C759]"
                     disabled={editingId !== _id}
                     value={category}
                     onChange={(e) => {
@@ -281,37 +276,31 @@ const AdminTable = () => {
                 </TableCell>
                 <TableCell>
                   <div className="relative flex items-center gap-2 justify-center">
-                    <Tooltip content="Details">
-                      <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                        <EyeIcon
+                    <span className="text-lg cursor-pointer active:opacity-50 text-[#34C759]">
+                      {editingId === _id ? (
+                        <IoIosSave
                           onClick={() => {
-                            router.push("/products/" + _id);
+                            setEditingId(null);
+                            onSubmit(index);
                           }}
                         />
-                      </span>
-                    </Tooltip>
-                    <Tooltip content="Edit user">
-                      <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                        {editingId ? (
-                          <IoIosSave
-                            onClick={() => {
-                              setEditingId("");
-                              onSubmit(index);
-                            }}
-                          />
-                        ) : (
-                          <EditIcon onClick={() => setEditingId(_id)} />
-                        )}
-                      </span>
-                    </Tooltip>
-                    <Tooltip color="danger" content="Delete user">
-                      <span
-                        className="text-lg text-danger cursor-pointer active:opacity-50 "
-                        onClick={() => handleDelete(_id)}
-                      >
-                        <DeleteIcon />
-                      </span>
-                    </Tooltip>
+                      ) : (
+                        <EditIcon onClick={() => setEditingId(_id)} />
+                      )}
+                    </span>
+                    <span
+                      className="text-lg text-danger cursor-pointer active:opacity-50 "
+                      onClick={() => handleDelete(_id)}
+                    >
+                      <DeleteIcon />
+                    </span>
+                    <span className="text-lg text-[#327ceb] cursor-pointer active:opacity-50">
+                      <EyeIcon
+                        onClick={() => {
+                          router.push("/products/" + _id);
+                        }}
+                      />
+                    </span>
                   </div>
                 </TableCell>
               </TableRow>

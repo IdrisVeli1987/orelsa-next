@@ -10,7 +10,7 @@ const AdminLogin: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
-  const router = useRouter(); // Initialize the useRouter hook
+  const router = useRouter();
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -24,7 +24,7 @@ const AdminLogin: React.FC = () => {
       });
       localStorage.setItem("token", token);
       toast.success("Daxil oldunuz!");
-      router.push("/admin/products"); 
+      router.push("/admin/products");
     } catch (error: any) {
       console.error("Error submitting form:", error);
       setError(
@@ -36,12 +36,15 @@ const AdminLogin: React.FC = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen w-full bg-[#A1C287BD]">
-      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-lg">
+      <div className="w-full max-w-md p-6 bg-green border-[2px] border-white rounded-lg shadow-lg">
         <LandingContainer>
           <form
             onSubmit={handleSubmit}
             className="w-full flex flex-col justify-center items-center gap-4"
           >
+            <div className="w-[209px] text-center text-white font-semibold size-[32px] leading-[48px]text-white">
+              Admin Panel
+            </div>
             <Input
               placeholder="Username"
               value={username}

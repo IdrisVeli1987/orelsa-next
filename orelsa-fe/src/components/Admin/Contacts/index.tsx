@@ -24,7 +24,7 @@ interface IContact {
 const Contacts = () => {
   const [newCollection, setNewCollection] = useState<IContact[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -63,16 +63,26 @@ const Contacts = () => {
             return (
               <TableRow key={_id}>
                 <TableCell>
-                  <input className="bg-white" value={name} readOnly />
+                  <input className="bg-white" value={name} readOnly disabled />
                 </TableCell>
                 <TableCell>
-                  <input className="bg-white" value={email} readOnly />
+                  <input className="bg-white" value={email} readOnly disabled />
                 </TableCell>
                 <TableCell>
-                  <input className="bg-white" value={subject} readOnly />
+                  <input
+                    className="bg-white"
+                    value={subject}
+                    readOnly
+                    disabled
+                  />
                 </TableCell>
                 <TableCell>
-                  <input className="bg-white" value={message} readOnly />
+                  <input
+                    className="bg-white"
+                    value={message}
+                    readOnly
+                    disabled
+                  />
                 </TableCell>
               </TableRow>
             );
