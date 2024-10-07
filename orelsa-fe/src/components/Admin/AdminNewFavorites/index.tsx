@@ -68,7 +68,7 @@ const AdminAddNewFavorites: React.FC<{
   return (
     <div className="max-w-xl mx-auto p-6">
       <h3 className="bg-[#3FBE5B] text-white text-center py-3 text-2xl">
-        Yeni kolleksiya yarat
+        Yeni kat. seçilmiş yarat
       </h3>
       <form
         onSubmit={handleSubmit}
@@ -81,7 +81,7 @@ const AdminAddNewFavorites: React.FC<{
           required
           className="w-full bg-[#FAFAFA]"
         />
-        <div className="flex flex-col gap-4">
+        {/* <div className="flex flex-col gap-4">
           <Checkbox
             isSelected={active}
             onChange={(e) => setActive(e.target.checked)}
@@ -90,7 +90,7 @@ const AdminAddNewFavorites: React.FC<{
           >
             Aktiv
           </Checkbox>
-        </div>
+        </div> */}
         <div
           {...getRootProps()}
           className="bg-white w-full h-[195px] flex flex-col justify-around items-center border-dashed border-2 border-[#CBD0DC] rounded-md cursor-pointer"

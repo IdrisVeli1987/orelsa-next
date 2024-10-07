@@ -18,7 +18,7 @@ export default function ShopPage() {
     React.useState("16");
   const [selectedSortOption, setSelectedSortOption] = React.useState("Default");
 
-  const handleNumberOfProductsChange = (numberOfProducts: string) => {
+  const handleNumberOfProductsChange = (numberOfProducts: string): void => {
     setSelectedNumberOfProducts(numberOfProducts);
   };
 

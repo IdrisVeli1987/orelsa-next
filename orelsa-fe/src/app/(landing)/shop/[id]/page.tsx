@@ -1,4 +1,3 @@
-// import ShopDetails from "@/components/UI/Details/ShopDetails";
 import RelatedProducts from "@/components/UI/Releated/Products";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import Image from "next/image";
@@ -10,7 +9,7 @@ interface IProps {
   };
 }
 
-export default function ShopDetails({ params }: IProps) {
+export default function ShopDetails() {
   return (
     <main>
       <section className="bg-[#F9F1E7]">
@@ -41,7 +40,7 @@ export default function ShopDetails({ params }: IProps) {
           </div>
         </LandingContainer>
       </section>
-      {/* <ShopDetails /> */}
+      {/* <ShopDetaiils params={} /> */}
       <RelatedProducts />
     </main>
   );

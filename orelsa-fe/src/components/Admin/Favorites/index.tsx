@@ -1,6 +1,11 @@
-import { getBrowseRangeList } from "@/api/admin";
+"use client";
+
 import {
-  Checkbox,
+  deleteHomeBrowseRange,
+  getBrowseRangeList,
+  updatehomeBrowseRange,
+} from "@/api/admin";
+import {
   Image,
   Table,
   TableBody,
@@ -9,8 +14,14 @@ import {
   TableHeader,
   TableRow,
 } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { IoIosSave } from "react-icons/io";
+import { DeleteIcon } from "../AdminTable/DeleteIcon";
+import { EditIcon } from "../AdminTable/EditIcon";
 import { columns } from "./data";
+import { EyeIcon } from "../AdminTable/EyeIcon";
+import toast from "react-hot-toast";
 
 interface INewCollection {
   _id: string;
@@ -21,6 +32,19 @@ interface INewCollection {
 
 const Favorites = () => {
   const [newCollection, setNewCollection] = useState<INewCollection[]>([]);
+  const [editingId, setEditingId] = useState<string | null>(null);
+
+  const router = useRouter();
+
+  const handleChange = (id: any, key: any, value: any) => {
+    const _newProducts = newCollection.map((product: any) => {
+      if (product._id === id) {
+        product[key] = value;
+      }
+      return product;
+    });
+    setNewCollection(_newProducts);
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -33,6 +57,27 @@ const Favorites = () => {
     };
     fetchProducts();
   }, []);
+
+  const handleDelete = async (productId: string) => {
+    if (confirm("Are you sure you want to delete this product?")) {
+      try {
+        await deleteHomeBrowseRange(productId);
+        setNewCollection((prevProducts) =>
+          prevProducts.filter((product) => product._id !== productId)
+        );
+        toast.success("Product deleted successfully!");
+      } catch (error) {
+        console.error("Error deleting product:", error);
+        toast.error("Failed to delete product.");
+      }
+    }
+  };
+
+  const onSubmit = async (index: number) => {
+    await updatehomeBrowseRange(newCollection[index]).then((data) => {
+      toast.success("successfully");
+    });
+  };
 
   return (
     <Table aria-label="Example table with custom cells" className="w-full">
@@ -48,27 +93,66 @@ const Favorites = () => {
       </TableHeader>
 
       <TableBody>
-        {newCollection.map(({ _id, description, browseRangePhoto }) => {
-          return (
-            <TableRow key={_id}>
-              <TableCell>
-                <Image
-                  className="bg-white"
-                  width={100}
-                  height={100}
-                  alt={"photo"}
-                  src={browseRangePhoto}
-                />
-              </TableCell>
-              <TableCell>
-                <input className="bg-white" value={description} />
-              </TableCell>
-              <TableCell>
-                <Checkbox className="bg-white" defaultChecked={true} />
-              </TableCell>
-            </TableRow>
-          );
-        })}
+        {newCollection.map(
+          ({ _id, description, browseRangePhoto }, index: number) => {
+            return (
+              <TableRow key={_id}>
+                <TableCell>
+                  <Image
+                    className="bg-white"
+                    width={100}
+                    height={100}
+                    alt={"photo"}
+                    src={browseRangePhoto}
+                    onChange={(e) => {
+                      console.log(e);
+                      // handleChange(_id, "name", e);
+                    }}
+                  />
+                </TableCell>
+                <TableCell>
+                  <input
+                    className="bg-white"
+                    value={description}
+                    disabled={editingId !== _id}
+                    onChange={(e) => {
+                      handleChange(_id, "description", e.target.value);
+                    }}
+                  />
+                </TableCell>
+                <TableCell>
+                  <div className="relative flex items-start gap-2 justify-start">
+                    <span className="text-lg cursor-pointer active:opacity-50 text-[#34C759]">
+                      {editingId === _id ? (
+                        <IoIosSave
+                          onClick={() => {
+                            setEditingId(null);
+                            onSubmit(index);
+                          }}
+                        />
+                      ) : (
+                        <EditIcon onClick={() => setEditingId(_id)} />
+                      )}
+                    </span>
+                    <span
+                      className="text-lg text-danger cursor-pointer active:opacity-50 "
+                      onClick={() => handleDelete(_id)}
+                    >
+                      <DeleteIcon />
+                    </span>
+                    {/* <span className="text-lg text-[#327ceb] cursor-pointer active:opacity-50">
+                      <EyeIcon
+                        onClick={() => {
+                          router.push("/homeBrowseRange/" + _id);
+                        }}
+                      />
+                    </span> */}
+                  </div>
+                </TableCell>
+              </TableRow>
+            );
+          }
+        )}
       </TableBody>
     </Table>
   );

@@ -7,7 +7,7 @@ export const getAllProducts = async () => {
   return data;
 };
 
-export const getDetailsById = async (id:string) => {
+export const getDetailsById = async (id: string) => {
   const { data } = await axios.get(BASE_URL + `/product/${id}`);
   return data;
 };

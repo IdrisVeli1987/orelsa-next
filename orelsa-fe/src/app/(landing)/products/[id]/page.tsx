@@ -11,14 +11,14 @@ interface IProps {
 }
 export default async function ShopDetaiils({ params }: IProps) {
   const data = await getDetailsById(params.id);
-  console.log(data);
+  console.log("data", data);
 
   return (
     <main>
       <section className="bg-[#F9F1E7] ">
         <LandingContainer>
           <div className="flex justify-between items-center gap-6 w-full relative">
-            <div className="flex justify-between items-center gap-6 fixed ">
+            <div className="flex justify-between items-center gap-6">
               <div className="flex gap-4">
                 <Link href="/">Home</Link>
                 <span className="font-bold">&gt;</span>

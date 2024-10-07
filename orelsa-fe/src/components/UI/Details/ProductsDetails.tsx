@@ -1,21 +1,21 @@
 "use client";
-import React, { useState } from "react";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
+import { IProductById } from "@/interface/ui";
+import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@nextui-org/react";
-import { FaFacebook, FaLinkedinIn } from "react-icons/fa";
+import { useState } from "react";
 import { AiFillTwitterCircle } from "react-icons/ai";
-import { IProductById } from "@/interface/ui";
+import { FaFacebook, FaLinkedinIn } from "react-icons/fa";
 
 const ProductsDetails = ({
   _id,
   name,
   description,
   price,
-  discount,
-  discount_price,
   photos,
+  category,
+  model_no,
 }: IProductById) => {
   const [selectedImage, setSelectedImage] = useState(photos?.[0] ?? "");
 
@@ -80,16 +80,20 @@ const ProductsDetails = ({
                   <span className="pr-2 font-normal text-base text-[#9F9F9F]">
                     :
                   </span>
-                  <p className="font-normal text-base text-[#9F9F9F]">SS001</p>
+                  <p className="font-normal text-base text-[#9F9F9F]">
+                    {model_no}
+                  </p>
                 </div>
                 <div className="flex ">
                   <p className="pr-7 font-normal text-base text-[#9F9F9F]">
                     Category
                   </p>
                   <span className="pr-4 font-normal text-base text-[#9F9F9F]">
-                    :
+                    : 
                   </span>
-                  <p className="font-normal text-base text-[#9F9F9F]">Sofas</p>
+                  <p className="font-normal text-base text-[#9F9F9F]">
+                    {category}
+                  </p>
                 </div>
               </div>
 

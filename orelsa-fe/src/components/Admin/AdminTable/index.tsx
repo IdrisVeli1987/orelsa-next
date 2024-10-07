@@ -2,19 +2,16 @@
 
 import { deleteProduct, getAllProductsAdmin, updateProduct } from "@/api/admin";
 import {
-  Chip,
   Table,
   TableBody,
   TableCell,
   TableColumn,
   TableHeader,
   TableRow,
-  Tooltip,
-  User,
 } from "@nextui-org/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { IoIosSave } from "react-icons/io";
 import { DeleteIcon } from "./DeleteIcon";

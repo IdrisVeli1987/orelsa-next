@@ -124,13 +124,6 @@ export const getAdminDashboardHomeNewCollectionById = async (id: string) => {
   return data;
 };
 
-// export const postAdminDashboardHomeBrowseRange = async (
-//   description: string,
-//   photo: string
-// ) => {
-//   // if(){}
-// };
-
 export const getAllProductsAdmin = async () => {
   const url = "http://localhost:9089/admin/dashboard/product";
 
@@ -232,6 +225,44 @@ export const getBrowseRangeList = async () => {
   const { data } = await axios.get(url, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return data;
+};
+
+export const postAdminDashboardHomeBrowseRange = async (
+  description: string,
+  photo: string
+) => {
+  // if(){}
+};
+
+export const deleteHomeBrowseRange = async (productId: string) => {
+  const token = localStorage.getItem("token");
+  const url = "http://localhost:9089/admin/dashboard/homeBrowseRange";
+  console.log(token);
+
+  try {
+    const response = await axios.delete(`${url}/${productId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("API error:", error);
+    throw error;
+  }
+};
+
+export const updatehomeBrowseRange = async (editingProduct: any) => {
+  let _link = ADMIN_BE_URL + "/dashboard/homeBrowseRange/" + editingProduct._id;
+  console.log("_link", _link);
+  const token = localStorage.getItem("token");
+  console.log("---", editingProduct);
+  const { data } = await axios.patch(_link, editingProduct, {
+    headers: {
+      Authorization: `Bearer ${token}`,
     },
   });
   return data;

@@ -18,6 +18,8 @@ export interface IProductById {
   discount: number;
   discount_price: number;
   photos: string[];
+  category: string;
+  model_no: string;
 }
 
 export interface IHomeNewCoolection {
