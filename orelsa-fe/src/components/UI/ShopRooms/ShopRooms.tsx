@@ -29,8 +29,6 @@ const ShopRooms = () => {
     getProductsList();
   }, []);
 
-  console.log(products);
-
   return (
     <section>
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full mt-10 pb-3">
@@ -50,7 +48,7 @@ const ShopRooms = () => {
               >
                 <div className="absolute flex justify-center items-center opacity-0 inset-0 z-50 transition duration-300 ease-in-out group-hover:bg-black/70 group-hover:opacity-100">
                   <Link
-                    href={`/shop/${_id}`}
+                    href={`/products/${_id}`}
                     className="bg-white w-[60%] text-xl text-[#B88E2F] py-3 rounded duration-300 ease-in-out text-center"
                   >
                     Ətraflı bax
