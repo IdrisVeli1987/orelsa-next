@@ -1,12 +1,38 @@
 "use client";
 import { cn } from "@nextui-org/theme";
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
 
 const SearchBar = () => {
   const [isSearching, setIsSearching] = useState(false);
-  const [activeSearch, setActiveSearch] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [search, setSearch] = useState([]);
+
+  useEffect(() => {
+    const featchSearchData = async () => {
+      const url = `http://localhost:9089/guest/search`;
+      // const sers = encodeURI();
+      try {
+        const { data } = await axios.get(url, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        setSearch(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    featchSearchData();
+  }, []);
+  console.log(search);
+  const onSearch = (event: React.FormEvent) => {
+    event.preventDefault();
+    console.log("current query", searchQuery);
+  };
 
   const handleSearch = (e: any) => {
     e.preventDefault();
@@ -18,15 +44,17 @@ const SearchBar = () => {
   return (
     <form
       className={cn(
-        "absolute h-[50px] transition-all duration-1000 ease-in-out right-[250px]",
+        "absolute h-[50px] transition-all duration-1000 ease-in-out right-[80px]",
         isSearching ? "w-[300px]" : "w-[50px]"
       )}
     >
       <div className="relative">
         <input
+          value={searchQuery}
           type="search"
           placeholder="Axtarış"
           className="w-full focus-visible:outline-none outline-none focus:outline-none h-full p-4 rounded-full bg-slate-200"
+          onChange={onSearch}
         />
         <button
           onClick={handleSearch}
