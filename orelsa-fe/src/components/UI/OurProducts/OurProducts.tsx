@@ -60,17 +60,19 @@ const OurProducts: React.FC = async () => {
                         <p className="text-[#B0B0B0]">{description}</p>
                         <div className="flex flex-col justify-between w-max gap-4 mt-2 ">
                           <p className="text-xl font-semibold text-[#B0B0B0]">
-                            {price} AZN
+                            {discount_price} AZN
                           </p>
 
-                          {discount !== 0 && (
+                          {discount !== 0 ? (
                             <p className="text-xl font-bold text-[#B0B0B0] line-through mb-2">
-                              {discount_price} <span>AZN</span>
+                              {price} <span>AZN</span>
                             </p>
+                          ) : (
+                            <div className="h-[35px]"></div>
                           )}
 
                           <div className="flex justify-center items-center w-[50px] h-[50px] rounded-full bg-[#2EC1AC] text-white absolute top-[24px] right-6">
-                            {true && <p>New</p>}{" "}
+                            {true && <p>New</p>}
                           </div>
 
                           <div className="flex justify-center items-center w-[50px] h-[50px] rounded-full bg-[#E97171] text-white absolute top-[24px] right-6">
