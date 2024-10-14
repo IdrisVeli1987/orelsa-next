@@ -9,6 +9,7 @@ import {
 } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import { columns } from "./data";
+import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 
 interface ISubscribe {
   _id: string;
@@ -19,13 +20,15 @@ interface ISubscribe {
 }
 
 const Subscribe = () => {
-  const [newCollection, setNewCollection] = useState<ISubscribe[]>([]);
+  const [subscribers, setNewSubscribers] = useState<ISubscribe[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const data = await getSubscribersList();
-        setNewCollection(data);
+        setNewSubscribers(data);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -33,34 +36,86 @@ const Subscribe = () => {
     fetchProducts();
   }, []);
 
-  return (
-    <Table aria-label="Example table with custom cells" className="w-full">
-      <TableHeader columns={columns}>
-        {(column) => (
-          <TableColumn
-            key={column.uid}
-            align={column.uid === "actions" ? "center" : "start"}
-          >
-            {column.name}
-          </TableColumn>
-        )}
-      </TableHeader>
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = subscribers.slice(indexOfFirstItem, indexOfLastItem);
 
-      <TableBody>
-        {newCollection.map(({ _id, email }, index) => {
-          return (
-            <TableRow key={_id}>
-              <TableCell>
-                <input className="bg-white" value={index + 1} />
-              </TableCell>
-              <TableCell>
-                <input className="bg-white" value={email} />
-              </TableCell>
-            </TableRow>
-          );
-        })}
-      </TableBody>
-    </Table>
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+  const totalPages = Math.ceil(subscribers.length / itemsPerPage);
+
+  return (
+    <div>
+      <Table aria-label="Example table with custom cells" className="w-full">
+        <TableHeader columns={columns}>
+          {(column) => (
+            <TableColumn
+              className="w-1/2"
+              key={column.uid}
+              align={column.uid === "actions" ? "center" : "start"}
+            >
+              {column.name}
+            </TableColumn>
+          )}
+        </TableHeader>
+
+        <TableBody>
+          {currentItems.map(({ _id, email }, index) => {
+            return (
+              <TableRow key={_id}>
+                <TableCell>
+                  <input
+                    className="bg-white"
+                    value={indexOfFirstItem + index + 1}
+                    readOnly
+                    disabled
+                  />
+                </TableCell>
+                <TableCell>
+                  <input className="bg-white" value={email} readOnly disabled />
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+
+      {totalPages > 1 && (
+        <div className="flex justify-center mt-8">
+          <button
+            className="w-[40px] h-[40px] rounded-full flex justify-center items-center"
+            onClick={() => {
+              currentPage > 1 && setCurrentPage((prev) => prev - 1);
+            }}
+            disabled={currentPage === 1}
+          >
+            <GrFormPrevious />
+          </button>
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index + 1}
+              onClick={() => paginate(index + 1)}
+              style={{
+                backgroundColor:
+                  currentPage === index + 1 ? "#34C759" : "#f4f4f5",
+                color: currentPage === index + 1 ? "#fff" : "#212121",
+              }}
+              className="w-[40px] h-[40px] rounded-full mx-2"
+            >
+              {index + 1}
+            </button>
+          ))}
+          <button
+            className="w-[40px] h-[40px] rounded-full flex justify-center items-center"
+            onClick={() => {
+              currentPage < totalPages && setCurrentPage((prev) => prev + 1);
+            }}
+            disabled={currentPage === totalPages}
+          >
+            <GrFormNext />
+          </button>
+        </div>
+      )}
+    </div>
   );
 };
 

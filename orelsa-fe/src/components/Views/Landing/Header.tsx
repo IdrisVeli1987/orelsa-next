@@ -1,12 +1,12 @@
-import { FC } from "react";
+"use client";
+
+import SearchBar from "@/components/Search/SearchBar";
 import Image from "next/image";
 import Link from "next/link";
+import { FC } from "react";
 import LandingContainer from "./LandingContainer";
 import menu from "./menu";
-import { CiSearch } from "react-icons/ci";
-import SearchBar from "@/components/Search/SearchBar";
 
-// Define the type for menu items
 type NavLink = {
   id: string;
   link: string;
@@ -14,7 +14,7 @@ type NavLink = {
 };
 
 const Header: FC = () => {
-  const navLinks: NavLink[] = menu(); // Ensure menu returns an array of NavLink
+  const navLinks: NavLink[] = menu();
 
   return (
     <header className="py-6 px-6 ">
@@ -44,7 +44,7 @@ const Header: FC = () => {
               </li>
             ))}
           </ul>
-        <SearchBar />
+          <SearchBar />
         </nav>
       </LandingContainer>
     </header>

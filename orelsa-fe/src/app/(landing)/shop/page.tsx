@@ -1,16 +1,15 @@
 "use client";
+import React from "react";
 import Quality from "@/components/UI/Quality/Quality";
 import ShopRooms from "@/components/UI/ShopRooms/ShopRooms";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
-import React from "react";
 import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
   Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
 } from "@nextui-org/react";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function ShopPage() {
@@ -51,47 +50,7 @@ export default function ShopPage() {
         <LandingContainer>
           <div className="flex justify-between items-center gap-6 w-full">
             <div className="flex justify-between items-center gap-6">
-              <div className="flex gap-3">
-                <Link href="">
-                  <Image
-                    src="/Shop/mixer.svg"
-                    alt="mixer imag"
-                    width={100}
-                    height={100}
-                    className="w-auto h-auto relative "
-                  />
-                </Link>
-                <p>Filter</p>
-              </div>
-
-              <Link href="">
-                <Image
-                  src="/Shop/dot.svg"
-                  alt="dot image"
-                  width={100}
-                  height={100}
-                  className="w-auto h-auto relative "
-                />
-              </Link>
-
-              <Link href="">
-                <Image
-                  src="/Shop/icon-3.svg"
-                  alt="icon 3"
-                  width={100}
-                  height={100}
-                  className="w-auto h-auto relative "
-                />
-              </Link>
-
               <div className="flex justify-center items-center gap-8">
-                <Image
-                  src="/Shop/Line.svg"
-                  alt="line separator"
-                  width={100}
-                  height={100}
-                  className="w-auto h-auto relative "
-                />
                 <p>Showing 1–16 of 32 results</p>
               </div>
             </div>
@@ -115,28 +74,6 @@ export default function ShopPage() {
                     <DropdownItem key="16">16</DropdownItem>
                     <DropdownItem key="32">32</DropdownItem>
                     <DropdownItem key="48">48</DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
-              </div>
-
-              <div className="flex justify-center items-center gap-4">
-                <p className="">Sort by</p>
-                <Dropdown>
-                  <DropdownTrigger>
-                    <Button variant="bordered" className="capitalize">
-                      {selectedSortOption}
-                    </Button>
-                  </DropdownTrigger>
-                  <DropdownMenu
-                    aria-label="Sort options"
-                    variant="flat"
-                    selectionMode="single"
-                    selectedKeys={new Set([selectedSortOption])}
-                    onSelectionChange={handleSortOptionChange}
-                  >
-                    <DropdownItem key="Default">Default</DropdownItem>
-                    <DropdownItem key="Date">Date</DropdownItem>
-                    <DropdownItem key="Category">Category</DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
               </div>

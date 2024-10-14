@@ -146,12 +146,6 @@ export default function Slider() {
           </SwiperSlide>
         ))}
         <div
-          ref={nextButtonRef}
-          className="h-8 w-8 cursor-pointer !hidden lg:!flex items-center justify-center absolute z-50 top-1/2 right-1/3 shadow-2xl rounded-full text-[#B88E2F]  bg-white"
-        >
-          <FaChevronRight size={16} />
-        </div>
-        <div
           ref={paginationRef}
           className="absolute !hidden lg:!flex items-center gap-2 bottom-0 left-1/2 w-full"
         >

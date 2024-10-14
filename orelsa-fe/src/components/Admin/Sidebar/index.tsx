@@ -51,7 +51,6 @@ const AdminSideBar = () => {
         display: "flex",
         flexDirection: "column",
         minHeight: "100vh",
-        height: "100%",
         gap: "10px",
         width: "400px",
         justifyContent: "space-between",
@@ -86,7 +85,7 @@ const AdminSideBar = () => {
       </div>
       <Button
         onClick={handleLogout}
-        className="bg-redz-500 text-white rounded-md py-3"
+        className="bg-green-600 text-white rounded-md py-3 mt-40"
       >
         Çıxış et
       </Button>

@@ -12,6 +12,13 @@ export const getDetailsById = async (id: string) => {
   return data;
 };
 
+export const getRelatedProductsById = async (id: string) => {
+  const { data } = await axios.get(
+    `http://localhost:9089/guest/product-category/${id}`
+  );
+  return data;
+};
+
 export const getHomeNewCollection = async (id: string) => {
   const { data } = await axios.get(BASE_URL + `/homeNewCollection`);
   return data;

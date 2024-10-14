@@ -1,6 +1,9 @@
-import { getDetailsById } from "@/api/ui/requests";
+import { getDetailsById, getRelatedProductsById } from "@/api/ui/requests";
 import ProductsDetails from "@/components/UI/Details/ProductsDetails";
+import RelatedProducts from "@/components/UI/Releated/Products";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
+import { IProduct } from "@/interface/ui";
+import { isEmpty } from "lodash-es";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,9 +12,10 @@ interface IProps {
     id: string;
   };
 }
+
 export default async function ShopDetaiils({ params }: IProps) {
   const data = await getDetailsById(params.id);
-  console.log("data", data);
+  const related: IProduct[] = await getRelatedProductsById(params.id);
 
   return (
     <main>
@@ -35,7 +39,7 @@ export default async function ShopDetaiils({ params }: IProps) {
                   alt="mixer imag"
                   width={100}
                   height={100}
-                  className="w-auto h-auto relative "
+                  className="w-auto h-auto relative"
                 />
                 <p>{data.name}</p>
               </div>
@@ -44,7 +48,7 @@ export default async function ShopDetaiils({ params }: IProps) {
         </LandingContainer>
       </section>
       <ProductsDetails {...data} />
-      {/* <RelatedProducts /> */}
+      {isEmpty(related) ? null : <RelatedProducts relatedProducts={related} />}
     </main>
   );
 }

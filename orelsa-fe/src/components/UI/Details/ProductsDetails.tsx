@@ -70,7 +70,6 @@ const ProductsDetails = ({
                   SİFARİŞ ET
                 </Button>
               </div>
-
               <hr />
               <div className=" flex flex-col w-full pt-10">
                 <div className=" flex gap-3">
@@ -89,14 +88,13 @@ const ProductsDetails = ({
                     Category
                   </p>
                   <span className="pr-4 font-normal text-base text-[#9F9F9F]">
-                    : 
+                    :
                   </span>
                   <p className="font-normal text-base text-[#9F9F9F]">
                     {category}
                   </p>
                 </div>
               </div>
-
               <div id="follow" className="flex gap-6 pt-14">
                 <h6 className="font-normal text-base text-[#9F9F9F]">
                   Follow us

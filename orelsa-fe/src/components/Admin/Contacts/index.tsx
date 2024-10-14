@@ -22,14 +22,14 @@ interface IContact {
 }
 
 const Contacts = () => {
-  const [newCollection, setNewCollection] = useState<IContact[]>([]);
+  const [contacts, setNewContacts] = useState<IContact[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const data = await getContactList();
-        setNewCollection(data);
+        setNewContacts(data);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -39,10 +39,10 @@ const Contacts = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = newCollection.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = contacts.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-  const totalPages = Math.ceil(newCollection.length / itemsPerPage);
+  const totalPages = Math.ceil(contacts.length / itemsPerPage);
 
   return (
     <div>
