@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from "react";
-import LandingContainer from "./LandingContainer";
-import Link from "next/link";
-import Rights from "@/components/UI/AllRights/Rights";
+
 import { postSubscribeGuest } from "@/api/admin";
+import Rights from "@/components/UI/AllRights/Rights";
+import Link from "next/link";
+import { useState } from "react";
 import { toast } from "react-toastify";
+import LandingContainer from "./LandingContainer";
 
 const Footer = () => {
   const [email, setEmail] = useState("");

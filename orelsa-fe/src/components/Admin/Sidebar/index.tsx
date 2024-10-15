@@ -3,8 +3,7 @@
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation"; // Correct import
-import React from "react";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const links = [
@@ -45,17 +44,7 @@ const AdminSideBar = () => {
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: "#34C759",
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
-        gap: "10px",
-        width: "400px",
-        justifyContent: "space-between",
-      }}
-    >
+    <div className="flex flex-col justify-between min-h-screen w-[400px] gap-2.5 bg-[#34C759]">
       <div>
         <h2 className="font-black text-3xl text-white py-14 px-7 text-center">
           Admin Panel
@@ -63,12 +52,7 @@ const AdminSideBar = () => {
         {links.map(({ href, title, src }, i) => (
           <div key={i} className="flex items-center pl-7 min-h-fit">
             <Image
-              style={{
-                padding: 10,
-                backgroundColor: "orange",
-                borderRadius: 16,
-                height: 50,
-              }}
+              className="p-[10px] rounded-2xl h-[50px] bg-[orange]"
               width={50}
               height={50}
               src={src}

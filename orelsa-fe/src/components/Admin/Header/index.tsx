@@ -8,27 +8,9 @@ interface IProps {
 
 const AdminHeader = ({ title, button }: IProps) => {
   return (
-    <div
-      className="w-full px-4"
-      style={{
-        height: 70,
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-      }}
-    >
-      <span
-        style={{
-          fontSize: 24,
-          fontWeight: 600,
-        }}
-      >
-        <Link
-          style={{
-            color: "#34C759",
-          }}
-          href="/"
-        >
+    <div className="flex justify-between items-center w-full px-4 h-[70px]">
+      <span className="text-2xl font-semibold">
+        <Link className="text-[#34C759]" href="/">
           Orelsa.az
         </Link>
         / {title}

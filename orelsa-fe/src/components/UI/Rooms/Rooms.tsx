@@ -1,7 +1,7 @@
 "use client";
 
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
-import "../../../../node_modules/swiper/swiper-bundle.min.css"; // Import Swiper styles if not already included
+import "../../../../node_modules/swiper/swiper-bundle.min.css";
 import Slider from "../Slider/Slider";
 
 const Rooms: React.FC = () => {

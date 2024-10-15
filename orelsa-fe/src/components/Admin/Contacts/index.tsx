@@ -104,12 +104,11 @@ const Contacts = () => {
             <button
               key={index + 1}
               onClick={() => paginate(index + 1)}
-              style={{
-                backgroundColor:
-                  currentPage === index + 1 ? "#34C759" : "#f4f4f5",
-                color: currentPage === index + 1 ? "#fff" : "#212121",
-              }}
-              className="w-[40px] h-[40px] rounded-full mx-2"
+              className={`w-[40px] h-[40px] rounded-full mx-2 ${
+                currentPage === index + 1
+                  ? "bg-green-500 text-white"
+                  : "bg-gray-200 text-gray-800"
+              }`}
             >
               {index + 1}
             </button>

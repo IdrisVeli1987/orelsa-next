@@ -12,31 +12,18 @@ const FavoritesPanel = () => {
 
   const handleProductAdded = () => {
     setModalOpen(false);
-    // Məhsul əlavə olunduqdan sonra səhifəni yeniləyin
     window.location.reload();
   };
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "0fr 4fr",
-      }}
-    >
+    <div className="grid grid-cols-[0fr_1fr]">
       <AdminSideBar />
-      <div className="p-5 ">
+      <div className="p-5">
         <AdminHeader
           title="Məhsul kateqoriyasına aid seçilmişlər paneli"
           button={() => (
             <button
               onClick={() => setModalOpen(true)}
-              style={{
-                padding: 4,
-                borderRadius: 8,
-                backgroundColor: "#34C759",
-                color: "white",
-                border: "none",
-                cursor: "pointer",
-              }}
+              className="p-1 rounded-lg text-white border-none cursor-pointer bg-[#34C759] px-2"
             >
               Əlavə et
             </button>
@@ -52,7 +39,7 @@ const FavoritesPanel = () => {
           setModalOpen(false);
         }}
       >
-        <ModalContent>
+        <ModalContent className="scrollbar-hidden">
           <AdminAddNewFavorites
             onProductAdded={handleProductAdded}
             setModalOpen={setModalOpen}

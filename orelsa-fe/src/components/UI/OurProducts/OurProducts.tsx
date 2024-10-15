@@ -51,7 +51,6 @@ const OurProducts: React.FC = async () => {
                           className="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-110"
                           width={300}
                           height={300}
-                          style={{ objectFit: "cover" }}
                         />
                       </div>
 

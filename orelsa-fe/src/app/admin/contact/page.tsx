@@ -6,12 +6,7 @@ import AdminSideBar from "@/components/Admin/Sidebar";
 
 const FavoritesPanel = () => {
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "0fr 4fr",
-      }}
-    >
+    <div className="grid grid-cols-[0fr_1fr]">
       <AdminSideBar />
       <div className="p-5 ">
         <AdminHeader title="Bizimlə əlaqə" />

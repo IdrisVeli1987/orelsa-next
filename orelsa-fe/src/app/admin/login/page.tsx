@@ -1,4 +1,5 @@
 "use client";
+
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import { Button, Input } from "@nextui-org/react";
 import axios from "axios";

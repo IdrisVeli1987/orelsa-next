@@ -1,9 +1,10 @@
 "use client";
-import React, { useState, FormEvent, useCallback } from "react";
-import { Input, Button, Checkbox, Image } from "@nextui-org/react";
+
+import { Button, Checkbox, Image, Input } from "@nextui-org/react";
 import axios from "axios";
-import toast from "react-hot-toast";
+import React, { FormEvent, useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import toast from "react-hot-toast";
 
 const AdminAddNewCollection: React.FC<{
   onProductAdded: () => void;
@@ -68,7 +69,7 @@ const AdminAddNewCollection: React.FC<{
   });
 
   return (
-    <div className="max-w-xl mx-auto p-6">
+    <div className="max-w-xl mx-auto">
       <h3 className="bg-[#3FBE5B] text-white text-center py-3 text-2xl">
         Yeni kolleksiya yarat
       </h3>
@@ -95,7 +96,7 @@ const AdminAddNewCollection: React.FC<{
             isSelected={active}
             onChange={(e) => setActive(e.target.checked)}
             color="warning"
-            style={{ marginBottom: "20px" }}
+            className="mb-5"
           >
             Aktiv
           </Checkbox>

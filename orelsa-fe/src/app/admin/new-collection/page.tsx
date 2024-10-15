@@ -15,27 +15,15 @@ const AdminNewCollection = () => {
     window.location.reload();
   };
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "0fr 4fr",
-      }}
-    >
+    <div className="grid grid-cols-[0fr_1fr]">
       <AdminSideBar />
-      <div className="p-5 ">
+      <div className="p-5">
         <AdminHeader
           title="Yeni kolleksiya paneli"
           button={() => (
             <button
               onClick={() => setModalOpen(true)}
-              style={{
-                padding: 4,
-                borderRadius: 8,
-                backgroundColor: "#34C759",
-                color: "white",
-                border: "none",
-                cursor: "pointer",
-              }}
+              className="p-1 rounded-lg text-white border-none cursor-pointer bg-[#34C759] px-2"
             >
               Yeni kolleksiya
             </button>
@@ -51,7 +39,7 @@ const AdminNewCollection = () => {
           setModalOpen(false);
         }}
       >
-        <ModalContent>
+        <ModalContent className="scrollbar-hidden">
           <AdminAddNewCollection
             onProductAdded={handleProductAdded}
             setModalOpen={setModalOpen}

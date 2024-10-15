@@ -3,7 +3,7 @@ import { Input } from "@nextui-org/react";
 
 const AdminDashboard = () => {
   return (
-    <section className="">
+    <section>
       <LandingContainer>
         <div className="w-svw h-svh flex items-center justify-center">
           <div className="shadow-2xl border-2 border-white-500/100 relative p-14 lg:w-[50%] mx-auto">

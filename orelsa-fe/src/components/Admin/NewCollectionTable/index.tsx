@@ -12,16 +12,15 @@ import {
   TableColumn,
   TableHeader,
   TableRow,
-  Tooltip,
 } from "@nextui-org/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { IoIosSave } from "react-icons/io";
-import { DeleteIcon } from "../AdminTable/DeleteIcon";
-import { EditIcon } from "../AdminTable/EditIcon";
-import { EyeIcon } from "../AdminTable/EyeIcon";
+import { DeleteIcon } from "../../Icons/DeleteIcon";
+import { EditIcon } from "../../Icons/EditIcon";
+import { EyeIcon } from "../../Icons/EyeIcon";
 import { columns } from "./data";
 
 interface INewCollection {

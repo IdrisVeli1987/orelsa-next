@@ -1,5 +1,4 @@
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
-import React from "react";
 
 const Rights = () => {
   return (

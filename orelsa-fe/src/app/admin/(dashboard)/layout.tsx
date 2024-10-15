@@ -7,12 +7,7 @@ interface IProps {
 
 const AdminLayout = ({ children }: IProps) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-      }}
-    >
+    <div className="flex justify-between">
       <AdminSideBar />
       <div className="p-5 w-[calc(100%-400px)]">{children}</div>
     </div>

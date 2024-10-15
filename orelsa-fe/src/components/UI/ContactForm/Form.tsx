@@ -1,14 +1,14 @@
 "use client";
-import LandingContainer from "@/components/Views/Landing/LandingContainer";
-import { Input } from "@nextui-org/input";
-import { useState } from "react";
-import { FaPhone, FaPhoneAlt } from "react-icons/fa";
-import { IoLocationSharp } from "react-icons/io5";
-import { Textarea } from "@nextui-org/input";
-import { Button } from "@nextui-org/react";
-import Quality from "../Quality/Quality";
+
 import { postContactUsGuest } from "@/api/admin";
+import LandingContainer from "@/components/Views/Landing/LandingContainer";
+import { Input, Textarea } from "@nextui-org/input";
+import { Button } from "@nextui-org/react";
+import { useState } from "react";
+import { FaPhoneAlt } from "react-icons/fa";
+import { IoLocationSharp } from "react-icons/io5";
 import { toast } from "react-toastify";
+import Quality from "../Quality/Quality";
 
 export const Form = () => {
   const [name, setName] = useState("");

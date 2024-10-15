@@ -11,7 +11,6 @@ const AdminProducts = () => {
 
   const handleProductAdded = () => {
     setModalOpen(false);
-    // Məhsul əlavə olunduqdan sonra səhifəni yeniləyin
     window.location.reload();
   };
 
@@ -23,14 +22,7 @@ const AdminProducts = () => {
           <>
             <button
               onClick={() => setModalOpen(true)}
-              style={{
-                padding: 4,
-                borderRadius: 8,
-                backgroundColor: "#34C759",
-                color: "white",
-                border: "none",
-                cursor: "pointer",
-              }}
+              className="p-1 rounded-lg text-white border-none cursor-pointer bg-[#34C759] px-2"
             >
               Yeni Məhsul
             </button>
@@ -40,20 +32,12 @@ const AdminProducts = () => {
       <AdminTable />
 
       <Modal
-        style={{ padding: 40 }}
         isOpen={isModalOpen}
         onClose={() => {
           setModalOpen(false);
         }}
       >
-        <ModalContent
-          style={{
-            margin: 20,
-            overflow: "scroll",
-            height: "90vh",
-            overflowX: "hidden",
-          }}
-        >
+        <ModalContent className="scrollbar-hidden">
           <AdminNewProduct
             onProductAdded={handleProductAdded}
             setModalOpen={setModalOpen}

@@ -1,4 +1,5 @@
 "use client";
+
 import { IProductById } from "@/interface/ui";
 import { cn } from "@nextui-org/theme";
 import axios from "axios";

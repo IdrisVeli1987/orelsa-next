@@ -1,9 +1,10 @@
 "use client";
-import React, { useState, FormEvent, useCallback } from "react";
-import { Input, Button, Checkbox, Image } from "@nextui-org/react";
+
+import { Button, Image, Input } from "@nextui-org/react";
 import axios from "axios";
-import toast from "react-hot-toast";
+import React, { FormEvent, useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import toast from "react-hot-toast";
 
 const AdminAddNewFavorites: React.FC<{
   onProductAdded: () => void;
@@ -66,7 +67,7 @@ const AdminAddNewFavorites: React.FC<{
   });
 
   return (
-    <div className="max-w-xl mx-auto p-6">
+    <div className="max-w-xl mx-auto">
       <h3 className="bg-[#3FBE5B] text-white text-center py-3 text-2xl">
         Yeni kat. seçilmiş yarat
       </h3>
@@ -81,16 +82,6 @@ const AdminAddNewFavorites: React.FC<{
           required
           className="w-full bg-[#FAFAFA]"
         />
-        {/* <div className="flex flex-col gap-4">
-          <Checkbox
-            isSelected={active}
-            onChange={(e) => setActive(e.target.checked)}
-            color="warning"
-            style={{ marginBottom: "20px" }}
-          >
-            Aktiv
-          </Checkbox>
-        </div> */}
         <div
           {...getRootProps()}
           className="bg-white w-full h-[195px] flex flex-col justify-around items-center border-dashed border-2 border-[#CBD0DC] rounded-md cursor-pointer"

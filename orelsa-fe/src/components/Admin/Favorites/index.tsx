@@ -16,12 +16,11 @@ import {
 } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { IoIosSave } from "react-icons/io";
-import { DeleteIcon } from "../AdminTable/DeleteIcon";
-import { EditIcon } from "../AdminTable/EditIcon";
-import { columns } from "./data";
-import { EyeIcon } from "../AdminTable/EyeIcon";
 import toast from "react-hot-toast";
+import { IoIosSave } from "react-icons/io";
+import { DeleteIcon } from "../../Icons/DeleteIcon";
+import { EditIcon } from "../../Icons/EditIcon";
+import { columns } from "./data";
 
 interface INewCollection {
   _id: string;

@@ -1,17 +1,13 @@
 "use client";
 
-import React, { useRef, useState } from "react";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
+import { cn } from "@nextui-org/theme";
+import Image from "next/image";
+import { useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import Image from "next/image";
-import { cn } from "@nextui-org/theme";
 import { Navigation, Pagination } from "swiper/modules";
-import { FaArrowRight, FaChevronRight } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
 const Rooms = [
   {
     id: 1,

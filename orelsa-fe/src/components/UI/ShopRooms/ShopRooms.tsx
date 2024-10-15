@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import { ShopRoom } from "../../../../Utils/db";
 
 const ShopRooms = ({ numberOfProducts }) => {
-  console.log("🚀 ~ ShopRooms ~ numberOfProducts:", numberOfProducts);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -36,16 +35,17 @@ const ShopRooms = ({ numberOfProducts }) => {
           .map(
             ({
               _id,
-              photos,
               name,
               description,
-              discount_price,
               price,
+              discount,
+              discount_price,
+              photos,
             }: ShopRoom) => {
               return (
                 <div
                   key={_id}
-                  className="relative flex flex-col justify-center items-center border rounded-lg shadow-md w-full h-auto mb-6 group"
+                  className="relative flex flex-col justify-center items-center border rounded-lg  w-full h-auto mb-6 group hover:shadow-xl"
                 >
                   <div className="absolute flex justify-center items-center opacity-0 inset-0 z-50 transition duration-300 ease-in-out group-hover:bg-black/70 group-hover:opacity-100">
                     <Link
@@ -59,23 +59,42 @@ const ShopRooms = ({ numberOfProducts }) => {
                   <div className="relative w-full h-full overflow-hidden rounded ">
                     <Image
                       src={photos[0]}
-                      alt={description}
-                      className="w-full h-full object-cover transition-transform duration-300 ease-in-out transform "
+                      alt={name}
+                      className="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-110"
                       width={300}
                       height={300}
                     />
                   </div>
 
-                  <div className="bg-[#F4F5F7] w-full h-max p-4">
+                  <div className="bg-[#F4F5F7] w-full h-max pb-4 pl-4">
                     <h2 className="text-2xl font-semibold">{name}</h2>
-                    <p className="text-gray-600 my-2  ">{description}</p>
-                    <div className="flex justify-between items-center w-max gap-5">
-                      <p className="text-xl font-bold">RP {discount_price}</p>
-                      {price ? (
-                        <p className="text-[#B0B0B0] text-base line-through ">
-                          RP {price}
+                    <p className="text-[#B0B0B0]">{description}</p>
+                    <div className="flex flex-col justify-between w-max gap-4 mt-2 ">
+                      <p className="text-xl font-semibold text-[#B0B0B0]">
+                        {discount_price} AZN
+                      </p>
+
+                      {discount !== 0 ? (
+                        <p className="text-xl font-bold text-[#B0B0B0] line-through mb-2">
+                          {price} <span>AZN</span>
                         </p>
-                      ) : null}
+                      ) : (
+                        <div className="h-[35px]"></div>
+                      )}
+
+                      <div className="flex justify-center items-center w-[50px] h-[50px] rounded-full bg-[#2EC1AC] text-white absolute top-[24px] right-6">
+                        {true && <p>New</p>}
+                      </div>
+
+                      <div className="flex justify-center items-center w-[50px] h-[50px] rounded-full bg-[#E97171] text-white absolute top-[24px] right-6">
+                        {discount > 0 ? (
+                          <p>{discount}%</p>
+                        ) : (
+                          <div className="flex justify-center items-center w-full h-full bg-[#2EC1AC] rounded-full">
+                            <p>New</p>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>

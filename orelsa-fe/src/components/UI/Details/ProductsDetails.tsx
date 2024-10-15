@@ -1,4 +1,5 @@
 "use client";
+
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import { IProductById } from "@/interface/ui";
 import { Button } from "@nextui-org/react";

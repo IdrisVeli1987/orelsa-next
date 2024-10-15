@@ -1,7 +1,8 @@
 "use client";
-import React, { useState, FormEvent, useCallback } from "react";
-import { Input, Button, Checkbox, Image } from "@nextui-org/react";
+
+import { Button, Checkbox, Image, Input } from "@nextui-org/react";
 import axios from "axios";
+import React, { FormEvent, useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import toast from "react-hot-toast";
 
@@ -47,7 +48,6 @@ const AdminNewProduct: React.FC<{
       formData.append("category", category);
       formData.append("new", String(isNew));
 
-      // Append each photo individually to FormData
       photos.forEach((photo) => {
         formData.append("photos", photo);
       });
@@ -66,7 +66,7 @@ const AdminNewProduct: React.FC<{
           }
         );
         toast.success("Product added successfully!");
-        onProductAdded(); // Məhsul əlavə olunduqdan sonra callback funksiyasını çağır
+        onProductAdded();
       } catch (error) {
         console.error("Error submitting form:", error);
         setError("An error occurred while submitting the form.");
@@ -82,7 +82,7 @@ const AdminNewProduct: React.FC<{
   });
 
   return (
-    <div className="max-w-xl mx-auto p-6">
+    <div className="max-w-xl mx-auto">
       <h3 className="bg-[#3FBE5B] text-white text-center py-3 text-2xl">
         Yeni məhsul yarat
       </h3>
@@ -139,7 +139,7 @@ const AdminNewProduct: React.FC<{
             isSelected={isNew}
             onChange={(e) => setIsNew(e.target.checked)}
             color="warning"
-            style={{ marginBottom: "20px" }}
+            className="mb-5"
           >
             Yeni
           </Checkbox>
@@ -147,7 +147,7 @@ const AdminNewProduct: React.FC<{
             isSelected={active}
             onChange={(e) => setActive(e.target.checked)}
             color="warning"
-            style={{ marginBottom: "20px" }}
+            className="mb-5"
           >
             Aktiv
           </Checkbox>

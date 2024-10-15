@@ -14,9 +14,9 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { IoIosSave } from "react-icons/io";
-import { DeleteIcon } from "./DeleteIcon";
-import { EditIcon } from "./EditIcon";
-import { EyeIcon } from "./EyeIcon";
+import { DeleteIcon } from "../../Icons/DeleteIcon";
+import { EditIcon } from "../../Icons/EditIcon";
+import { EyeIcon } from "../../Icons/EyeIcon";
 import { columns, users } from "./data";
 
 const statusColorMap: any = {

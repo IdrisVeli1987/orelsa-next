@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+
 import Quality from "@/components/UI/Quality/Quality";
 import ShopRooms from "@/components/UI/ShopRooms/ShopRooms";
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
@@ -11,6 +11,7 @@ import {
   DropdownTrigger,
 } from "@nextui-org/react";
 import Link from "next/link";
+import React from "react";
 
 export default function ShopPage() {
   const [selectedNumberOfProducts, setSelectedNumberOfProducts] =
