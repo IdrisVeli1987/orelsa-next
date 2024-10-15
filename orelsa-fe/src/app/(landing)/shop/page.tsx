@@ -14,15 +14,10 @@ import Link from "next/link";
 
 export default function ShopPage() {
   const [selectedNumberOfProducts, setSelectedNumberOfProducts] =
-    React.useState("16");
-  const [selectedSortOption, setSelectedSortOption] = React.useState("Default");
+    React.useState(16);
 
-  const handleNumberOfProductsChange = (numberOfProducts: string): void => {
+  const handleNumberOfProductsChange = (numberOfProducts: number): void => {
     setSelectedNumberOfProducts(numberOfProducts);
-  };
-
-  const handleSortOptionChange = (sortBy: string) => {
-    setSelectedSortOption(sortBy);
   };
 
   return (
@@ -71,9 +66,9 @@ export default function ShopPage() {
                     selectedKeys={new Set([selectedNumberOfProducts])}
                     onSelectionChange={handleNumberOfProductsChange}
                   >
-                    <DropdownItem key="16">16</DropdownItem>
-                    <DropdownItem key="32">32</DropdownItem>
-                    <DropdownItem key="48">48</DropdownItem>
+                    <DropdownItem key={16}>16</DropdownItem>
+                    <DropdownItem key={32}>32</DropdownItem>
+                    <DropdownItem key={48}>48</DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
               </div>
@@ -82,7 +77,7 @@ export default function ShopPage() {
         </LandingContainer>
       </section>
       <LandingContainer>
-        <ShopRooms />
+        <ShopRooms numberOfProducts={selectedNumberOfProducts} />
       </LandingContainer>
       <Quality />
     </main>
