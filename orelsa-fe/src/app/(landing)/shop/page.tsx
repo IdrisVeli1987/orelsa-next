@@ -22,7 +22,7 @@ export default function ShopPage() {
   const [dropdownItems, setDropdownItems] = useState<number[]>([]);
 
   useEffect(() => {
-    const calculatedProductsToShow = Math.round(
+    const calculatedProductsToShow = Math.ceil(
       currency(childDataLength).divide(16)?.value
     );
 
