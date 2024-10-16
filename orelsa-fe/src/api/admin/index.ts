@@ -132,8 +132,12 @@ export const getAllProductsAdmin = async () => {
     });
     return data;
   } catch (error) {
-    console.error("API error:", error);
-    throw error;
+    if (axios.isAxiosError(error)) {
+      console.error("Axios error:", error.response?.data);
+      console.error("Status code:", error.response?.status);
+    } else {
+      console.error("Unexpected error:", error);
+    }
   }
 };
 
