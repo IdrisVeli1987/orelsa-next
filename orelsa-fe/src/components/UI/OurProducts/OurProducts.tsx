@@ -33,7 +33,7 @@ const OurProducts: React.FC = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
             {products
-              .slice(0, showMore ? products.length : 4)
+              .slice(0, showMore ? products.length : 8)
               .map((product: IProduct) => {
                 return (
                   product?.active && (
