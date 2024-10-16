@@ -28,15 +28,18 @@ const TheRange: React.FC = async () => {
               return (
                 <div
                   key={_id}
-                  className="flex flex-col justify-center items-center"
+                  className="flex flex-col justify-center items-center w-[250px] h-[300px]"
                 >
                   <Image
                     src={browseRangePhoto}
                     alt="image"
                     width={380}
                     height={480}
+                    className="w-full h-[300px] object-cover"
                   />
-                  <p className="mt-6 font-semibold text-2xl">{description}</p>
+                  <p className="mt-6 font-semibold text-2xl text-center">
+                    {description}
+                  </p>
                 </div>
               );
             })}

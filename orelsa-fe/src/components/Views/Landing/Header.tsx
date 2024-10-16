@@ -1,6 +1,6 @@
 "use client";
 
-import SearchBar from "@/components/Search/SearchBar";
+import SearchBar from "@/components/shared/Search/SearchBar";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";

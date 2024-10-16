@@ -105,14 +105,3 @@ export interface INewCollection {
   handleChange: boolean;
   handleDelete: boolean;
 }
-
-export interface INewCollectionTable {
-  _id: string;
-  photos: string[];
-  name: string;
-  description: string;
-  price: number;
-  discount_price: number;
-  model_no: string;
-  category: string;
-}
