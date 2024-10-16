@@ -4,6 +4,7 @@ import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import toast from "react-hot-toast";
 
 const links = [
@@ -34,6 +35,12 @@ const links = [
   },
 ];
 
+const isTokenExpired = (token: string | null) => {
+  if (!token) return true;
+  const payload = JSON.parse(atob(token.split(".")[1]));
+  return payload.exp * 1000 < Date.now();
+};
+
 const AdminSideBar = () => {
   const router = useRouter();
 
@@ -42,6 +49,13 @@ const AdminSideBar = () => {
     toast.success("Siz uğurla çıxış etdiniz!");
     router.push("/admin/login");
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (isTokenExpired(token)) {
+      router.push("/admin/login");
+    }
+  }, [router]);
 
   return (
     <div className="flex flex-col justify-between min-h-screen w-[400px] gap-2.5 bg-[#34C759]">

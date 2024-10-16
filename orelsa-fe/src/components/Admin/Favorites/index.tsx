@@ -103,10 +103,6 @@ const Favorites = () => {
                     height={100}
                     alt={"photo"}
                     src={browseRangePhoto}
-                    onChange={(e) => {
-                      console.log(e);
-                      // handleChange(_id, "name", e);
-                    }}
                   />
                 </TableCell>
                 <TableCell>
@@ -139,13 +135,6 @@ const Favorites = () => {
                     >
                       <DeleteIcon />
                     </span>
-                    {/* <span className="text-lg text-[#327ceb] cursor-pointer active:opacity-50">
-                      <EyeIcon
-                        onClick={() => {
-                          router.push("/homeBrowseRange/" + _id);
-                        }}
-                      />
-                    </span> */}
                   </div>
                 </TableCell>
               </TableRow>

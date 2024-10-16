@@ -22,7 +22,6 @@ type Subscribe = {
 };
 
 export const postAdminDashboardHomeNewCollection = async () => {
-  console.log(BASE_URL);
   const { data } = await axios.post(BASE_URL + "homeNewCollection/");
   return data;
 };
@@ -74,9 +73,8 @@ export const postSubscribeGuest = async (email: Subscribe) => {
 
 export const updateProduct = async (editingProduct: any) => {
   let _link = ADMIN_BE_URL + "/dashboard/product/" + editingProduct._id;
-  console.log("_link", _link);
   const token = localStorage.getItem("token");
-  console.log("---", editingProduct);
+
   const { data } = await axios.patch(_link, editingProduct, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -92,7 +90,6 @@ export const getAdminDashboardHomeNewCollection = async (id: string) => {
       Authorization: "Bearer " + session?.user?.email,
     },
   });
-  console.log(data);
   return data;
 };
 
@@ -127,18 +124,22 @@ export const getAdminDashboardHomeNewCollectionById = async (id: string) => {
 export const getAllProductsAdmin = async () => {
   const url = "http://localhost:9089/admin/dashboard/product";
 
-  const { data } = await axios.get(url, {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  });
-  return data;
+  try {
+    const { data } = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return data;
+  } catch (error) {
+    console.error("API error:", error);
+    throw error;
+  }
 };
 
 export const deleteProduct = async (productId: string) => {
   const token = localStorage.getItem("token");
   const url = "http://localhost:9089/admin/dashboard/product";
-  console.log(token);
 
   try {
     const response = await axios.delete(`${url}/${productId}`, {
@@ -167,10 +168,9 @@ export const getHomeNewCollection = async () => {
 export const updateNewCollection = async (editingNewCollection: any) => {
   let _link =
     ADMIN_BE_URL + "/dashboard/homeNewCollection/" + editingNewCollection.id;
-  console.log("_link", _link);
   const token = localStorage.getItem("token");
   delete editingNewCollection.id;
-  console.log("---", editingNewCollection);
+
   const { data } = await axios.patch(_link, editingNewCollection, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -182,7 +182,6 @@ export const updateNewCollection = async (editingNewCollection: any) => {
 export const deleteNewCollection = async (productId: string) => {
   const token = localStorage.getItem("token");
   const url = "http://localhost:9089/admin/dashboard/homeNewCollection";
-  console.log(token);
 
   try {
     const response = await axios.delete(`${url}/${productId}`, {
@@ -230,17 +229,16 @@ export const getBrowseRangeList = async () => {
   return data;
 };
 
-export const postAdminDashboardHomeBrowseRange = async (
-  description: string,
-  photo: string
-) => {
-  // if(){}
-};
+// export const postAdminDashboardHomeBrowseRange = async (
+//   description: string,
+//   photo: string
+// ) => {
+//   // if(){}
+// };
 
 export const deleteHomeBrowseRange = async (productId: string) => {
   const token = localStorage.getItem("token");
   const url = "http://localhost:9089/admin/dashboard/homeBrowseRange";
-  console.log(token);
 
   try {
     const response = await axios.delete(`${url}/${productId}`, {
@@ -257,9 +255,8 @@ export const deleteHomeBrowseRange = async (productId: string) => {
 
 export const updatehomeBrowseRange = async (editingProduct: any) => {
   let _link = ADMIN_BE_URL + "/dashboard/homeBrowseRange/" + editingProduct._id;
-  console.log("_link", _link);
   const token = localStorage.getItem("token");
-  console.log("---", editingProduct);
+
   const { data } = await axios.patch(_link, editingProduct, {
     headers: {
       Authorization: `Bearer ${token}`,
