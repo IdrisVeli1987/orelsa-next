@@ -10,15 +10,42 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@nextui-org/react";
+import currency from "currency.js";
+import { toNumber } from "lodash-es";
 import Link from "next/link";
-import React from "react";
+import { useEffect, useState } from "react";
 
 export default function ShopPage() {
   const [selectedNumberOfProducts, setSelectedNumberOfProducts] =
-    React.useState(16);
+    useState<number>(16);
+  const [childDataLength, setChildDataLength] = useState<number>(0);
+  const [dropdownItems, setDropdownItems] = useState<number[]>([]);
 
-  const handleNumberOfProductsChange = (numberOfProducts: number): void => {
-    setSelectedNumberOfProducts(numberOfProducts);
+  useEffect(() => {
+    const calculatedProductsToShow = Math.round(
+      currency(childDataLength).divide(16)?.value
+    );
+
+    const items = Array.from(
+      { length: calculatedProductsToShow },
+      (_, index) => {
+        return (index + 1) * 16;
+      }
+    );
+
+    setDropdownItems(items);
+  }, [childDataLength]);
+
+  const handleChildData = (data: number) => {
+    setChildDataLength(data);
+  };
+
+  const handleNumberOfProductsChange = (numberOfProducts: {
+    0: string;
+    anchorKey: string;
+    currentKey: string;
+  }): void => {
+    setSelectedNumberOfProducts(toNumber(numberOfProducts?.currentKey) ?? 16);
   };
 
   return (
@@ -47,7 +74,14 @@ export default function ShopPage() {
           <div className="flex justify-between items-center gap-6 w-full">
             <div className="flex justify-between items-center gap-6">
               <div className="flex justify-center items-center gap-8">
-                <p>Showing 1–16 of 32 results</p>
+                <p>
+                  {`Showing ${
+                    currency(selectedNumberOfProducts).subtract(currency(15))
+                      ?.value
+                  } – 
+                  ${Math.min(childDataLength, selectedNumberOfProducts)} 
+                   of ${childDataLength} results`}
+                </p>
               </div>
             </div>
 
@@ -67,9 +101,9 @@ export default function ShopPage() {
                     selectedKeys={new Set([selectedNumberOfProducts])}
                     onSelectionChange={handleNumberOfProductsChange}
                   >
-                    <DropdownItem key={16}>16</DropdownItem>
-                    <DropdownItem key={32}>32</DropdownItem>
-                    <DropdownItem key={48}>48</DropdownItem>
+                    {dropdownItems.map((item) => (
+                      <DropdownItem key={item}>{item}</DropdownItem>
+                    ))}
                   </DropdownMenu>
                 </Dropdown>
               </div>
@@ -78,7 +112,10 @@ export default function ShopPage() {
         </LandingContainer>
       </section>
       <LandingContainer>
-        <ShopRooms numberOfProducts={selectedNumberOfProducts} />
+        <ShopRooms
+          numberOfProducts={selectedNumberOfProducts}
+          onSendData={handleChildData}
+        />
       </LandingContainer>
       <Quality />
     </main>

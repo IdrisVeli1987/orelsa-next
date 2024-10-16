@@ -18,7 +18,9 @@ const OurProducts: React.FC = async () => {
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
             {TheOurProducts.map((TheOurProduct: IProduct) => {
               return (
-                TheOurProduct?.active && <ProductCard {...TheOurProduct} />
+                TheOurProduct?.active && (
+                  <ProductCard key={TheOurProduct?._id} {...TheOurProduct} />
+                )
               );
             })}
           </div>

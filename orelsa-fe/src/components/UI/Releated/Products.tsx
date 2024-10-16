@@ -31,7 +31,12 @@ const RelatedProducts = ({ relatedProducts }: RelatedProducts) => {
             {newRelatedProducts
               .slice(0, showMore ? newRelatedProducts.length : 4)
               .map((newRelatedProduct: ProductDetail) => {
-                return <ProductCard {...newRelatedProduct} />;
+                return (
+                  <ProductCard
+                    key={newRelatedProduct?._id}
+                    {...newRelatedProduct}
+                  />
+                );
               })}
           </div>
           <div className="w-full my-6 flex justify-center">
