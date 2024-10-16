@@ -1,6 +1,6 @@
 import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import Image from "next/image";
-import { AboutQuality, QualityData } from "../../../../Utils/db";
+import { AboutQuality, QualityData } from "@/Utils/db";
 
 const Quality = () => {
   return (

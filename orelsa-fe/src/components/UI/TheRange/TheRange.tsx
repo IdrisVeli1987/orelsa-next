@@ -2,7 +2,7 @@ import LandingContainer from "@/components/Views/Landing/LandingContainer";
 import axios from "axios";
 import Image from "next/image";
 import React from "react";
-import { IRange } from "../../../../Utils/db";
+import { IRange } from "@/Utils/db";
 
 const TheRange: React.FC = async () => {
   const { data } = await axios.get(

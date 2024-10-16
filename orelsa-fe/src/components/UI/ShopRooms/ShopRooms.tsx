@@ -4,7 +4,7 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ShopRoom } from "../../../../Utils/db";
+import { ShopRoom } from "@/Utils/db";
 
 const ShopRooms = ({ numberOfProducts }) => {
   const [products, setProducts] = useState([]);
