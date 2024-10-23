@@ -20,7 +20,7 @@ export default async function HomePage() {
         className="bg-no-repeat bg-cover h-screen flex justify-end items-center"
         style={{ backgroundImage: `${backgroundImage}` }}
       >
-        <div className="shadow-2xl bg-white bg-opacity-40 rounded-[16px]">
+        <div className="shadow-2xl bg-white bg-opacity-40 rounded-[16px] px-4 mr-5">
           <h2 className="ml-11 mt-4 font-bold text-[52px] text-[#B88E2F] w-[12ch]">
             {data[0]?.title ?? "Yeni kolleksiya"}
           </h2>
