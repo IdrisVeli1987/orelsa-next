@@ -82,7 +82,7 @@ const AdminNewProduct: React.FC<{
   });
 
   return (
-    <div className="max-w-xl mx-auto">
+    <div className="max-w-xl mx-auto h-[500px] overflow-auto">
       <h3 className="bg-[#3FBE5B] text-white text-center py-3 text-2xl">
         Yeni məhsul yarat
       </h3>
