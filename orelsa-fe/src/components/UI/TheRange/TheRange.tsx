@@ -11,33 +11,33 @@ const TheRange: React.FC = async () => {
   return (
     <section>
       <LandingContainer>
-        <div className="flex flex-col justify-center items-center w-full h-[810px]">
-          <div className="flex justify-center items-center mx-auto w-[400px] mb-4">
-            <h1 className="text-4xl font-bold text-[#3A3A3A;]">
+        <div className="flex flex-col justify-center items-center w-full min-h-screen p-4">
+          <div className="flex justify-center items-center mx-auto mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#3A3A3A]">
               Browse The Range
             </h1>
           </div>
-          <div className="text-center">
-            <p className="w-full">
+          <div className="text-center mb-4">
+            <p className="w-full max-w-xl">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
           </div>
 
-          <div className="flex pt-9 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-9">
             {data.map(({ _id, browseRangePhoto, description }: IRange) => {
               return (
                 <div
                   key={_id}
-                  className="flex flex-col justify-center items-center w-[250px] h-[300px]"
+                  className="flex flex-col justify-center items-center w-full h-auto"
                 >
                   <Image
                     src={browseRangePhoto}
                     alt="image"
                     width={380}
                     height={480}
-                    className="w-full h-[300px] object-cover"
+                    className="w-full h-auto object-cover"
                   />
-                  <p className="mt-6 font-semibold text-2xl text-center">
+                  <p className="mt-4 font-semibold text-lg text-center">
                     {description}
                   </p>
                 </div>
