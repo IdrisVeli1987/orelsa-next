@@ -51,8 +51,8 @@ const SearchBar = () => {
     <div className="relative">
       <form
         className={cn(
-          "absolute transition-all duration-300 ease-in-out right-4 md:right-8",
-          isSearching ? "w-[300px] md:w-[400px]" : "w-[50px]"
+          "transition-all duration-300 ease-in-out ",
+          isSearching ? "w-[300px] md:w-[290px]" : "w-[50px]"
         )}
       >
         <div className="relative">
@@ -70,26 +70,25 @@ const SearchBar = () => {
             {isSearching ? <IoMdClose /> : <CiSearch />}
           </button>
         </div>
-
         {isSearching && (
           <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-white shadow-md rounded-lg p-2 z-50 w-full max-w-[400px]">
-            {searchResults.length > 0 ? (
-              searchResults.map((result) => (
-                <Link
-                  href={`/products/${result._id}`}
-                  key={result._id}
-                  className="block p-2 hover:bg-[#FCF8F3] rounded transition duration-200 "
-                  onClick={() => {
-                    setIsSearching(false);
-                    setSearchQuery("");
-                  }}
-                >
-                  {result.name}
-                </Link>
-              ))
-            ) : (
-              <div className="p-2 text-gray-500">No results found</div>
-            )}
+            {searchResults.length > 0
+              ? searchResults.map((result) => (
+                  <Link
+                    href={`/products/${result._id}`}
+                    key={result._id}
+                    className="block p-2 hover:bg-[#FCF8F3] rounded transition duration-200 "
+                    onClick={() => {
+                      setIsSearching(false);
+                      setSearchQuery("");
+                    }}
+                  >
+                    {result.name}
+                  </Link>
+                ))
+              : searchQuery && (
+                  <div className="p-2 text-gray-500">No results found</div>
+                )}
           </div>
         )}
       </form>

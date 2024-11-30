@@ -34,7 +34,7 @@ const Footer = () => {
   return (
     <footer className="border-y-2">
       <LandingContainer>
-        <div className="flex justify-between w-full py-12">
+        <div className="h-1/2 w-full flex md:flex-row flex-col justify-around items-start p-20 gap-[50px]">
           <div className="flex flex-col md:mb-0">
             <h3 className="text-2xl font-bold pb-[30px]">Funiro.</h3>
             <p className="font-normal text-base">

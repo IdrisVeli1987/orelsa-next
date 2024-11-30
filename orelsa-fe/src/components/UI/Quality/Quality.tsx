@@ -7,7 +7,7 @@ const Quality = () => {
     <section className="bg-[#FAF3EA] my-24">
       <LandingContainer>
         <div className="py-28 flex justify-center items-center  w-full md:flex-col">
-          <div className="flex justify-between items-center gap-16 w-full">
+          <div className="w-full flex md:flex-row flex-col justify-around items-start ml-[60px] gap-[50px]">
             {QualityData.map(({ id, src, title, desc }: AboutQuality) => {
               return (
                 <div
