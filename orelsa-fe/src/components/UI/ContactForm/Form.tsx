@@ -79,7 +79,7 @@ export const Form = () => {
                 </div>
               </div>
             </div>
-            <div className="w-[50%] md:w-[50%] ">
+            <div className="w-[50%] md:w-[50%] md:">
               <div className="mb-8 w-[430px]">
                 <p className="mb-2 font-bold">Adınız</p>
                 <Input
