@@ -6,10 +6,8 @@ import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
-import { IoMdClose } from "react-icons/io";
 
 const SearchBar = () => {
-  const [isSearching, setIsSearching] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<IProductById[]>([]);
 
@@ -37,22 +35,11 @@ const SearchBar = () => {
     }
   }, [searchQuery]);
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSearching((prev) => !prev);
-    if (!isSearching) {
-      fetchSearchData(searchQuery);
-    } else {
-      setSearchQuery("");
-    }
-  };
-
   return (
     <div className="relative">
       <form
         className={cn(
-          "transition-all duration-300 ease-in-out ",
-          isSearching ? "w-[300px] md:w-[290px]" : "w-[50px]"
+          "transition-all duration-300 ease-in-out w-[300px] md:w-[290px]"
         )}
       >
         <div className="relative">
@@ -63,14 +50,8 @@ const SearchBar = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
             value={searchQuery}
           />
-          <button
-            onClick={handleSearch}
-            className="absolute right-0 w-[50px] h-[50px] top-1/2 -translate-y-1/2 p-4 rounded-full  flex items-center justify-center"
-          >
-            {isSearching ? <IoMdClose /> : <CiSearch />}
-          </button>
         </div>
-        {isSearching && (
+        {searchQuery && (
           <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-white shadow-md rounded-lg p-2 z-50 w-full max-w-[400px]">
             {searchResults.length > 0
               ? searchResults.map((result) => (
@@ -79,7 +60,6 @@ const SearchBar = () => {
                     key={result._id}
                     className="block p-2 hover:bg-[#FCF8F3] rounded transition duration-200 "
                     onClick={() => {
-                      setIsSearching(false);
                       setSearchQuery("");
                     }}
                   >
