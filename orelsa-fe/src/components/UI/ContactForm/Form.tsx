@@ -131,7 +131,7 @@ export const Form = () => {
                   className="gap-3 bg-[#B88E2F] w-[222px] h-[75px] font-bold text-base text-white"
                   onClick={handleSubmit}
                 >
-                  {loading ? "Submitting" : "Submit"}
+                  {loading ? "Göndərilir" : "Göndər"}
                 </Button>
               </div>
             </div>
