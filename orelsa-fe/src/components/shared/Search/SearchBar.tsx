@@ -36,13 +36,13 @@ const SearchBar = () => {
   }, [searchQuery]);
 
   return (
-    <div className="relative">
+    <div className="relative search-bar-classname-unique">
       <form
         className={cn(
           "transition-all duration-300 ease-in-out w-[300px] md:w-[290px]"
         )}
       >
-        <div className="relative">
+        <div className="relative pt-5">
           <input
             type="search"
             placeholder="Axtarış"
