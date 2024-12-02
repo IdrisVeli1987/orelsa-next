@@ -1,13 +1,14 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import SearchBar from "@/components/shared/Search/SearchBar";
 import { useBoolean } from "ahooks";
-import { GiHamburgerMenu } from "react-icons/gi";
 import Image from "next/image";
 import Link from "next/link";
+import { FC } from "react";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { IoCloseCircle } from "react-icons/io5";
 import LandingContainer from "./LandingContainer";
 import menu from "./menu";
-import SearchBar from "@/components/shared/Search/SearchBar";
 
 type NavLink = {
   id: string;
@@ -22,7 +23,7 @@ const Header: FC = () => {
   return (
     <header className="py-6 px-6">
       <LandingContainer>
-        <nav className="flex justify-between items-center w-full max-w-[1280px] mx-auto relative">
+        <nav className="flex justify-between items-center w-full max-w-[1280px] mx-auto relative flex-wrap">
           <div className="flex justify-between items-center" id="logo">
             <Link href="/" className="cursor-pointer flex items-center gap-2">
               <Image
@@ -51,11 +52,11 @@ const Header: FC = () => {
             className="lg:hidden flex items-center space-x-2 pr-8 text-center"
             onClick={toggle}
           >
-            <GiHamburgerMenu />
+            {state ? <IoCloseCircle /> : <GiHamburgerMenu />}
           </button>
           {state && (
-            <div className="lg:hidden absolute top-8 right-6 w-48 bg-orange transparent opacity-100 shadow-lg rounded-md z-10 md:bg-red">
-              <ul className="flex flex-col items-center justify-center space-y-4 py-4 text-center">
+            <div className=" lg:hidden absolute top-8 right-6 w-2 opacity-100 shadow-lg rounded-md z-10 mr-4 bg-red">
+              <ul className="flex flex-col items-start justify-end w-max space-y-4 w-10">
                 {navLinks.map((link) => (
                   <li key={link.id}>
                     <Link
