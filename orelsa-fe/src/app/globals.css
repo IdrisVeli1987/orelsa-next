@@ -8,7 +8,6 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-
 @layer base {
   @font-face {
     font-family: "Montserrat";
@@ -56,4 +55,9 @@
 #ArruvalTitle {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+}
+@media (max-width: 650px) {
+  .search-bar-classname-unique {
+    order: 5;
+  }
 }
