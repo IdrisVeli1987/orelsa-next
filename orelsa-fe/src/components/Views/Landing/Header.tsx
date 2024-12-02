@@ -56,7 +56,7 @@ const Header: FC = () => {
           </button>
           {state && (
             <div className=" lg:hidden absolute top-8 right-6 w-2 opacity-100 shadow-lg rounded-md z-10 mr-4 bg-red">
-              <ul className="flex flex-col items-start justify-end w-max space-y-4 w-10">
+              <ul className="flex flex-col items-start justify-end w-max space-y-4">
                 {navLinks.map((link) => (
                   <li key={link.id}>
                     <Link
