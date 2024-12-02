@@ -49,7 +49,8 @@ export const Form = () => {
     <section>
       <LandingContainer>
         <form action="" className="w-full">
-          <div className="w-full flex justify-center items-center md:items-start mt-20 gap-12 flex-col md:flex-row ">
+          <div className="w-full flex justify-center items-center md:items-start mt-20 gap-12 flex-col md:flex-row">
+            {/* Contact Info Section */}
             <div className="w-[80%] md:w-[25%] m-auto md:m-0">
               <div className="flex gap-3 mb-8">
                 <IoLocationSharp className="text-lg" />
@@ -62,7 +63,7 @@ export const Form = () => {
               </div>
               <div className="flex gap-3 mb-8">
                 <FaPhoneAlt className="text-lg" />
-                <div className="pt-2 w-[200px] ">
+                <div className="pt-2 w-[200px]">
                   <h4 className="font-bold text-base">Telefon</h4>
                   <p className="text-base font-normal">
                     Mobil: +(84) 546-6789 Hotline: +(84) 456-6789
@@ -79,8 +80,10 @@ export const Form = () => {
                 </div>
               </div>
             </div>
-            <div className="w-[50%] md:w-[50%] md:">
-              <div className="mb-8 w-[430px]">
+
+            {/* Form Section */}
+            <div className="w-[80%] md:w-[50%]">
+              <div className="mb-8">
                 <p className="mb-2 font-bold">Adınız</p>
                 <Input
                   type="text"
@@ -92,7 +95,7 @@ export const Form = () => {
                   size="lg"
                 />
               </div>
-              <div className="mb-8 w-[430px]">
+              <div className="mb-8">
                 <p className="mb-2 font-bold">Email</p>
                 <Input
                   type="email"
@@ -104,7 +107,7 @@ export const Form = () => {
                   size="lg"
                 />
               </div>
-              <div className="mb-8 w-[430px]">
+              <div className="mb-8">
                 <p className="mb-2 font-bold">Mövzu</p>
                 <Input
                   type="text"
@@ -126,9 +129,9 @@ export const Form = () => {
                   onValueChange={setSubject}
                 />
               </div>
-              <div className=" pb-10 pt-9">
+              <div className="pb-10 pt-9">
                 <Button
-                  className="gap-3 bg-[#B88E2F] w-[222px] h-[75px] font-bold text-base text-white"
+                  className="gap-3 bg-[#B88E2F] w-full sm:w-[222px] h-[75px] font-bold text-base text-white"
                   onClick={handleSubmit}
                 >
                   {loading ? "Göndərilir" : "Göndər"}
