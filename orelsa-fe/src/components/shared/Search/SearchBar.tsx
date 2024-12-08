@@ -39,7 +39,7 @@ const SearchBar = () => {
     <div className="relative search-bar-classname-unique">
       <form
         className={cn(
-          "transition-all duration-300 ease-in-out w-[300px] md:w-[290px]"
+          "transition-all duration-300 ease-in-out w-full sm:w-[280px] lg:w-[350px] xl:w-[400px] 2xl:w-[450px]"
         )}
       >
         <div className="relative pt-5">

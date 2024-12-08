@@ -43,7 +43,7 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="flex justify-between flex-col md:gap-6 items-center md:items-start">
+          <div className="flex justify-between flex-col md:gap-6 md:items-start">
             <p className="text-base font-medium text-[#9F9F9F]">Links</p>
             <Link href="/" className="text-base font-medium text-[#000]">
               Home
