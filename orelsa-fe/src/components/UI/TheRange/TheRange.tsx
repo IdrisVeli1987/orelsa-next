@@ -14,12 +14,12 @@ const TheRange: React.FC = async () => {
         <div className="flex flex-col justify-center items-center w-full min-h-screen p-4">
           <div className="flex justify-center items-center mx-auto mb-4">
             <h1 className="text-3xl md:text-4xl font-bold text-[#3A3A3A]">
-              Browse The Range
+             Seçilmiş məhsullar
             </h1>
           </div>
           <div className="text-center mb-4">
             <p className="w-full max-w-xl">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            "Keyfiyyət və unikallıq bir arada – sizin üçün xüsusi seçilmişdir!"
             </p>
           </div>
 

@@ -16,17 +16,17 @@ export default function Contact() {
             className="bg-no-repeat bg-center bg-cover"
           />
 
-          <p className="text-5xl font-medium">Contact</p>
+          <p className="text-5xl font-medium">Bizimlə əlaqə</p>
 
           <div className="flex justify-center items-center gap-3">
             <Link href="/" className="text-base font-bold p-3">
-              Home
+              Ana səhifə
             </Link>
 
             <span className="font-bold">&gt;</span>
 
             <Link href="/shop" className="text-base font-medium">
-              Contact
+              Bizimlə əlaqə
             </Link>
           </div>
         </div>

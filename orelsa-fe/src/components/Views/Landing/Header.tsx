@@ -32,7 +32,7 @@ const Header: FC = () => {
                 width={50}
                 height={32}
               />
-              <h1 className="font-bold text-4xl text-black">Furniro</h1>
+              <h1 className="font-bold text-4xl text-black">ORELSA</h1>
             </Link>
           </div>
           <ul className="hidden lg:flex justify-center items-center space-x-4">
