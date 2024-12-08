@@ -43,8 +43,6 @@ const ProductsDetails = ({
               );
             })}
           </div>
-
-          {/* Main Image */}
           <div id="main-photo" className="flex justify-center w-full sm:w-auto">
             <Image
               src={selectedImage}
@@ -54,21 +52,20 @@ const ProductsDetails = ({
               className="bg-cover bg-no-repeat border-none w-full sm:w-[480px] sm:h-[500px] h-auto max-w-[480px]"
             />
           </div>
-
-          {/* Product Details */}
           <div
             id="second-part"
             className="flex flex-col sm:items-start items-center w-full sm:w-auto"
           >
-            <div className="py-4">
+            <div className="py-4 bg-red text-center sm:text-center">
               <h2 className="font-normal text-4xl py-2">{name}</h2>
               <p className="font-medium text-2xl text-[#9F9F9F] pb-5">
                 {price + " AZN"}
               </p>
-              <p className="font-normal text-sm sm:w-[50ch] w-[90%] text-center sm:text-left">
+              <p className="font-normal text-sm sm:w-[50ch] w-[90%]">
                 {description}
               </p>
             </div>
+
             <div className="flex pt-20 pb-40 justify-center sm:justify-start">
               <Button className="w-56 h-[75px] bg-[#B88E2F] font-bold text-white text-base">
                 SİFARİŞ ET
@@ -99,8 +96,6 @@ const ProductsDetails = ({
                 </p>
               </div>
             </div>
-
-            {/* Social Media Links */}
             <div id="follow" className="flex gap-6 pt-14">
               <h6 className="font-normal text-base text-[#9F9F9F]">
                 Follow us
