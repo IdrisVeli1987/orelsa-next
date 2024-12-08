@@ -61,7 +61,7 @@ const ProductsDetails = ({
                 <div className="py-4  ">
                   <h2 className="font-normal text-4xl py-2">{name}</h2>
                   <p className="font-medium text-2xl text-[#9F9F9F] pb-5">
-                    {price}
+                    {price + " AZN"}
                   </p>
                   <p className="font-normal text-sm w-[50ch]">{description}</p>
                 </div>

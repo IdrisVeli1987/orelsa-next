@@ -2,17 +2,17 @@ const menu = (): { id: string; link: string; name: string }[] => {
   return [
     {
       id: "1",
-      name: "Home",
+      name: "Ana səhifə",
       link: "/",
     },
     {
       id: "2",
-      name: "Shop",
+      name: "Mağaza",
       link: "/shop",
     },
     {
       id: "3",
-      name: "Contact",
+      name: "Əlaqə",
       link: "/contact",
     },
   ];

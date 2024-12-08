@@ -58,6 +58,6 @@
 }
 @media (max-width: 650px) {
   .search-bar-classname-unique {
-    order: 5;
+    order: 2;
   }
 }

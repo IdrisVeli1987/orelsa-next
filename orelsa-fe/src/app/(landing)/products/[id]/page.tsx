@@ -24,12 +24,12 @@ export default async function ShopDetaiils({ params }: IProps) {
           <div className="flex justify-between items-center gap-6 w-full relative">
             <div className="flex justify-between items-center gap-6">
               <div className="flex gap-4">
-                <Link href="/">Home</Link>
+                <Link href="/">Ana səhifə</Link>
                 <span className="font-bold">&gt;</span>
               </div>
 
               <div className="flex gap-4">
-                <Link href="/shop">Shop</Link>
+                <Link href="/shop">Mağaza</Link>
                 <span className="font-bold">&gt;</span>
               </div>
 

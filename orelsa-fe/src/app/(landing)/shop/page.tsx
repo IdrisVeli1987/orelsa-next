@@ -53,18 +53,18 @@ export default function ShopPage() {
       <section className="bg-hero flex items-center justify-center min-h-[300px] w-full relative bg-no-repeat bg-center bg-cover">
         <div className="">
           <p className="mt-3 text-center font-medium text-5xl w-full p-2 ">
-            Shop
+            Mağaza
           </p>
 
           <div className="flex justify-between items-center">
             <Link href="/" className="text-base font-bold">
-              Home
+              Ana səhifə
             </Link>
 
             <span className="font-bold">&gt;</span>
 
             <Link href="/shop" className="text-base font-medium">
-              Shop
+              Mağaza
             </Link>
           </div>
         </div>
@@ -75,19 +75,19 @@ export default function ShopPage() {
             <div className="flex justify-between items-center gap-6">
               <div className="flex justify-center items-center gap-8">
                 <p>
-                  {`Showing ${
+                  {`Göstərilən ${
                     currency(selectedNumberOfProducts).subtract(currency(15))
                       ?.value
                   } – 
                   ${Math.min(childDataLength, selectedNumberOfProducts)} 
-                   of ${childDataLength} results`}
+                   of ${childDataLength} nəticə`}
                 </p>
               </div>
             </div>
 
             <div className="flex justify-between items-center gap-4">
               <div className="flex justify-center items-center gap-4">
-                <p className="">Show</p>
+                <p className="">Göstərilən:</p>
                 <Dropdown className="w-[4rem] bg-slate-50">
                   <DropdownTrigger>
                     <Button variant="bordered" className="capitalize">

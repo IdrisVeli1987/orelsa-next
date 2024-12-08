@@ -28,7 +28,7 @@ const OurProducts: React.FC = () => {
       <LandingContainer>
         <div className="w-full">
           <h2 className="text-4xl font-extrabold text-center text-[#333333] mb-6">
-            Our Products
+            Bizim məhsullar
           </h2>
 
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">

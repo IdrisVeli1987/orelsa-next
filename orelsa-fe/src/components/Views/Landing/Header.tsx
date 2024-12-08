@@ -33,9 +33,13 @@ const Header: FC = () => {
                 width={50}
                 height={32}
               />
+<<<<<<< HEAD
               <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl text-black">
                 Furniro
               </h1>
+=======
+              <h1 className="font-bold text-4xl text-black">ORELSA</h1>
+>>>>>>> b10195c6aec15185adcb01ffb84044cccdd0cc8d
             </Link>
           </div>
 
