@@ -24,7 +24,6 @@ const Header: FC = () => {
     <header className="py-6 px-6 bg-transparent">
       <LandingContainer>
         <nav className="flex justify-between items-center w-full max-w-[1280px] mx-auto relative flex-wrap bg-transparent">
-          {/* Logo Section */}
           <div className="flex justify-start items-center space-x-4" id="logo">
             <Link href="/" className="cursor-pointer flex items-center gap-2">
               <Image
@@ -33,17 +32,12 @@ const Header: FC = () => {
                 width={50}
                 height={32}
               />
-<<<<<<< HEAD
-              <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl text-black">
-                Furniro
+              <h1 className="font-bold text-4xl text-black hidden md:block">
+                ORELSA
               </h1>
-=======
-              <h1 className="font-bold text-4xl text-black">ORELSA</h1>
->>>>>>> b10195c6aec15185adcb01ffb84044cccdd0cc8d
             </Link>
           </div>
 
-          {/* Desktop Navigation Links (hidden on small screens) */}
           <ul className="hidden lg:flex justify-between items-center space-x-8 bg-transparent mx-8">
             {navLinks.map((link) => (
               <li key={link.id}>
@@ -68,12 +62,12 @@ const Header: FC = () => {
             {state ? (
               <IoCloseCircle size={30} />
             ) : (
-              <GiHamburgerMenu size={30} />
+              <GiHamburgerMenu size={30} className="mr-10 ml-10" />
             )}
           </button>
 
           {state && (
-            <div className="lg:hidden absolute top-16 right-6 w-full max-w-[300px] opacity-100 mx-8 rounded-md z-10 bg-transparent shadow-lg">
+            <div className="lg:hidden absolute top-16 right-6 w-full max-w-[150px] opacity-100 mx-8 rounded-md z-10 bg-transparent shadow-lg">
               <ul className="flex flex-col items-center space-y-6 p-4 bg-transparent">
                 {navLinks.map((link) => (
                   <li key={link.id}>

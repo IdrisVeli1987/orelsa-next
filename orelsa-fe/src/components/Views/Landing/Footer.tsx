@@ -43,20 +43,18 @@ const Footer = () => {
             </p>
           </div>
 
-<<<<<<< HEAD
-          <div className="flex justify-between flex-col md:gap-6 md:items-start">
-            <p className="text-base font-medium text-[#9F9F9F]">Links</p>
-=======
           <div className="flex justify-between flex-col md:gap-6 items-center md:items-start">
             <p className="text-base font-medium text-[#9F9F9F]">Keçidlər</p>
->>>>>>> b10195c6aec15185adcb01ffb84044cccdd0cc8d
             <Link href="/" className="text-base font-medium text-[#000]">
               Ana səhifə
             </Link>
             <Link href="/shop" className="text-base font-medium text-[#000]">
               Mağaza
             </Link>
-            <Link href="/contact" className="text-base font-medium text-[#000]">
+            <Link
+              href="/contact"
+              className="text-base font-medium text-[#2e2020]"
+            >
               Əlaqə
             </Link>
           </div>

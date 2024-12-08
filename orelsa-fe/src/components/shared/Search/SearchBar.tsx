@@ -52,7 +52,7 @@ const SearchBar = () => {
           />
         </div>
         {searchQuery && (
-          <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-white shadow-md rounded-lg p-2 z-50 w-full max-w-[400px]">
+          <div className="absolute top-18 left-1/2 transform -translate-x-1/2 bg-white shadow-md rounded-lg p-2 z-50 w-full max-w-[400px]">
             {searchResults.length > 0
               ? searchResults.map((result) => (
                   <Link
