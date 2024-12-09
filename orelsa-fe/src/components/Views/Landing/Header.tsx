@@ -8,7 +8,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseCircle } from "react-icons/io5";
 import LandingContainer from "./LandingContainer";
 import menu from "./menu";
-import SearchBar from "@/components/shared/Search/SearchBar"; // Don't modify SearchBar
+import SearchBar from "@/components/shared/Search/SearchBar";
 
 type NavLink = {
   id: string;
@@ -23,7 +23,7 @@ const Header: FC = () => {
   return (
     <header className="py-6 px-6 bg-transparent">
       <LandingContainer>
-        <nav className="flex justify-between items-center w-full max-w-[1280px] mx-auto relative flex-wrap bg-transparent">
+        <nav className="flex justify-between items-center w-full max-w-[1280px] mx-auto relative bg-transparent">
           <div className="flex justify-start items-center space-x-4" id="logo">
             <Link href="/" className="cursor-pointer flex items-center gap-2">
               <Image
@@ -38,7 +38,7 @@ const Header: FC = () => {
             </Link>
           </div>
 
-          <ul className="hidden lg:flex justify-between items-center space-x-8 bg-transparent mx-8">
+          <ul className="hidden lg:flex justify-between items-center space-x-8 bg-transparent">
             {navLinks.map((link) => (
               <li key={link.id}>
                 <Link
@@ -51,23 +51,23 @@ const Header: FC = () => {
             ))}
           </ul>
 
-          <div className=" lg:block ml-auto space-x-4">
+          <div className="lg:block ml-auto ms-auto me-auto">
             <SearchBar />
           </div>
 
           <button
-            className="lg:hidden flex items-center space-x-2 pr-8 text-center"
+            className="lg:hidden flex items-center text-center"
             onClick={toggle}
           >
             {state ? (
               <IoCloseCircle size={30} />
             ) : (
-              <GiHamburgerMenu size={30} className="mr-10 ml-10" />
+              <GiHamburgerMenu size={30} />
             )}
           </button>
 
           {state && (
-            <div className="lg:hidden absolute top-16 right-6 w-full max-w-[150px] opacity-100 mx-8 rounded-md z-10 bg-transparent shadow-lg">
+            <div className="lg:hidden absolute top-16 right-1 sm:right-0 w-full max-w-[150px] opacity-100 rounded-md z-10 bg-transparent shadow-lg">
               <ul className="flex flex-col items-center space-y-6 p-4 bg-transparent">
                 {navLinks.map((link) => (
                   <li key={link.id}>
