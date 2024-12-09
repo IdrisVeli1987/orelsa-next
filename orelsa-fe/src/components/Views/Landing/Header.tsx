@@ -51,9 +51,11 @@ const Header: FC = () => {
             ))}
           </ul>
 
-          <div className="lg:block ml-auto ms-auto me-auto">
-            <SearchBar />
-          </div>
+          <div className="flex items-center space-x-4">
+            {/* Search Bar */}
+            <div className="lg:block">
+              <SearchBar />
+            </div>
 
           <button
             className="lg:hidden flex items-center text-center"
@@ -67,22 +69,23 @@ const Header: FC = () => {
           </button>
 
           {state && (
-            <div className="lg:hidden absolute top-16 right-1 sm:right-0 w-full max-w-[150px] opacity-100 rounded-md z-10 bg-transparent shadow-lg">
-              <ul className="flex flex-col items-center space-y-6 p-4 bg-transparent">
-                {navLinks.map((link) => (
-                  <li key={link.id}>
-                    <Link
-                      href={link.link}
-                      className="text-black font-medium text-base hover:text-primary transition duration-200"
-                      onClick={setFalse}
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+              <div className="absolute top-40 right-2 w-35 z-30 bg-transparent shadow-lg">
+                <ul className="flex flex-col items-start space-y-4 p-4">
+                  {navLinks.map((link) => (
+                    <li key={link.id}>
+                      <Link
+                        href={link.link}
+                        className="text-black font-medium text-base hover:text-primary transition duration-200"
+                        onClick={setFalse}
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            </div> 
         </nav>
       </LandingContainer>
     </header>
