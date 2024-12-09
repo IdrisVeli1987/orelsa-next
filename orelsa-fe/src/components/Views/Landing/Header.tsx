@@ -23,7 +23,7 @@ const Header: FC = () => {
   return (
     <header className="py-6 px-6 bg-transparent">
       <LandingContainer>
-        <nav className="flex justify-between items-center w-full max-w-[1280px] mx-auto relative bg-transparent">
+        <nav className="flex justify-between items-center w-full max-w-[1280px] mx-auto relative bg-transparent gap-3">
           <div className="flex justify-start items-center space-x-4" id="logo">
             <Link href="/" className="cursor-pointer flex items-center gap-2">
               <Image
