@@ -28,7 +28,7 @@ const ProductsDetails = ({
     <section>
       <LandingContainer>
         <div className="py-10 w-full flex flex-wrap items-start gap-10">
-          <div className="flex flex-col gap-3">
+          <div className="flex gap-3 flex-row md:flex-col">
             {photos?.map((src: string, index: number) => {
               return (
                 <Image
