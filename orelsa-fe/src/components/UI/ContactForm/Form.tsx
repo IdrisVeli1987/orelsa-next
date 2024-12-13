@@ -56,18 +56,14 @@ export const Form = () => {
                 <IoLocationSharp className="text-lg" />
                 <div className="pt-2">
                   <h4 className="font-bold text-base">Ünvan</h4>
-                  <p className="text-base font-normal">
-                    236 5th SE Avenue, New York NY10000, United States
-                  </p>
+                  <p className="text-base font-normal">Azərbayan, Bakı </p>
                 </div>
               </div>
               <div className="flex gap-3 mb-8">
                 <FaPhoneAlt className="text-lg" />
                 <div className="pt-2 w-[200px]">
                   <h4 className="font-bold text-base">Telefon</h4>
-                  <p className="text-base font-normal">
-                    Mobil: +(84) 546-6789 Hotline: +(84) 456-6789
-                  </p>
+                  <p className="text-base font-normal">Mobil: +994559706747</p>
                 </div>
               </div>
               <div className="flex gap-3 mb-8">
@@ -75,7 +71,8 @@ export const Form = () => {
                 <div className="pt-2">
                   <h4 className="font-bold text-base">İş saatı</h4>
                   <p className="text-sm">
-                    Bazar ertəsi-cümə: 9:00 - 22:00 Şənbə-Bazar: 9:00 - 21:00
+                    Bazar ertəsi-cümə: 9:00 - 22:00; <br />
+                    Şənbə-Bazar: 9:00 - 21:00
                   </p>
                 </div>
               </div>
