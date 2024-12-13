@@ -56,7 +56,7 @@ const ProductsDetails = ({
             id="second-part"
             className="flex flex-col sm:items-start items-center w-full sm:w-auto"
           >
-            <div className="py-4 bg-red text-center sm:text-center">
+            <div className="py-4 bg-red text-center sm:text-left">
               <h2 className="font-normal text-4xl py-2">{name}</h2>
               <p className="font-medium text-2xl text-[#9F9F9F] pb-5">
                 {price + " AZN"}
@@ -76,7 +76,7 @@ const ProductsDetails = ({
               </Link>
             </div>
             <hr />
-            <div className="flex flex-col w-full pt-10">
+            <div className="flex flex-col text-center w-full pt-10">
               <div className="flex gap-3">
                 <p className="pr-10 font-normal text-base text-[#9F9F9F]">
                   Model
@@ -88,7 +88,7 @@ const ProductsDetails = ({
                   {model_no}
                 </p>
               </div>
-              <div className="flex">
+              <div className="flex gap-1">
                 <p className="pr-7 font-normal text-base text-[#9F9F9F]">
                   Category
                 </p>
