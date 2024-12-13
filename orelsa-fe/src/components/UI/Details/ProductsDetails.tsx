@@ -67,9 +67,13 @@ const ProductsDetails = ({
             </div>
 
             <div className="flex pt-20 pb-40 justify-center sm:justify-start">
-              <Button className="w-56 h-[75px] bg-[#B88E2F] font-bold text-white text-base">
-                SİFARİŞ ET
-              </Button>
+              <Link
+                href="https://wa.me/+994559706747"
+                target="_blank"
+                className="w-56 h-[75px] bg-[#B88E2F] font-bold text-white text-base hover:shadow-2xl"
+              >
+                <p className="text-center my-7">SİFARİŞ ET</p>
+              </Link>
             </div>
             <hr />
             <div className="flex flex-col w-full pt-10">
