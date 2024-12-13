@@ -5,6 +5,7 @@ import TheRange from "@/components/UI/TheRange/TheRange";
 import Footer from "@/components/Views/Landing/Footer";
 import { Button } from "@nextui-org/react";
 import axios from "axios";
+import Link from "next/link";
 
 export default async function HomePage() {
   const { data } = await axios.get(
@@ -28,9 +29,13 @@ export default async function HomePage() {
             {data[0]?.description ?? "Saç gücləndirici"}
           </p>
           <div className="ml-0 md:ml-11 pb-6 sm:pb-10 pt-6 sm:pt-9">
-            <Button className="gap-3 bg-[#B88E2F] w-full sm:w-[222px] h-[60px] sm:h-[75px] font-bold text-base text-white">
-              İndi sifariş et
-            </Button>
+            <Link
+              href="https://wa.me/+994559706747"
+              target="_blank"
+              className="gap-3 bg-[#B88E2F] absolute  w-full sm:w-[222px] h-[60px] sm:h-[75px] font-bold text-base text-hite"
+            >
+              <p className="text-center my-7">İndi sifariş et</p>
+            </Link>
           </div>
         </div>
       </main>
